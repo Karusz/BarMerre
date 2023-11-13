@@ -17,5 +17,28 @@ table, th, td {
 
 .barsnum{
     color: white;
+}
 
+.b-btn{
+    margin: 5px;
+    padding: 2px;
+}
+
+.adminmaintable{
+    display: flex;
+    width: 100%;
+}
+
+.info{
+    width: 100%;
+    display: flex;
+    list-style: none;
+}
+.start{
+    
+}
+
+.end{
+    padding-left: 30px;
+    
 }

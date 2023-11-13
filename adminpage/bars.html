@@ -59,13 +59,14 @@
         </div>
         <div class="bg-szurke text-center p-4">
           <table class="barstable">
-            <p class="barsnum">Jelenlegi kocsmák száma: </p>
+            <p class="barsnum">Jelenlegi kocsmák száma: 3</p>
             <tr>
               <th>NÉV</th>
               <th>HELYSZÍN</th>
               <th>CSILLAG</th>
               <th>NYITÁS</th>
               <th>ZÁRÁS</th>
+              <th>Torles</th>
             </tr>
             <tr>
               <td>Valami</td>
@@ -73,14 +74,45 @@
               <td>0-5</td>
               <td>valamikor</td>
               <td>Egyszer</td>
+              <td><form action="">
+                <input class="b-btn" name="delete-btn" type="submit" value="Torles!">
+              </form></td>
             </tr>
+            <tr>
+                <td>Valami</td>
+                <td>Ott</td>
+                <td>0-5</td>
+                <td>valamikor</td>
+                <td>Egyszer</td>
+                <td><form action="">
+                    <input class="b-btn" name="delete-btn" type="submit" value="Torles!">
+                </form></td>
+              </tr>
           </table>
+          <form action="bars.php">
+            <input class="b-btn" type="submit" name="all-btn" value="Osszes megjelenitese!">
+          </form>
+
+          <form action="bars.php">
+            <input class="b-btn" name="no-all-btn" type="submit" value="Eltakar">
+          </form>
+        </div>
+        <div class="text-center p-2">
+            <h4>Kocsma hozzaadasa:</h4>
+            <form action="bars.php" class="bg-szurke p-2">
+                <input type="text" placeholder="Nev" name="barname">
+                <input type="text" placeholder="Helyszin" name="barlocation">
+                <input type="text" placeholder="Nyitas" name="open">
+                <input type="text" placeholder="Zaras" name="close">
+                <input type="submit" class="b-btn" value="Hozzaadas!" name="add-btn">
+            </form>
         </div>
 
 
-        <div class="footer">
+
+        <footer class="footer">
             <p>BarMerre Weboldal 2023</p>
-        </div>
+        </footer>
 
         <!-- Buborekok -->
         <div class="bubidiv"><span></span></div>
