@@ -1,0 +1,21 @@
+.pagename{
+    margin-top: 5px;
+    text-align: center;
+}
+
+.barstable{
+    text-align: center;
+    width: 100%;
+}
+
+table, th, td {
+    color: white;
+    border: 2px solid var(--sor_liquid);
+    border-collapse: collapse;
+    padding: 5px;
+}
+
+.barsnum{
+    color: white;
+
+}
