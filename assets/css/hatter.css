@@ -23,28 +23,10 @@ body{
     min-height: 100vh;
 }
 
-/* backgrounds start */
-.bg-sotetnarancs{
-    background-color: var(--sotetnarancs);
-}
 
-.bg-szurke{
-    background-color: var(--halvanyszurke);
-}
-
-/* backgrounds end */
 
 .bubibetu{
     color: var(--buborek);
-}
-
-.kozep{
-    margin: 0;
-    position: absolute;
-    top: 50%;
-    left: 50%;
-    -ms-transform: translate(-50%, -50%);
-    transform: translate(-50%, -50%);
 }
  
 

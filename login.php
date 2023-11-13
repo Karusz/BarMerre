@@ -22,6 +22,12 @@
     <link rel="stylesheet" href="assets/css/reg_login.css">
     <link rel="stylesheet" href="assets/css/style.css">
 
+
+    <script src="http://code.jquery.com/jquery-latest.js"></script>
+	<script src="assets/bootstrap/js/bootstrap.min.js"></script>
+    <script src="assets/bootstrap/js/bootstrap.bundle.min.js"></script>
+    <script src="assets/js/main.js"></script>
+
     <title>BarMerre</title>
 </head>
 <body>

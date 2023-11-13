@@ -1,3 +1,14 @@
+/* backgrounds start */
+.bg-sotetnarancs{
+    background-color: var(--sotetnarancs);
+}
+
+.bg-szurke{
+    background-color: var(--halvanyszurke);
+}
+
+/* backgrounds end */
+
 .minilogo{
     display: block;
     margin-left: auto;
@@ -5,4 +16,36 @@
     width: 80px;
     height: 80px;
     border-radius: 50%;
+}
+
+/* backgrounds start */
+.bg-sotetnarancs{
+    background-color: var(--sotetnarancs);
+}
+
+.bg-szurke{
+    background-color: var(--halvanyszurke);
+}
+
+/* backgrounds end */
+
+.kozep{
+    margin: 0;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    -ms-transform: translate(-50%, -50%);
+    transform: translate(-50%, -50%);
+}
+
+.footer{
+    top: 15px;
+    position:relative;
+    left: 0;
+    bottom: 0;
+    width: 100%;
+    background-color: rgba(0, 0, 0, 0.61);
+    color: white;
+    text-align: center;
+
 }
