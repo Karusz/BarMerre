@@ -43,23 +43,23 @@
     <div class="wrapper">
         
         <div class="bg-szurke regist kozep p-4 text-white">
-            <h1 class=" text-center">Regisztracio</h1>
+            <h1 class=" text-center">Regisztráció</h1>
             <form action="regist.php" method="post">
                 <div class="i-box">
-                    <input type="text" name="username" placeholder="Felhasznalo">
+                    <input type="text" name="username" placeholder="Felhasználó">
                     <i class='bx bxs-user'></i>
                 </div>
                 <div class="i-box">
                     <i class='bx bxs-lock-alt' ></i>
-                    <input type="text" name="password" placeholder="Jelszo">
+                    <input type="password" name="password" placeholder="Jelszó">
                 </div>
                 <div class="i-box">
                     <i class='bx bxs-lock-alt' ></i>
-                    <input type="text" name="password2" placeholder="Jelszo ujra">
+                    <input type="password" name="password2" placeholder="Jelszó újra">
                 </div>
                 <div class="i-box">
                     <i class='bx bxs-envelope' ></i>
-                    <input type="text" name="email" placeholder="Email cim">
+                    <input type="email" name="email" placeholder="Email cím">
                 </div>
                 <div class="cbox">
                     <label>
@@ -76,10 +76,10 @@
                     </label>
                 </div>
                 <div class="btndiv">
-                    <input class="btn" type="submit" name="reg-btn" value="RegBTNAJKHSGDKAJS!">
+                    <input class="btn" type="submit" name="reg-btn" value="Regisztrálok!">
                 </div>
                 <div class="kukimuki">
-                    <p>Van mar fiokod?<a href="login.php">Lepj be!</a></p>
+                    <p>Van már fiókód?<a href="login.php">Lépj be!</a></p>
                 </div>
             </form>
         </div>

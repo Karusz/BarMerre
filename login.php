@@ -37,14 +37,14 @@
         <div class="bg-szurke regist kozep p-4 text-white">
             <img class="minilogo" src="assets/img/logos/beer.jpg" >
             <h1 class="text-center">Bejelentkezés</h1>
-            <form action="regist.php" method="post">
+            <form action="login.php" method="post">
                 <div class="i-box">
                     <input type="text" name="username" placeholder="Felhasználó">
                     <i class='bx bxs-user'></i>
                 </div>
                 <div class="i-box">
                     <i class='bx bxs-lock-alt' ></i>
-                    <input type="text" name="password" placeholder="Jelszó">
+                    <input type="password" name="password" placeholder="Jelszó">
                 </div>
                 <div class="btndiv">
                     <input class="btn" type="submit" name="login-btn" value="Bejelentkezés!">

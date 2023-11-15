@@ -1,5 +1,6 @@
 <?php
     //$conn = new mysqli("localhost", "root", "", "barmerrenew");
+    session_start();
 
     function Reg($username,$passwordhash,$email){
         $conn = new mysqli("localhost", "root", "", "barmerrenew");
@@ -18,11 +19,23 @@
     }
 
     function Login($username,$password){
-        //hash code ellenorzese
-            //Jo:
-                //bejelentkezes
-            //rosz
-                //figyelmeztetes
+        $conn = new mysqli("localhost", "root", "", "barmerrenew");
+        $lekerd = "SELECT * FROM users WHERE username='$username'";
+        $talalt = $conn->query($lekerd);
+        $fh = $talalt->fetch_assoc();
+        if(true){
+            
+            $hash = $fh['passhash'];
+            if(password_verify($password, $hash)){
+                
+                $_SESSION['useranme'] = $fh['username'];
+                header("Location: users/userpages/profile.html");
+            }else{
+                echo '<script>alert("Nem jó a felhasznaló vagy a jelszó!")</script>'; 
+            }
+        }else{
+            echo '<script>alert("Nem jó a felhasznaló vagy a jelszó!")</script>';
+        }
     }
 
 
