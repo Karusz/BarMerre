@@ -28,8 +28,11 @@
             $hash = $fh['passhash'];
             if(password_verify($password, $hash)){
                 
-                $_SESSION['useranme'] = $fh['username'];
-                header("Location: users/userpages/profile.html");
+                $_SESSION['username'] = $fh['username'];
+                $_SESSION['email'] = $fh['email'];
+                $_SESSION['is_verify'] = $fh['is_verify'];
+                $_SESSION['is_admin'] = $fh['is_admin'];
+                header("Location: users/userpages/profile.php");
             }else{
                 echo '<script>alert("Nem jó a felhasznaló vagy a jelszó!")</script>'; 
             }

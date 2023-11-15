@@ -2,6 +2,28 @@
     border-radius: 50%;
     width: 200px;
     height: 200px;
+    border: 5px solid var(--buborek);
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
     
-    
+}
+
+.userinfo{
+    font-weight: 500;
+    font-size:medium;
+}
+
+form input[type="file"] {
+    display: none;
+}
+
+.sajat-file-upload {
+
+    border: 1px solid #ccc;
+    display: inline-block;
+    padding: 3px 9px;
+    cursor: pointer;
+    margin-bottom: 15px;
+    margin-right: 5px;
 }

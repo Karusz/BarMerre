@@ -17,18 +17,36 @@
                 </li>
                 <li class="nav-item">
                     <a class="nav-link" href="#">Menü 3</a>
-                </li>
-            </ul>
-        </div>
-        <div>
-            <ul class="navbar-nav">
-                <li class="nav-item">
-                    <a class="nav-link" href="#">'.$_SESSION['useranme'].'</a>
-                </li>
-            </ul>
-        </div>
-    </div>
-    </nav>';
+                </li>';
+                if($_SESSION['is_admin'] == 1){
+                    echo '<li class="nav-item">
+                            <a class="nav-link" href="adminpage/admin.html">Admin</a>
+                        </li>
+                        </ul>
+                        </div>
+                        <div>
+                            <ul class="navbar-nav">
+                                <li class="nav-item">
+                                    <a class="nav-link" href="#">'.$_SESSION['username'].'</a>
+                                </li>
+                            </ul>
+                        </div>
+                    </div>
+                    </nav>';
+                }else{
+                    echo '</ul>
+                    </div>
+                    <div>
+                        <ul class="navbar-nav">
+                            <li class="nav-item">
+                                <a class="nav-link" href="#">'.$_SESSION['username'].'</a>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+                </nav>';
+                }
+            
 
 
 ?>

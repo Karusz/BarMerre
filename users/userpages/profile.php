@@ -1,3 +1,6 @@
+<?php
+    session_start();
+?>
 <!DOCTYPE html>
 <html lang="hu">
 <head>
@@ -24,12 +27,24 @@
     <div class="wrapper">
         <header id="navbar"></header>
         <div class="container bg-szurke">
-            <div class="row">
-                <div class="col">
+            <div class="row p-3">
+                <div class="col-3 ">
                     <img class="profimg" src="../../assets/img/default.png" alt="Profilkep">
                 </div>
-                <div class="col">
-                      Username
+                <div class="col-9">
+                    <div class="userinfo text-white">
+                        <p>Felhasználónév: <?= $_SESSION['username']?></p>
+                        <p>Email cím: <?= $_SESSION['email']?></p>
+                        <?php
+                            if($_SESSION['is_verify'] == 0){
+                        ?>
+                            <p>Hitelesített-e: Nem</p>
+                        <?php }else{?>
+                            <p>Hitelesített-e: Igen</p>
+                        <?php }?>
+                        
+                        <a href="profilesettings.html"><button >Profilod szerkesztése</button></a>
+                    </div>
                 </div>
             </div>
             
