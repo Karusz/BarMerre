@@ -12,7 +12,17 @@
 .userinfo{
     font-weight: 500;
     font-size:medium;
+    padding-top: 10px;
+    text-align: center;
 }
+
+.userinfo button{
+    display: block;
+    padding: 2px;
+    margin-left: auto;
+    margin-right: auto;
+}
+
 
 form input[type="file"] {
     display: none;
