@@ -46,6 +46,11 @@
 
 /* Navbar End */
 
+.logo{
+    width: 250px;
+    height: auto;
+}
+
 .kozep{
     margin: 0;
     position: absolute;
