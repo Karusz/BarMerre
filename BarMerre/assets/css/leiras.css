@@ -1,0 +1,11 @@
+.reg-btn{
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+}
+.reg-btn a {
+    text-decoration: none;
+    color: black;
+    border: 0;
+    
+}
