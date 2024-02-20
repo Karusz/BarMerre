@@ -9,10 +9,10 @@
         $lekerd = "SELECT * FROM users WHERE username='$username'";
         $talalt = $conn->query($lekerd);
         if(mysqli_num_rows($talalt) == 0){
-            $conn->query("INSERT INTO users VALUES(id,'$username','$passwordhash','$email','default.png',0,0)");
+            $conn->query("INSERT INTO users VALUES(id,'$username','$passwordhash','$email',0,0)");
 
 
-            $curdir = getcwd();
+            /*$curdir = getcwd();
 					
 			if(mkdir($curdir."/users/users_folders/".$username, 0777)){
 				$lekerd = "SELECT * FROM users WHERE username='$username'";
@@ -23,7 +23,7 @@
                 header("Location: login.php");
 			}else{
 				echo "<script>alert('Nem sikerült létrehozni a mappát!')</script>";
-			}
+			}*/
             
         }else{
             echo '<script>alert("Foglalt felhasznalonev!")</script>';
