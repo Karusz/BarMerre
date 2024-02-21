@@ -6,6 +6,19 @@
         $password = $_POST['password'];
         Login($username, $password);
     }
+
+    if(isset($_POST['regist-btn'])){
+        $username = $_POST['regname'];
+        $email = $_POST['regemail'];
+        $password = $_POST['regpassword'];
+        $repassword = $_POST['regrepassword'];
+        if($password == $repassword){
+            Reg($username, $password,$email);
+        }else{
+            echo'<script>alert("Nem egyezik a jelszo!")</script>';
+        }
+        
+    }
 ?>
 
 <!DOCTYPE html>
@@ -19,8 +32,8 @@
     <!-- CSS -->
     <link rel="stylesheet" href="assets/bootstrap/css/bootstrap.min.css">
     <link rel="stylesheet" href="assets/css/hatter.css">
-    <link rel="stylesheet" href="assets/css/account.css">
     <link rel="stylesheet" href="assets/css/style.css">
+    <link rel="stylesheet" href="assets/css/account.css">
 
 
     
@@ -41,14 +54,25 @@
                     <input type="email" name="regemail" placeholder="Email">
                     <input type="password" name="regpassword" placeholder="Jelszo">
                     <input type="password" name="regrepassword" placeholder="Jelszo ujra">
+                    <div class="cbox">
+                        <input type="checkbox" class="checkbox">
+                        <span>18. életévemet betöltöttem</span>
+                    </div>
+                    <div class="cbox">
+                        <input type="checkbox" class="checkbox">
+                        <span>Elfogadom az 
+                            <a href="adatvedelem/adatvedelem.html">Adatvédelmi tájékoztatót</a>
+                        </span>
+                    </div>
                     <input type="submit" name="regist-btn" value="Regisztracio">
                 </form>
+                
             </div>
             <div class="form-container sing-in">
                 
                 <form action="account.php" method="post">
                     <h1>Bejelentkezes</h1>
-                    <input type="email" name="email" placeholder="Email">
+                    <input type="text" name="username" placeholder="Felhasznalonev">
                     <input type="password" name="password" placeholder="Jelszo">
                     <input type="submit" name="login-btn" value="Bejelentkezes">
                 </form>
@@ -89,9 +113,9 @@
         <div class="bubidiv"><span></span></div>
     </div>
     <script src="http://code.jquery.com/jquery-latest.js"></script>
-<script src="assets/bootstrap/js/bootstrap.min.js"></script>
-<script src="assets/bootstrap/js/bootstrap.bundle.min.js"></script>
-<script src="assets/js/main.js"></script>
+    <script src="assets/bootstrap/js/bootstrap.min.js"></script>
+    <script src="assets/bootstrap/js/bootstrap.bundle.min.js"></script>
+    <script src="assets/js/main.js"></script>
     
 </body>
 </html>

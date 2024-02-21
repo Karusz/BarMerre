@@ -2,15 +2,16 @@
     //$conn = new mysqli("localhost", "root", "", "barmerrenew");
     session_start();
 
-    function Reg($username,$passwordhash,$email){
+    function Reg($username,$password,$email){
         $conn = new mysqli("localhost", "root", "", "barmerrenew");
 
         //Van-e ilyen felhasznalo?
         $lekerd = "SELECT * FROM users WHERE username='$username'";
         $talalt = $conn->query($lekerd);
         if(mysqli_num_rows($talalt) == 0){
-            $conn->query("INSERT INTO users VALUES(id,'$username','$passwordhash','$email',0,0)");
-
+            $hash = password_hash($password, PASSWORD_DEFAULT);
+            $conn->query("INSERT INTO users VALUES(id,'$username','$hash','$email',0,0)");
+            echo"<script>alert('Sikeres regisztracio!')</script>";
 
             /*$curdir = getcwd();
 					

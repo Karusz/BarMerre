@@ -200,3 +200,12 @@ main{
 .container.active .toggle-right{
     transform: translateY(200%);
 }
+
+.cbox a{
+    color: var(--narancs);
+    text-decoration: none;
+}
+
+.cbox a:hover{
+    text-decoration: underline;
+}

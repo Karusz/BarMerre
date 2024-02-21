@@ -10,10 +10,10 @@
      <!-- ICON LINK -->
      <link href='https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css' rel='stylesheet'>
      <!-- CSS -->
-     <link rel="stylesheet" href="../../assets/bootstrap/css/bootstrap.min.css">
-     <link rel="stylesheet" href="../../assets/css/hatter.css">
-     <link rel="stylesheet" href="../../assets/css/style.css">
-     <link rel="stylesheet" href="../../assets/css/profile.css">
+     <link rel="stylesheet" href="assets/bootstrap/css/bootstrap.min.css">
+     <link rel="stylesheet" href="assets/css/hatter.css">
+     <link rel="stylesheet" href="assets/css/style.css">
+     <link rel="stylesheet" href="assets/css/profile.css">
      
  
      <script src="http://code.jquery.com/jquery-latest.js"></script>
@@ -29,7 +29,7 @@
         <div class="container bg-szurke">
             <div class="p-3">
                 <div>
-                    <img class="profimg" src="../../assets/img/default.png" alt="Profilkep">
+                    <img class="profimg" src="assets/img/default.png" alt="Profilkep">
                 </div>
                 <div>
                     <div class="userinfo text-white">
@@ -43,8 +43,7 @@
                         <?php }else{?>
                             <p>Hitelesített-e: Igen</p>
                         <?php }?>
-                        
-                        
+
                     </div>
                 </div>
             </div>
@@ -74,5 +73,5 @@
 </html>
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta1/dist/js/bootstrap.bundle.min.js"></script>
 <script>
-    $('#navbar').load("../../navbar.php");
+    $('#navbar').load("navbar.php");
 </script>
