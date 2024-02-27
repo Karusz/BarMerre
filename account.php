@@ -1,23 +1,25 @@
 <?php
+    require "config.php";
     require "functions.php";
 
     if(isset($_POST['login-btn'])){
-        $username = $_POST['username'];
-        $password = $_POST['password'];
-        Login($username, $password);
+        $email = $_POST['login-email'];
+        $password = $_POST['login-psw'];
+        $cbx = $_POST['rem-cbx'];
+
+        Login($email,$password,$cbx);
     }
 
-    if(isset($_POST['regist-btn'])){
-        $username = $_POST['regname'];
-        $email = $_POST['regemail'];
-        $password = $_POST['regpassword'];
-        $repassword = $_POST['regrepassword'];
+
+    if(isset($_POST['reg-btn'])){
+        $password = $_POST['reg-psw'];
+        $repassword = $_POST['regre-psw'];
+
         if($password == $repassword){
-            Reg($username, $password,$email);
-        }else{
-            echo'<script>alert("Nem egyezik a jelszo!")</script>';
+            $uname = $_POST['reg-uname'];
+            $email = $_POST['reg-email'];
+            Regist($uname,$email,$password);
         }
-        
     }
 ?>
 
@@ -26,77 +28,85 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-
-    <!-- ICON LINK -->
-    <link href='https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css' rel='stylesheet'>
-    <!-- CSS -->
-    <link rel="stylesheet" href="assets/bootstrap/css/bootstrap.min.css">
-    <link rel="stylesheet" href="assets/css/hatter.css">
-    <link rel="stylesheet" href="assets/css/style.css">
-    <link rel="stylesheet" href="assets/css/account.css">
-
-
-    
-    
-
     <title>BarMerre</title>
+    <link rel="stylesheet" href="assets/css/all-style.css">
+    <link rel="stylesheet" href="assets/css/account.css">
 </head>
 <body>
-    <div class="wrapper">
+    
+    <header>
+        <h2 class="logo">BarMerre</h2>
+        <nav class="navigation">
+            <a href="#">Home</a>
+            <a href="#">About</a>
+            <a href="#">Services</a>
+            <a href="#">Contact</a>
+            <button class="btnLogin">Login</button>
+        </nav>
+    </header>
+    <div class="buborek">
+        <div class="wrapper">
+            <div class="form-box login">
+                <h2>Bejelentkezés</h2>
+                <form action="account.php" method="post">
+                    <div class="input-box">
+                        <span class="icon"><ion-icon name="mail"></ion-icon></span>
+                        <input type="email" name="login-email" required>
+                        <label>Email</label>
+                    </div>
+                    <div class="input-box">
+                        <span class="icon"><ion-icon name="lock-closed"></ion-icon></span>
+                        <input type="password" name="login-psw" required>
+                        <label>Jelszó</label>
+                    </div>
+                    <div class="remember-forgot">
+                        <label><input type="checkbox" name="rem-cbx">Emlékezz rám</label>
+                        <a href="#">Elfelejtett jelszó?</a>
+                    </div>
+                    <button type="submit" name="login-btn" class="btn">Bejelentkezés</button>
+                    <div class="login-register">
+                        <p>Nincs fiókod?<a href="#" class="register-link">Regisztráció</a></p>
+                    </div>
+                </form>
+            </div>
 
 
-    <main>
-        <div class="container" id="container">
-            <div class="form-container sing-up">
+            <div class="form-box register">
+                <h2>Regisztráció</h2>
                 <form action="account.php" method="post">
-                    <h1>Regisztracio</h1>
-                    <input type="text" name="regname" placeholder="Felhasznalonev">
-                    <input type="email" name="regemail" placeholder="Email">
-                    <input type="password" name="regpassword" placeholder="Jelszo">
-                    <input type="password" name="regrepassword" placeholder="Jelszo ujra">
-                    <div class="cbox">
-                        <input type="checkbox" class="checkbox">
-                        <span>18. életévemet betöltöttem</span>
+                    <div class="input-box">
+                        <span class="icon"><ion-icon name="mail"></ion-icon></span>
+                        <input type="email" name="reg-email" required>
+                        <label>Email</label>
                     </div>
-                    <div class="cbox">
-                        <input type="checkbox" class="checkbox">
-                        <span>Elfogadom az 
-                            <a href="adatvedelem/adatvedelem.html">Adatvédelmi tájékoztatót</a>
-                        </span>
+                    <div class="input-box">
+                        <span class="icon"><ion-icon name="person"></ion-icon></span>
+                        <input type="Text" name="reg-uname" required>
+                        <label>Felhasználónév</label>
                     </div>
-                    <input type="submit" name="regist-btn" value="Regisztracio">
+                    <div class="input-box">
+                        <span class="icon"><ion-icon name="lock-closed"></ion-icon></span>
+                        <input type="password" name="reg-psw" required>
+                        <label>Jelszó</label>
+                    </div>
+                    <div class="input-box">
+                        <span class="icon"><ion-icon name="lock-closed"></ion-icon></span>
+                        <input type="password" name="regre-psw" required>
+                        <label>Jelszó újra</label>
+                    </div>
+                    <div class="remember-forgot">
+                        <label><input type="checkbox" required>Betöltöttem a 18. életévemet</label>
+                    </div>
+                    <div class="remember-forgot">
+                        <label><input type="checkbox" required>Elfogadom az <a href="#" target="_blank">adatvédelmi szabályzatot</a></label>
+                    </div>
+                    <button type="submit" name="reg-btn" class="btn">Regisztrálok</button>
+                    <div class="login-register">
+                        <p>Van fiókod? <a href="#" class="login-link">Bejelentkezés</a></p>
+                    </div>
                 </form>
-                
-            </div>
-            <div class="form-container sing-in">
-                
-                <form action="account.php" method="post">
-                    <h1>Bejelentkezes</h1>
-                    <input type="text" name="username" placeholder="Felhasznalonev">
-                    <input type="password" name="password" placeholder="Jelszo">
-                    <input type="submit" name="login-btn" value="Bejelentkezes">
-                </form>
-            </div>
-            <div class="toggle-container">
-                <div class="toggle">
-                    <div class="toggle-panel toggle-left">
-                        <h1>Van mar fiokod?</h1>
-                        <p>Jelentkezz be!</p>
-                        <button class="hidden" id="login">Bejelentkezes</button>
-                    </div>
-                    <div class="toggle-panel toggle-right">
-                        <h1>Nincs meg fiokod?</h1>
-                        <p>Regisztralj be!</p>
-                        <button class="hidden" id="regist">Regisztracio</button>
-                    </div>
-                </div>
             </div>
         </div>
-    </main>
-
-
-
-
         <!-- Buborekok -->
         <div class="bubidiv"><span></span></div>
         <div class="bubidiv"><span></span></div>
@@ -107,15 +117,9 @@
         <div class="bubidiv"><span></span></div>
         <div class="bubidiv"><span></span></div>
         <div class="bubidiv"><span></span></div>
-        <div class="bubidiv"><span></span></div>
-        <div class="bubidiv"><span></span></div>
-        <div class="bubidiv"><span></span></div>
-        <div class="bubidiv"><span></span></div>
     </div>
-    <script src="http://code.jquery.com/jquery-latest.js"></script>
-    <script src="assets/bootstrap/js/bootstrap.min.js"></script>
-    <script src="assets/bootstrap/js/bootstrap.bundle.min.js"></script>
     <script src="assets/js/main.js"></script>
-    
+    <script type="module" src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.esm.js"></script>
+    <script nomodule src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.js"></script>
 </body>
 </html>

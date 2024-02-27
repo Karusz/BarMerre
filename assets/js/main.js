@@ -1,13 +1,13 @@
 //Account Start
-const container = document.getElementById('container');
-const regBtn = document.getElementById('regist');
-const loginBtn = document.getElementById('login');
+const wrapper = document.querySelector('.wrapper');
+const loginLink = document.querySelector('.login-link');
+const registerLink = document.querySelector('.register-link');
 
-regBtn.addEventListener('click', ()=>{
-  container.classList.add('active');
+registerLink.addEventListener('click', ()=> {
+    wrapper.classList.add('active');
 });
 
-loginBtn.addEventListener('click', ()=>{
-  container.classList.remove('active');
+loginLink.addEventListener('click', ()=> {
+    wrapper.classList.remove('active');
 });
 //Account End

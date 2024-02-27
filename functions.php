@@ -1,58 +1,46 @@
 <?php
-    //$conn = new mysqli("localhost", "root", "", "barmerrenew");
     session_start();
 
-    function Reg($username,$password,$email){
-        $conn = new mysqli("localhost", "root", "", "barmerrenew");
+    //$conn = new mysqli("localhost", "root", "", "barmerre");
+    function Regist($uname,$email,$password){
+        $conn = new mysqli("localhost", "root", "", "barmerre");
+        $hash_psw = password_hash($password, PASSWORD_DEFAULT);
 
-        //Van-e ilyen felhasznalo?
-        $lekerd = "SELECT * FROM users WHERE username='$username'";
+        $lekerd = "SELECT * FROM users WHERE email='$email'";
         $talalt = $conn->query($lekerd);
         if(mysqli_num_rows($talalt) == 0){
-            $hash = password_hash($password, PASSWORD_DEFAULT);
-            $conn->query("INSERT INTO users VALUES(id,'$username','$hash','$email',0,0)");
-            echo"<script>alert('Sikeres regisztracio!')</script>";
-
-            /*$curdir = getcwd();
-					
-			if(mkdir($curdir."/users/users_folders/".$username, 0777)){
-				$lekerd = "SELECT * FROM users WHERE username='$username'";
-                $talalt = $conn->query($lekerd);
-                $fh = $talalt->fetch_assoc();
-                $_SESSION['id'] = $fh['id'];
-                $id = $fh['id'];
-                header("Location: login.php");
-			}else{
-				echo "<script>alert('Nem sikerült létrehozni a mappát!')</script>";
-			}*/
-            
+            $conn->query("INSERT INTO users VALUES(id, '$uname', '$email', '$hash_psw', 0)");
+            header("Location: account.php");
         }else{
-            echo '<script>alert("Foglalt felhasznalonev!")</script>';
+            echo "<script>alert('Már regisztráltál ezzel az email címmel!')</script>";
         }
     }
 
-    function Login($username,$password){
-        $conn = new mysqli("localhost", "root", "", "barmerrenew");
-        $lekerd = "SELECT * FROM users WHERE username='$username'";
+    function Login($email,$password,$remember){
+        $conn = new mysqli("localhost", "root", "", "barmerre");
+
+        $lekerd = "SELECT * FROM users WHERE email = '$email'";
         $talalt = $conn->query($lekerd);
-        $fh = $talalt->fetch_assoc();
-        if(true){
-            
-            $hash = $fh['passhash'];
-            if(password_verify($password, $hash)){
+
+        if(mysqli_num_rows($talalt) == 1){
+            $user = $talalt->fetch_assoc();
+            if(password_verify($password, $user['password'])){
                 
-                $_SESSION['username'] = $fh['username'];
-                $_SESSION['email'] = $fh['email'];
-                $_SESSION['is_verify'] = $fh['is_verify'];
-                $_SESSION['is_admin'] = $fh['is_admin'];
-                header("Location: users/userpages/profile.php");
+                $_SESSION['userid'] = $user['id'];
+                header("Location: tutorial.html");
+    
             }else{
-                echo '<script>alert("Nem jó a felhasznaló vagy a jelszó!")</script>'; 
+                echo '<script>alert("Nem jó az email cím vagy a jelszó!")</script>';
             }
         }else{
-            echo '<script>alert("Nem jó a felhasznaló vagy a jelszó!")</script>';
+            echo '<script>alert("Nem jó az email cím vagy a jelszó!")</script>';
         }
-    }
 
+        /*
+        //Remember Me 
+        if(){
+
+        }*/
+    }
 
 ?>
