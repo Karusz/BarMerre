@@ -1,10 +1,40 @@
+<?php
+    require "functions.php";
+
+    if(isset($_POST["reg-btn"])){
+        $uname = $_POST['regname'];
+        $email = $_POST['regemail'];
+        $password = $_POST['regpsw'];
+        $repassword = $_POST['regrepsw'];
+        if($password == $repassword){
+            Reg($uname,$email,$password);
+        }else{
+            //Nem egyezik a jelszo
+        }
+        
+    }
+
+    if(isset($_POST["login-btn"])){
+        if(!empty($_POST['logrem'])){
+            $remember = $_POST['logrem'];
+        }
+        $email = $_POST['logemail'];
+        $password = $_POST['logpsw'];
+
+        
+
+        Login($email,$password,$remember);
+    }
+?>
+
 <!DOCTYPE html>
-<html lang="en">
+<html lang="hu">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>BarMerre</title>
-    <link rel="stylesheet" href="assets/css/account.css">
+    <link rel="stylesheet" href="assets/css/all-style.css">
+    <link rel="stylesheet" href="assets/css/login.css">
 </head>
 <body>
     
@@ -26,22 +56,22 @@
 
             <div class="form-box login">
                 <h2>Bejelentkezés</h2>
-                <form action="#">
+                <form action="login.php" method="post">
                     <div class="input-box">
                         <span class="icon"><ion-icon name="mail"></ion-icon></span>
-                        <input type="email" required>
+                        <input type="email" name="logemail" required>
                         <label>Email</label>
                     </div>
                     <div class="input-box">
                         <span class="icon"><ion-icon name="lock-closed"></ion-icon></span>
-                        <input type="password" required>
+                        <input type="password" name="logpsw" required>
                         <label>Jelszó</label>
                     </div>
                     <div class="remember-forgot">
-                        <label><input type="checkbox">Emlékezz rám</label>
+                        <label><input type="checkbox" name="logrem">Emlékezz rám</label>
                         <a href="#">Elfelejtett jelszó?</a>
                     </div>
-                    <button type="submit" class="btn">Bejelentkezés</button>
+                    <button type="submit" name="login-btn" class="btn">Bejelentkezés</button>
                     <div class="login-register">
                         <p>Nincs fiókod?<a href="#" class="register-link">Regisztráció</a></p>
                     </div>
@@ -51,25 +81,25 @@
 
             <div class="form-box register">
                 <h2>Regisztráció</h2>
-                <form action="#">
+                <form action="login.php" method="post">
                     <div class="input-box">
                         <span class="icon"><ion-icon name="mail"></ion-icon></span>
-                        <input type="email" required>
+                        <input type="email" name="regemail" required>
                         <label>Email</label>
                     </div>
                     <div class="input-box">
                         <span class="icon"><ion-icon name="person"></ion-icon></span>
-                        <input type="Text" required>
+                        <input type="Text" name="regname" required>
                         <label>Felhasználónév</label>
                     </div>
                     <div class="input-box">
                         <span class="icon"><ion-icon name="lock-closed"></ion-icon></span>
-                        <input type="password" required>
+                        <input type="password" name="regpsw" required>
                         <label>Jelszó</label>
                     </div>
                     <div class="input-box">
                         <span class="icon"><ion-icon name="lock-closed"></ion-icon></span>
-                        <input type="password" required>
+                        <input type="password" name="regrepsw" required>
                         <label>Jelszó újra</label>
                     </div>
                     <div class="remember-forgot">
@@ -78,7 +108,7 @@
                     <div class="remember-forgot">
                         <label><input type="checkbox" required>Elfogadom az <a href="#" target="_blank">adatvédelmi szabályzatot</a></label>
                     </div>
-                    <button type="submit" class="btn">Regisztrálok</button>
+                    <button type="submit" name="reg-btn" class="btn">Regisztrálok</button>
                     <div class="login-register">
                         <p>Van fiókod? <a href="#" class="login-link">Bejelentkezés</a></p>
                     </div>
@@ -105,7 +135,7 @@
     
 
 
-    <script src="assets/js/main.js"></script>
+    <script src="assets/js/login.js"></script>
     <script type="module" src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.esm.js"></script>
     <script nomodule src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.js"></script>
 
