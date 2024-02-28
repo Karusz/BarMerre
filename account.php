@@ -46,6 +46,11 @@
     </header>
     <div class="buborek">
         <div class="wrapper">
+
+            <span class="icon-close">
+                <ion-icon name ="close"></ion-icon>
+            </span> 
+
             <div class="form-box login">
                 <h2>Bejelentkezés</h2>
                 <form action="account.php" method="post">
