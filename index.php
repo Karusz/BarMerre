@@ -54,11 +54,8 @@
 
 
     <div class="buborek">
-        <div class="wrapper">
-
-
-        <!-- Header-->
-            <div class="bg-dark py-5">
+             <!-- Header-->
+             <div class="bg-dark py-5">
                 <div class="container px-5">
                     <div class="row gx-5 align-items-center justify-content-center">
                         <div class="col-lg-8 col-xl-7 col-xxl-6">
@@ -176,6 +173,10 @@
                 </div>
             </div>
         </footer>
+
+
+
+        <div class="wrapper">
 
         <!-- ---------------------------------- -->
             <span class="icon-close">
