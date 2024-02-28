@@ -20,12 +20,8 @@
 
 body {
     display: flex;
-    justify-content: center;
-    align-items: center;
     min-height: 100vh;
     background: orange;
-    background-size: cover;
-    background-position: center;
 }
 
 header {
