@@ -26,6 +26,7 @@ body {
     background: orange;
     background-size: cover;
     background-position: center;
+    background: linear-gradient(180deg,var(--sotet_liquid) 5%,var(--narancs) 50%, var(--sotetnarancs));
 }
 
 header {
