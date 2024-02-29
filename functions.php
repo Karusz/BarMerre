@@ -35,12 +35,11 @@
         }else{
             echo '<script>alert("Nem jó az email cím vagy a jelszó!")</script>';
         }
-
-        /*
-        //Remember Me 
-        if(){
-
-        }*/
     }
 
+    function Remember($email, $password){
+        $hour = time() + 3600 * 24 * 30;
+        setcookie('email', $email, $hour);
+        setcookie('password', $password, $hour);
+    }
 ?>

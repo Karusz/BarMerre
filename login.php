@@ -16,13 +16,12 @@
 
     if(isset($_POST["login-btn"])){
         if(!empty($_POST['logrem'])){
-            $remember = $_POST['logrem'];
+            $password = $_POST['logpsw'];
+            $email = $_POST['logemail'];
+            Remember($email,$password);
         }
         $email = $_POST['logemail'];
         $password = $_POST['logpsw'];
-
-        
-
         Login($email,$password,$remember);
     }
 ?>
@@ -41,10 +40,7 @@
     <header>
         <h2 class="logo">BarMerre</h2>
         <nav class="navigation">
-            <a href="#">Home</a>
-            <a href="#">About</a>
-            <a href="#">Services</a>
-            <a href="#">Contact</a>
+            <a href="index.html">Kezdőlap</a>
         </nav>
     </header>
     
@@ -73,7 +69,7 @@
                     </div>
                     <button type="submit" name="login-btn" class="btn">Bejelentkezés</button>
                     <div class="login-register">
-                        <p>Nincs fiókod?<a href="#" class="register-link">Regisztráció</a></p>
+                        <p>Nincs fiókod? <a href="#" class="register-link">Regisztráció</a></p>
                     </div>
                 </form>
             </div>
