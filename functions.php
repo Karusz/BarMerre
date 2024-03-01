@@ -2,7 +2,7 @@
     session_start();
 
     //$conn = new mysqli("localhost", "root", "", "barmerre");
-    function Regist($uname,$email,$password){
+    function Reg($uname,$email,$password){
         $conn = new mysqli("localhost", "root", "", "barmerre");
         $hash_psw = password_hash($password, PASSWORD_DEFAULT);
 
@@ -27,8 +27,16 @@
             if(password_verify($password, $user['password'])){
                 
                 $_SESSION['userid'] = $user['id'];
-                header("Location: tutorial.html");
-    
+
+                if(isset($_COOKIE[$user['username']]) && $_COOKIE[$user['username']] != ''){ // Nem eloszor lepett be 
+                    header("Location: account.php?id=".$user['id']);
+                    
+                }else{ //Eloszor lepett be
+                    header("Location: tutorial.html"); //Nyissa meg a tutorialt
+                    setcookie($user['username'],$user['username']); // suti letrehozasa
+                    
+
+                }
             }else{
                 echo '<script>alert("Nem jó az email cím vagy a jelszó!")</script>';
             }
