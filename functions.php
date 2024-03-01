@@ -45,6 +45,7 @@
         }
     }
 
+
     function Remember($email, $password){
         $hour = time() + 3600 * 24 * 30;
         setcookie('email', $email, $hour);

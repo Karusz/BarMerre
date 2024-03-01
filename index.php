@@ -1,5 +1,11 @@
+<?php
+    session_start();
 
+    if(isset($_SESSION['userid'])){
+        header("Location: account.php?id=".$_SESSION['userid']);
+    }
 
+?>
 <!DOCTYPE html>
 <html lang="hu">
 <head>
@@ -19,7 +25,7 @@
     <header>
         <h2 class="logo">BarMerre</h2>
         <nav class="navigation">
-            <a href="#" class="active">Kezdőlap</a>
+            <a href="#">Kezdőlap</a>
             <button class="btnLogin" onclick="Login()">Bejelentkezés</button>
         </nav>
     </header>
@@ -165,9 +171,9 @@
     <script type="module" src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.esm.js"></script>
     <script nomodule src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.js"></script>
     <script>
-    function Login() {
-        window.location="login.php";
-    }
+        function Login() {
+            window.location="login.php";
+        }
     </script>
 </body>
 </html>

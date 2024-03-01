@@ -40,7 +40,7 @@
     <header>
         <h2 class="logo">BarMerre</h2>
         <nav class="navigation">
-            <a href="index.html">Kezdőlap</a>
+            <a href="index.php">Kezdőlap</a>
         </nav>
     </header>
     
@@ -49,18 +49,18 @@
         <div class="wrapper">
 
             
-
             <div class="form-box login">
                 <h2>Bejelentkezés</h2>
+
                 <form action="login.php" method="post">
                     <div class="input-box">
                         <span class="icon"><ion-icon name="mail"></ion-icon></span>
-                        <input type="email" name="logemail" required>
+                        <input type="email" name="logemail" required value="<?php echo $_COOKIE['email']?>">
                         <label>Email</label>
                     </div>
                     <div class="input-box">
                         <span class="icon"><ion-icon name="lock-closed"></ion-icon></span>
-                        <input type="password" name="logpsw" required>
+                        <input type="password" name="logpsw" required value="<?php echo $_COOKIE['password']?>">
                         <label>Jelszó</label>
                     </div>
                     <div class="remember-forgot">
@@ -130,10 +130,8 @@
 
     
 
-
     <script src="assets/js/login.js"></script>
     <script type="module" src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.esm.js"></script>
     <script nomodule src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.js"></script>
-
 </body>
 </html>

@@ -4,7 +4,6 @@
     $talalt = $conn->query($lekerd);
     $user = $talalt->fetch_assoc();
 
-
 ?>
 <!DOCTYPE html>
 <html lang="hu">
@@ -18,6 +17,15 @@
     <title>BarMerre</title>
 </head>
 <body>
+<header>
+        <h2 class="logo">BarMerre</h2>
+        <nav class="navigation">
+            <a href="tutorial.html">Tutoriál</a>
+            <a href="">Útvonalak</a>
+            <a href="">Tervezés</a>
+            <!-- !!!!IDEIGLENES GOMB!!!! --> <button class="btnLogin" onclick="Logout()">Kijelentkezés</button> <!-- !!!!IDEIGLENES GOMB!!!! -->
+        </nav>
+    </header>
     <div class="buborek">
 
     <h2>account.php </h2>
@@ -32,5 +40,14 @@
         <div class="bubidiv"><span></span></div>
         <div class="bubidiv"><span></span></div>
     </div>
+
+    <script src="assets/js/main.js"></script>
+    <script type="module" src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.esm.js"></script>
+    <script nomodule src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.js"></script>
+    <script>
+        function Logout() {
+            window.location="logout.php";
+        }
+    </script>
 </body>
 </html>
