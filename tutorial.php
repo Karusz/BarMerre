@@ -1,4 +1,10 @@
-
+<?php
+    require "config.php";
+    session_start();
+    $lekerd = "SELECT * FROM users WHERE id=$_SESSION[userid]";
+    $talalt = $conn->query($lekerd);
+    $user = $talalt->fetch_assoc();
+?>
 
 <!DOCTYPE html>
 <html lang="hu">
@@ -19,11 +25,19 @@
     <header>
         <h2 class="logo">BarMerre</h2>
         <nav class="navigation">
-            <a href="#">Tutoriál</a>
-            <a href="">Útvonalak</a>
-            <a href="">Tervezés</a>
-            <a href=""></a>
-            </nav>
+            <a href="tutorial.php" class="nav-a">Bemutató</a>
+            <a href="allroutes.php" class="nav-a">Útvonalak</a>
+            <a href="createroute.php" class="nav-a">Tervezés</a>
+            <button class="btnLogin dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false">
+                  Profil
+            </button>
+            <ul class="dropdown-menu dropdown-menu-dark">
+                <li><a class="dropdown-item" href=""><?= $user['username'] ?></a></li>
+                <li><a class="dropdown-item" href="myroutes.php">Saját utak</a></li>
+                <li><a class="dropdown-item" href="profilesettings.php?id=<?=$_SESSION['userid']?>">Beállítások</a></li>
+                <li><button class="dropdown-item" onclick="Logout()">Kijelentkezés</button></li>
+            </ul>
+        </nav>
     </header>
 
     <div class="buborek">
@@ -40,8 +54,8 @@
                     <div class="row gx-5 align-items-center justify-content-center">
                         <div class="col-lg-8 col-xl-7 col-xxl-6">
                             <div class="my-5 text-center text-xl-start">
-                                <h1 class="display-5 fw-bolder text-white mb-2">Tutoriál</h1>
-                                <p class="lead fw-normal text-white-50 mb-4">A Lorem Ipsum egy egyszerû szövegrészlete, szövegutánzata a betûszedõ és nyomdaiparnak. </p>
+                                <h1 class="display-5 fw-bolder text-white mb-2">Bemutató</h1>
+                                <p class="lead fw-normal text-white-50 mb-4">Rövid leírás, hogy hogyan kell alkalmazni a weboldalt.</p>
                             </div>
                         </div>
                         <div class="col-xl-5 col-xxl-6 d-none d-xl-block text-center"><img class="img-fluid rounded-3 my-5" src="assets/img/logo/testlogo.png" alt="..." /></div>
@@ -150,11 +164,12 @@
     
     
     <script src="assets/js/main.js"></script>
+    <script src="assets/bootstrap/js/bootstrap.bundle.js"></script>
     <script type="module" src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.esm.js"></script>
     <script nomodule src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.js"></script>
     <script>
-    function Login() {
-        window.location="login.php";
+    function Logout() {
+        window.location="logout.php";
     }
     </script>
 </body>

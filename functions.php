@@ -29,10 +29,10 @@
                 $_SESSION['userid'] = $user['id'];
 
                 if(isset($_COOKIE[$user['username']]) && $_COOKIE[$user['username']] != ''){ // Nem eloszor lepett be 
-                    header("Location: account.php?id=".$user['id']);
+                    header("Location: profilesettings.php?id=".$user['id']);
                     
                 }else{ //Eloszor lepett be
-                    header("Location: tutorial.html"); //Nyissa meg a tutorialt
+                    header("Location: tutorial.php"); //Nyissa meg a tutorialt
                     setcookie($user['username'],$user['username']); // suti letrehozasa
                     
 

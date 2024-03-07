@@ -1,9 +1,7 @@
 <?php
     session_start();
 
-    if(isset($_SESSION['userid'])){
-        header("Location: account.php?id=".$_SESSION['userid']);
-    }
+
 
 ?>
 <!DOCTYPE html>
@@ -25,7 +23,7 @@
     <header>
         <h2 class="logo">BarMerre</h2>
         <nav class="navigation">
-            <a href="#">Kezdőlap</a>
+            <a href="index.php" class="nav-a">Kezdőlap</a>
             <button class="btnLogin" onclick="Login()">Bejelentkezés</button>
         </nav>
     </header>

@@ -32,6 +32,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>BarMerre</title>
+    <link rel="stylesheet" href="assets/bootstrap/css/bootstrap.min.css">
     <link rel="stylesheet" href="assets/css/all-style.css">
     <link rel="stylesheet" href="assets/css/login.css">
 </head>
@@ -40,7 +41,7 @@
     <header>
         <h2 class="logo">BarMerre</h2>
         <nav class="navigation">
-            <a href="index.php">Kezdőlap</a>
+            <a href="index.php" class="nav-a">Kezdőlap</a>
         </nav>
     </header>
     
@@ -55,12 +56,12 @@
                 <form action="login.php" method="post">
                     <div class="input-box">
                         <span class="icon"><ion-icon name="mail"></ion-icon></span>
-                        <input type="email" name="logemail" required value="<?php echo $_COOKIE['email']?>">
+                        <input type="email" name="logemail" required value="<?php if(isset($_COOKIE['email'])) {echo $_COOKIE['email']; } ?>">
                         <label>Email</label>
                     </div>
                     <div class="input-box">
                         <span class="icon"><ion-icon name="lock-closed"></ion-icon></span>
-                        <input type="password" name="logpsw" required value="<?php echo $_COOKIE['password']?>">
+                        <input type="password" name="logpsw" required value="<?php if(isset($_COOKIE['password'])){echo $_COOKIE['password'];} ?>">
                         <label>Jelszó</label>
                     </div>
                     <div class="remember-forgot">
