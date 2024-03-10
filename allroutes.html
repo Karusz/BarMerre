@@ -1,3 +1,4 @@
+<!--
 <?php
     require "config.php";
     session_start();
@@ -5,6 +6,7 @@
     $talalt = $conn->query($lekerd);
     $user = $talalt->fetch_assoc();
 ?>
+-->
 <!DOCTYPE html>
 <html lang="hu">
 <head>
@@ -14,10 +16,12 @@
      <!-- CSS -->
      <link rel="stylesheet" href="assets/bootstrap/css/bootstrap.min.css">
      <link rel="stylesheet" href="assets/css/all-style.css">
+     <link rel="stylesheet" href="assets/css/card.css">
 
     <title>BarMerre</title>
 </head>
 <body>
+    <!--
     <header>
         <h2 class="logo">BarMerre</h2>
         <nav class="navigation">
@@ -35,9 +39,17 @@
             </ul>
         </nav>
     </header>
+    -->
     <div class="buborek">
 
-    <h2>allroutes.php (összes útvonal)</h2>
+        <div class="kontener">
+            <div class="sor">
+                <div class="kartya">
+                    <h1>anyád</h1>
+                </div>
+            </div>
+        </div>
+          
         <!-- Buborekok -->
         <div class="bubidiv"><span></span></div>
         <div class="bubidiv"><span></span></div>
@@ -60,5 +72,6 @@
             window.location="logout.php";
         }
     </script>
+    
 </body>
 </html>
