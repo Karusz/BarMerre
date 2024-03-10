@@ -86,7 +86,7 @@
                     <div class="row gx-5 justify-content-center">
                         <div class="col-lg-8 col-xl-6">
                             <div class="text-center">
-                                <h2 class="fw-bolder">A 3 legjobbra értékelt kocsma</h2>
+                                <h2 class="fw-bolder">A 3 kedvenc kocsmánk</h2>
                                 <p class="lead fw-normal text-muted mb-5">Ha szeretnél egy biztos pontot a kocsmatúrádban, akkor az alábbi 3 kocsma egyikét minden féle képpen add hozzá az útvonaladhoz.</p>
                             </div>
                         </div>
@@ -97,7 +97,8 @@
                                 <img class="card-img-top" src="https://dummyimage.com/600x350/ced4da/6c757d" alt="..." />
                                 <div class="card-body p-4">
                                     <a class="text-decoration-none link-dark stretched-link" href="#!"><h5 class="card-title mb-3">Ínyenc Zenés Bisztro</h5></a>
-                                    <p class="card-text mb-0">Ez egy régóta elfogadott tény, miszerint egy olvasót zavarja az olvasható szöveg miközben a szöveg elrendezését nézi. Ez egy régóta elfogadott tény, miszerint egy olvasót zavarja az olvasható szöveg miközben a szöveg elrendezését nézi.</p>
+                                    <p class="card-text mb-0">
+                                    A Szentendrei Ínyenc Zenés Bisztró egy varázslatos hely, ahol az ízletes kulináris élmények és a kellemes zene összetalálkoznak. A hangulatos környezetben élvezheted a frissen készített gourmet ételeket és italokat. A bisztró rendszeresen vendégül lát helyi zenészeket, akik különleges atmoszférát teremtenek az esti programok során. Ez a hely tökéletes választás egy romantikus vacsorához vagy egy baráti összejövetelhez Szentendrén.</p>
                                 </div>
                             </div>
                         </div>
@@ -106,7 +107,7 @@
                                 <img class="card-img-top" src="https://dummyimage.com/600x350/ced4da/6c757d" alt="..." />
                                 <div class="card-body p-4">
                                     <a class="text-decoration-none link-dark stretched-link" href="#!"><h5 class="card-title mb-3">Szimpla Kert</h5></a>
-                                    <p class="card-text mb-0">Ez egy régóta elfogadott tény, miszerint egy olvasót zavarja az olvasható szöveg miközben a szöveg elrendezését nézi. Ez egy régóta elfogadott tény, miszerint egy olvasót zavarja az olvasható szöveg miközben a szöveg elrendezését nézi.</p>
+                                    <p class="card-text mb-0">Budapest leghíresebb bárja valójában közelebb volt egy lerobbant épülethez. A 2000-es évek elején néhány fiatal magyar egy elhagyatott épületben nyitott bárt a Zsidó Negyedben - és ez indította el a „romkocsma” trendet. Ma a Szimpla Kert egy lakóházat foglal el, amelyet egészen a tégláig lecsupaszítottak. A helyet helyi művészetekkel, graffiti-vel, lámpafüzérekkel és vegyes vintage bútorokkal díszítették fel. A italokat akár egy régi Trabantban is fogyaszthatod. Az alsó és felső szinten is több bár található, de ha hétvégén érkezel, számíts a tömegre.</p>
                                 </div>
                             </div>
                         </div>
@@ -115,7 +116,7 @@
                                 <img class="card-img-top" src="https://dummyimage.com/600x350/ced4da/6c757d" alt="..." />
                                 <div class="card-body p-4">
                                     <a class="text-decoration-none link-dark stretched-link" href="#!"><h5 class="card-title mb-3">4-es 6-os Söröző</h5></a>
-                                    <p class="card-text mb-0">Ez egy régóta elfogadott tény, miszerint egy olvasót zavarja az olvasható szöveg miközben a szöveg elrendezését nézi. Ez egy régóta elfogadott tény, miszerint egy olvasót zavarja az olvasható szöveg miközben a szöveg elrendezését nézi.</p>
+                                    <p class="card-text mb-0">A Budapesti 4-es 6-os söröző egy igazi kultikus helyszín a városban. A neve a közelben közlekedő 4-es és 6-os villamosvonalakra utal, ami megkönnyíti a megközelítést. Az egyedi atmoszférával és barátságos kiszolgálással rendelkező söröző ideális választás a sörkedvelők számára. A helyszín széles választékot kínál a legkülönfélébb helyi és nemzetközi sörök közül, lehetőséget adva a kóstolásra és felfedezésre egyaránt. A hangulatos enteriőr és a kényelmes ülések tökéletes hátteret biztosítanak egy hosszabb beszélgetéshez vagy egy egyszerűbb találkozóhoz barátokkal. </p>
                                 </div>
                             </div>
                         </div>
