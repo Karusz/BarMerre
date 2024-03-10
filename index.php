@@ -43,7 +43,7 @@
                         <div class="col-lg-8 col-xl-7 col-xxl-6">
                             <div class="my-5 text-center text-xl-start">
                                 <h1 class="display-5 fw-bolder text-white mb-2">BarMerre</h1>
-                                <p class="lead fw-normal text-white-50 mb-4">A Lorem Ipsum egy egyszerû szövegrészlete, szövegutánzata a betûszedõ és nyomdaiparnak. </p>
+                                <p class="lead fw-normal text-white-50 mb-4">Kocsmatúra karnyújtásnyira: Fedezd fel a város legjobb kocsmáit könnyedén és szórakozva!</p>
                             </div>
                         </div>
                         <div class="col-xl-5 col-xxl-6 d-none d-xl-block text-center"><img class="img-fluid rounded-3 my-5" src="assets/img/logo/testlogo.png" alt="..." /></div>
@@ -57,18 +57,18 @@
                             <div class="row gx-5 row-cols-1 row-cols-md-2">
                                 <div class="col mb-5 h-100">
                                     <div class="feature bg-primary bg-gradient text-white rounded-3 mb-3"><i class="bi bi-collection"></i></div>
-                                    <h2 class="h5">Első funkció</h2>
-                                    <p class="mb-0">A Lorem Ipsum egy egyszerû szövegrészlete, szövegutánzata a betûszedõ és nyomdaiparnak. A Lorem Ipsum az 1500-as évek óta standard szövegrészletként szolgált az iparban;</p>
+                                    <h2 class="h5">Meglévő útvonalak használata</h2>
+                                    <p class="mb-0">Böngészd át a már - általunk vagy közösségünk által - előre létrehozott útvonalakat és válaszd ki a számodra legideálisabbat.</p>
                                 </div>
                                 <div class="col mb-5 h-100">
                                     <div class="feature bg-primary bg-gradient text-white rounded-3 mb-3"><i class="bi bi-building"></i></div>
-                                    <h2 class="h5">Második funkció</h2>
-                                    <p class="mb-0">A Lorem Ipsum egy egyszerû szövegrészlete, szövegutánzata a betûszedõ és nyomdaiparnak. A Lorem Ipsum az 1500-as évek óta standard szövegrészletként szolgált az iparban;</p>
+                                    <h2 class="h5">Útvonal tervezés</h2>
+                                    <p class="mb-0">Nézd át a kocsmák listáját, add hozzá az utadhoz őket, majd mi megtervezzük a legoptimálisabb útvonalat neked. </p>
                                 </div>
                                 <div class="col mb-5 mb-md-0 h-100">
                                     <div class="feature bg-primary bg-gradient text-white rounded-3 mb-3"><i class="bi bi-toggles2"></i></div>
-                                    <h2 class="h5">Harmadik funkció</h2>
-                                    <p class="mb-0">A Lorem Ipsum egy egyszerû szövegrészlete, szövegutánzata a betûszedõ és nyomdaiparnak. A Lorem Ipsum az 1500-as évek óta standard szövegrészletként szolgált az iparban;</p>
+                                    <h2 class="h5">Kocsmák és útvonalak értékelése</h2>
+                                    <p class="mb-0">Értékeld a listában szereplő kocsmáinkat és útvonalainkat, hogy ezzel segíts másokat a választásban.</p>
                                 </div>
                                 <div class="col h-100">
                                     <div class="feature bg-primary bg-gradient text-white rounded-3 mb-3"><i class="bi bi-toggles2"></i></div>
@@ -86,8 +86,8 @@
                     <div class="row gx-5 justify-content-center">
                         <div class="col-lg-8 col-xl-6">
                             <div class="text-center">
-                                <h2 class="fw-bolder">Mit tudom én</h2>
-                                <p class="lead fw-normal text-muted mb-5">Ez egy régóta elfogadott tény, miszerint egy olvasót zavarja az olvasható szöveg miközben a szöveg elrendezését nézi.</p>
+                                <h2 class="fw-bolder">A 3 legjobbra értékelt kocsma</h2>
+                                <p class="lead fw-normal text-muted mb-5">Ha szeretnél egy biztos pontot a kocsmatúrádban, akkor az alábbi 3 kocsma egyikét minden féle képpen add hozzá az útvonaladhoz.</p>
                             </div>
                         </div>
                     </div>
@@ -96,7 +96,7 @@
                             <div class="card h-100 shadow border-0">
                                 <img class="card-img-top" src="https://dummyimage.com/600x350/ced4da/6c757d" alt="..." />
                                 <div class="card-body p-4">
-                                    <a class="text-decoration-none link-dark stretched-link" href="#!"><h5 class="card-title mb-3">Valami</h5></a>
+                                    <a class="text-decoration-none link-dark stretched-link" href="#!"><h5 class="card-title mb-3">Ínyenc Zenés Bisztro</h5></a>
                                     <p class="card-text mb-0">Ez egy régóta elfogadott tény, miszerint egy olvasót zavarja az olvasható szöveg miközben a szöveg elrendezését nézi. Ez egy régóta elfogadott tény, miszerint egy olvasót zavarja az olvasható szöveg miközben a szöveg elrendezését nézi.</p>
                                 </div>
                             </div>
@@ -105,7 +105,7 @@
                             <div class="card h-100 shadow border-0">
                                 <img class="card-img-top" src="https://dummyimage.com/600x350/ced4da/6c757d" alt="..." />
                                 <div class="card-body p-4">
-                                    <a class="text-decoration-none link-dark stretched-link" href="#!"><h5 class="card-title mb-3">Valami</h5></a>
+                                    <a class="text-decoration-none link-dark stretched-link" href="#!"><h5 class="card-title mb-3">Szimpla Kert</h5></a>
                                     <p class="card-text mb-0">Ez egy régóta elfogadott tény, miszerint egy olvasót zavarja az olvasható szöveg miközben a szöveg elrendezését nézi. Ez egy régóta elfogadott tény, miszerint egy olvasót zavarja az olvasható szöveg miközben a szöveg elrendezését nézi.</p>
                                 </div>
                             </div>
@@ -114,7 +114,7 @@
                             <div class="card h-100 shadow border-0">
                                 <img class="card-img-top" src="https://dummyimage.com/600x350/ced4da/6c757d" alt="..." />
                                 <div class="card-body p-4">
-                                    <a class="text-decoration-none link-dark stretched-link" href="#!"><h5 class="card-title mb-3">Valami</h5></a>
+                                    <a class="text-decoration-none link-dark stretched-link" href="#!"><h5 class="card-title mb-3">4-es 6-os Söröző</h5></a>
                                     <p class="card-text mb-0">Ez egy régóta elfogadott tény, miszerint egy olvasót zavarja az olvasható szöveg miközben a szöveg elrendezését nézi. Ez egy régóta elfogadott tény, miszerint egy olvasót zavarja az olvasható szöveg miközben a szöveg elrendezését nézi.</p>
                                 </div>
                             </div>
