@@ -16,6 +16,7 @@
      <!-- CSS -->
      <link rel="stylesheet" href="assets/bootstrap/css/bootstrap.min.css">
      <link rel="stylesheet" href="assets/css/all-style.css">
+     <link rel="stylesheet" href="assets/css/profsettings-style.css">
 
     <title>BarMerre</title>
 </head>
@@ -38,8 +39,33 @@
         </nav>
     </header>
     <div class="buborek">
-
-    <h2>profilsettings.php </h2>
+        <div class="all-content mb-5">
+            <div class="container rounded ">
+                <div class="row">
+                    <div class="col-md-12 text-white">
+                        <div class="d-flex flex-column align-items-center text-center p-5"><h3 class="font-weight-bold ">Username</h3><span>email@gmail.com</span><span> </span></div>
+                    </div>
+                        <div class="col-md-12">
+                            <div class="p-3 text-white">
+                                <div class="justify-conent-center align-items-center mb-3">
+                                    <h4 class="text-right">Profile Settings</h4>
+                                </div>
+                                <div class="mt-2">
+                                    <div class=""><label class="labels">Username</label><input type="text" class="form-control" value="" placeholder="Username"></div>
+                                </div>
+                                <div class="row mt-3">
+                                    <div class="col-md-12"><label class="labels">Email</label><input type="text" class="form-control" placeholder="enter email" value=""></div>
+                                </div>
+                                <div class="row mt-3">
+                                    <div class="col-md-12"><label class="labels">Password</label><input type="text" class="form-control" placeholder="enter password" value=""></div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="text-center mb-5"><button class="btn settings-btn profile-button" type="button">Save Profile</button></div>
+                    </div>
+                </div>
+            </div>
+        </div>
         <!-- Buborekok -->
         <div class="bubidiv"><span></span></div>
         <div class="bubidiv"><span></span></div>
