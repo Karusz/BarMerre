@@ -6,6 +6,26 @@
     $talalt = $conn->query($lekerd);
     $user = $talalt->fetch_assoc();
 
+    if(isset($_POST['save-btn'])){
+        if(!empty($_POST["new-username"])){
+            $new_name = $_POST['new-username'];
+            $conn->query("UPDATE users SET username = '$new_name' WHERE id=$_GET[id]");
+        }
+
+        if(!empty($_POST['new-email'])){
+            $new_email = $_POST['new-email'];
+            $conn->query("UPDATE users SET email='$new_email' WHERE id=$_GET[id]");
+        }
+
+        if(!empty($_POST['new-psw'])){
+            $new_psw = password_hash($_POST['new-psw'], PASSWORD_DEFAULT);
+            $conn->query("UPDATE users SET password='$new_psw' WHERE id=$_GET[id]");
+        }
+
+        header("Refresh:0");
+    }
+
+
 ?>
 <!DOCTYPE html>
 <html lang="hu">
@@ -40,28 +60,30 @@
     </header>
     <div class="buborek">
         <div class="all-content mb-5">
-            <div class="container rounded ">
+            <div class="container rounded">
                 <div class="row">
                     <div class="col-md-12 text-white">
-                        <div class="d-flex flex-column align-items-center text-center p-5"><h3 class="font-weight-bold ">Username</h3><span>email@gmail.com</span><span> </span></div>
+                        <div class="d-flex flex-column align-items-center text-center p-5"><h3 class="font-weight-bold "><?=$user['username']?></h3><span><?=$user['email']?></span><span> </span></div>
                     </div>
+                    <form action="profilesettings.php?id=<?=$user['id']?>" method="post">
                         <div class="col-md-12">
                             <div class="p-3 text-white">
                                 <div class="justify-conent-center align-items-center mb-3">
-                                    <h4 class="text-right">Profile Settings</h4>
+                                    <h4 class="text-right">Profil Beállítások</h4>
                                 </div>
                                 <div class="mt-2">
-                                    <div class=""><label class="labels">Username</label><input type="text" class="form-control" value="" placeholder="Username"></div>
+                                    <div class=""><label class="labels">Felhasználónév</label><input type="text" class="form-control" name="new-username" placeholder="Felhasználónév megváltoztatása"></div>
                                 </div>
                                 <div class="row mt-3">
-                                    <div class="col-md-12"><label class="labels">Email</label><input type="text" class="form-control" placeholder="enter email" value=""></div>
+                                    <div class="col-md-12"><label class="labels">Email</label><input type="text" class="form-control" name="new-email" placeholder="Email megváltoztatása"></div>
                                 </div>
                                 <div class="row mt-3">
-                                    <div class="col-md-12"><label class="labels">Password</label><input type="text" class="form-control" placeholder="enter password" value=""></div>
+                                    <div class="col-md-12"><label class="labels">Jelszó</label><input type="text" class="form-control" name="new-psw" placeholder="Jelszó megváltoztatása"></div>
                                 </div>
                             </div>
                         </div>
-                        <div class="text-center mb-5"><button class="btn settings-btn profile-button" type="button">Save Profile</button></div>
+                        <div class="text-center mb-5"><button class="btn settings-btn profile-button" name="save-btn" type="submit">Mentés</button></div>
+                    </form>
                     </div>
                 </div>
             </div>
