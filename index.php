@@ -94,7 +94,7 @@
                     <div class="row gx-5">
                         <div class="col-lg-4 mb-5">
                             <div class="card h-100 shadow border-0">
-                                <img class="card-img-top" src="https://dummyimage.com/600x350/ced4da/6c757d" alt="..." />
+                                <img class="card-img-top" src="assets/img/inyenc.png" alt="Ínyenc Zenés Bisztro" />
                                 <div class="card-body p-4">
                                     <a class="text-decoration-none link-dark stretched-link" href="#!"><h5 class="card-title mb-3">Ínyenc Zenés Bisztro</h5></a>
                                     <p class="card-text mb-0">
@@ -104,7 +104,7 @@
                         </div>
                         <div class="col-lg-4 mb-5">
                             <div class="card h-100 shadow border-0">
-                                <img class="card-img-top" src="https://dummyimage.com/600x350/ced4da/6c757d" alt="..." />
+                                <img class="card-img-top" src="assets/img/szimplakert.png" alt="Szimpla Kert" />
                                 <div class="card-body p-4">
                                     <a class="text-decoration-none link-dark stretched-link" href="#!"><h5 class="card-title mb-3">Szimpla Kert</h5></a>
                                     <p class="card-text mb-0">Budapest leghíresebb bárja valójában közelebb volt egy lerobbant épülethez. A 2000-es évek elején néhány fiatal magyar egy elhagyatott épületben nyitott bárt a Zsidó Negyedben - és ez indította el a „romkocsma” trendet. Ma a Szimpla Kert egy lakóházat foglal el, amelyet egészen a tégláig lecsupaszítottak. A helyet helyi művészetekkel, graffiti-vel, lámpafüzérekkel és vegyes vintage bútorokkal díszítették fel. A italokat akár egy régi Trabantban is fogyaszthatod. Az alsó és felső szinten is több bár található, de ha hétvégén érkezel, számíts a tömegre.</p>
@@ -113,7 +113,7 @@
                         </div>
                         <div class="col-lg-4 mb-5">
                             <div class="card h-100 shadow border-0">
-                                <img class="card-img-top" src="https://dummyimage.com/600x350/ced4da/6c757d" alt="..." />
+                                <img class="card-img-top" src="assets/img/4-6-sorozo.png" alt=">4-es 6-os Söröző" />
                                 <div class="card-body p-4">
                                     <a class="text-decoration-none link-dark stretched-link" href="#!"><h5 class="card-title mb-3">4-es 6-os Söröző</h5></a>
                                     <p class="card-text mb-0">A Budapesti 4-es 6-os söröző egy igazi kultikus helyszín a városban. A neve a közelben közlekedő 4-es és 6-os villamosvonalakra utal, ami megkönnyíti a megközelítést. Az egyedi atmoszférával és barátságos kiszolgálással rendelkező söröző ideális választás a sörkedvelők számára. A helyszín széles választékot kínál a legkülönfélébb helyi és nemzetközi sörök közül, lehetőséget adva a kóstolásra és felfedezésre egyaránt. A hangulatos enteriőr és a kényelmes ülések tökéletes hátteret biztosítanak egy hosszabb beszélgetéshez vagy egy egyszerűbb találkozóhoz barátokkal. </p>
