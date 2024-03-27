@@ -50,7 +50,9 @@
             $route_lekerd = "SELECT * FROM routes";
             $route_talalt = $conn->query($route_lekerd);
             while ($route = $route_talalt->fetch_assoc()){
-            
+                if($route['creator_id'] != $_SESSION['userid']){
+
+                
           ?>
           <a href="selectroute.php?id=<?=$route['id']?>">
           <div class="col-6 d-block w-100">
@@ -62,14 +64,18 @@
                       <div class="lead fw-normal text-white-50 mb-4">Leírás: <?= $route['text']; ?></div>
                     </div>
                     <div class="col-md-6 d-flex justify-content-md-end align-items-md-end">
-                        <div class="lead fw-normal text-white-50 mb-4">Likes: <?=$route['likes']?></div>
+                        <?php
+                            $like_lekerd = "SELECT * FROM likes WHERE route_id = $route[id] AND user_id = $_SESSION[userid]";
+                            $like_talat = $conn->query($like_lekerd);
+                        ?>
+                        <div class="lead fw-normal text-white-50 mb-4">Likes: <?=mysqli_num_rows($like_talat); ?></div>
                     </div>
                   </div>
               </div>
           </div>
           </a>
           <!-- while end -->
-          <?php } ?>
+          <?php }} ?>
           
               
           

@@ -50,7 +50,7 @@
             $route_lekerd = "SELECT * FROM routes";
             $route_talalt = $conn->query($route_lekerd);
             while ($route = $route_talalt->fetch_assoc()){
-                if($route['creator_id'] != $_SESSION['userid']){
+                if($route['creator_id'] == $_SESSION['userid']){
 
                 
           ?>

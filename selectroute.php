@@ -85,7 +85,7 @@
                                 ?>
                                 <p class="lead fw-normal text-white-50 mb-4">Likes: <?= mysqli_num_rows($like_talat); ?></p>
                                 <?php
-                                    if($route['creator_id'] == $_SESSION['userid']){
+                                    if($route['creator_id'] != $_SESSION['userid']){
                                         if(mysqli_num_rows($like_talat) == 0){
                                             $like = $like_talat->fetch_assoc();
                                     
@@ -132,11 +132,11 @@
             
         ?>
         <div>
-            <h5 class="text-white"><?=$user['username']?></h5>
-            <p class="text-white"><?= $comment['text']?></p>
+            <h5 class="text-white" <?php if($route['creator_id'] == $comment['user_id']){echo 'style="color:red !important"';}?>><?php if(empty($user['username'])){echo "Törölt felhsználó";}else{ echo $user['username'];}?></h5>
+            <p class="text-white" <?php if($route['creator_id'] == $comment['user_id']){echo 'style="color:red !important"';}?>><?= $comment['text']?></p>
             
             <?php
-                if($comment['user_id'] == $_SESSION['userid']){
+                if($comment['user_id'] == $_SESSION['userid'] || $route['creator_id'] == $_SESSION['userid']){
                     echo '<form action="selectroute.php?id='.$id.'&commentid='.$comment['id'].'" method="post"><button class="btn btn-primary mb-2" name="delete-comment-btn">Komment Törlés</button></form>';
                 }
             ?>

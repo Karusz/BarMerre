@@ -55,7 +55,7 @@
                         <div class="col-lg-8 col-xl-7 col-xxl-6">
                             <div class="my-5 text-center text-xl-start">
                                 <h1 class="display-5 fw-bolder text-white mb-2">Bemutató</h1>
-                                <p class="lead fw-normal text-white-50 mb-4">Rövid leírás, hogy hogyan kell alkalmazni a weboldalt.</p>
+                                <p class="lead fw-normal text-white-50 mb-4">Rövid leírás, hogy hogyan kell alkalmazni a weboldalt. <strong>Majd csak akkor lesz az oldal feltöltve, ha mindennel végeztünk </strong></p>
                             </div>
                         </div>
                         <div class="col-xl-5 col-xxl-6 d-none d-xl-block text-center"><img class="img-fluid rounded-3 my-5" src="assets/img/logo/testlogo.png" alt="..." /></div>
@@ -64,7 +64,7 @@
             </div>
                 <div class="container px-5 my-5">
                     <div class="row gx-5">
-                        <div class="col-lg-4 mb-5 mb-lg-0"><h2 class="fw-bolder mb-0">Pár funkció, ami megtalálható</h2></div>
+                        <div class="col-lg-4 mb-5 mb-lg-0"><h2 class="fw-bolder mb-0">Majd csak akkor lesz az oldal feltöltve, ha mindennel végeztünk</h2></div>
                         <div class="col-lg-8">
                             <div class="row gx-5 row-cols-1 row-cols-md-2">
                                 <div class="col mb-5 h-100">
