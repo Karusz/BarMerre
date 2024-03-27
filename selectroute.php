@@ -1,6 +1,10 @@
 <?php
     require "config.php";
     session_start();
+    $lekerd = "SELECT * FROM users WHERE id=$_SESSION[userid]";
+    $talalt = $conn->query($lekerd);
+    $user = $talalt->fetch_assoc();
+
     $id=$_GET['id'];
     $lekerd = "SELECT * FROM routes WHERE id = $id";
     $talalt = $conn->query($lekerd);
@@ -14,6 +18,24 @@
         $text = $_POST['text'];
         $conn->query("INSERT INTO comments VALUES(id, $id, $_SESSION[userid], '$text')");
     }
+
+    if(isset($_POST['delete-comment-btn'])){
+        $comment_id = $_GET['commentid'];
+        $conn->query("DELETE FROM comments WHERE id=$comment_id");
+
+    }
+
+    if(isset($_POST['like-btn'])){
+        
+        $route_id = $_GET['routeid'];
+        $conn->query("INSERT INTO likes VALUES(id, $route_id, $_SESSION[userid])");
+    }
+
+    if(isset($_POST['unlike-btn'])){
+        $route_id = $_GET['routeid'];
+        $conn->query("DELETE FROM likes WHERE user_id = $_SESSION[userid] AND route_id = $route_id");
+    }
+
 ?>
 <!DOCTYPE html>
 <html lang="hu">
@@ -56,7 +78,28 @@
                                 <h1 class="display-5 fw-bolder text-white mb-2"><?= $route['name'] ?></h1>
                                 <p class="lead fw-normal text-white-50 mb-4"><?= $route['text'] ?></p>
                                 <p class="lead fw-normal text-white-50 mb-4">Készítő: <?= $creator['username'] ?></p>
-                                <p class="lead fw-normal text-white-50 mb-4">Likes: <?= $route['likes'] ?></p>
+                                <?php
+                                    $like_lekerd = "SELECT * FROM likes WHERE route_id = $route[id] AND user_id = $_SESSION[userid]";
+                                    $like_talat = $conn->query($like_lekerd);
+                                    
+                                ?>
+                                <p class="lead fw-normal text-white-50 mb-4">Likes: <?= mysqli_num_rows($like_talat); ?></p>
+                                <?php
+                                    
+                                    if(mysqli_num_rows($like_talat) == 0){
+                                        $like = $like_talat->fetch_assoc();
+                                    
+                                ?>
+                                    <form action="selectroute.php?id=<?=$id?>&routeid=<?=$route['id']?>" method="post">
+                                        <button class="btn btn-primary" name="like-btn">Like</button>
+                                    </form>
+                                <?php
+                                    }else{
+                                ?>
+                                    <form action="selectroute.php?id=<?=$id?>&routeid=<?=$route['id']?>" method="post">
+                                        <button class="btn btn-primary" name="unlike-btn">Unlike</button>
+                                    </form>
+                                <?php } ?>
                             </div>
                         </div>
                         <div class="col-xl-5 col-xxl-6 d-none d-xl-block text-center"><img class="img-fluid rounded-3 my-5" src="assets/img/logo/testlogo.png" alt="..." /></div>
@@ -89,6 +132,13 @@
         <div>
             <h5 class="text-white"><?php if($user['id'] == $comment['user_id']){ echo $user['username'];}?></h5>
             <p class="text-white"><?= $comment['text']?></p>
+            
+            <?php
+                if($comment['user_id'] == $_SESSION['userid']){
+                    echo '<form action="selectroute.php?id='.$id.'&commentid='.$comment['id'].'" method="post"><button class="btn btn-primary mb-2" name="delete-comment-btn">Komment Törlés</button></form>';
+                }
+            ?>
+            
         </div>
         <?php } ?>
         
@@ -105,13 +155,12 @@
         <div class="bubidiv"><span></span></div>
     </div>
     
-    
-    <script src="assets/js/main.js"></script>
+    <script src="assets/bootstrap/js/bootstrap.bundle.js"></script>
     <script type="module" src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.esm.js"></script>
     <script nomodule src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.js"></script>
     <script>
-        function Login() {
-            window.location="login.php";
+        function Logout() {
+            window.location="logout.php";
         }
     </script>
 </body>
