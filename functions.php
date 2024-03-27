@@ -10,7 +10,7 @@
         $talalt = $conn->query($lekerd);
         if(mysqli_num_rows($talalt) == 0){
             $conn->query("INSERT INTO users VALUES(id, '$uname', '$email', '$hash_psw', 0)");
-            header("Location: account.php");
+            header("Location: profilesettings.php");
         }else{
             echo "<script>alert('Már regisztráltál ezzel az email címmel!')</script>";
         }

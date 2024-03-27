@@ -5,6 +5,10 @@
     $lekerd = "SELECT * FROM users WHERE id=$_SESSION[userid]";
     $talalt = $conn->query($lekerd);
     $user = $talalt->fetch_assoc();
+
+    /*if(isset($_POST['like-btn'])){
+      
+    }*/
 ?>
 
 <!DOCTYPE html>
@@ -43,49 +47,35 @@
       <div class="row">
           <!-- PHP -->
           <?php
-          
-          
+            $route_lekerd = "SELECT * FROM routes";
+            $route_talalt = $conn->query($route_lekerd);
+            while ($route = $route_talalt->fetch_assoc()){
+            
           ?>
           <div class="col-6 d-block w-100">
               <div class="container bg-dark text-white p-4 rounded">
                   <div class="row gx-5">
                     <div class="col-lg-8 col-xl-7 col-xxl-6 my-5 text-center text-xl-start">
-                      <div class="name display-5 fw-bolder text-white mb-2 ">Út neve meg ilyenek</div>
-                      <div class="description lead fw-normal text-white-50 mb-4">Út leirás</div>
+                      <div class="name display-5 fw-bolder text-white mb-2 "><?= $route['name']; ?></div>
+                      <div class="lead fw-normal text-white-50 mb-4">Készítő: <?php if($user['id'] == $route['creator_id']){ echo $user['username'];} ?></div>
+                      <div class="lead fw-normal text-white-50 mb-4">Leírás: <?= $route['text']; ?></div>
                     </div>
+                    <!--
                     <div class="col-md-6 d-flex justify-content-md-end align-items-md-end">
-                      <button class="btn btn-primary">Like</button>
+                      <form action="allroutes.php" method="post">
+                        <button class="btn btn-primary" name="like-btn">Like</button>
+                      </form>
                     </div>
+                    -->
                   </div>
               </div>
           </div>
           <!-- while end -->
-          <div class="col-6 d-block pt-3 w-100">
-              <div class="container bg-dark text-white p-4 rounded">
-                  <div class="row gx-5">
-                    <div class="col-lg-8 col-xl-7 col-xxl-6 my-5 text-center text-xl-start">
-                      <div class="name display-5 fw-bolder text-white mb-2 ">Út neve meg ilyenek</div>
-                      <div class="description lead fw-normal text-white-50 mb-4">Út leirás</div>
-                    </div>
-                    <div class="col-md-6 d-flex justify-content-md-end align-items-md-end">
-                      <button class="btn btn-primary">Like</button>
-                    </div>
-                  </div>
-              </div>
-          </div>
-          <div class="col-6 d-block pt-3 w-100">
-              <div class="container bg-dark text-white p-4 rounded">
-                  <div class="row gx-5">
-                    <div class="col-lg-8 col-xl-7 col-xxl-6 my-5 text-center text-xl-start">
-                      <div class="name display-5 fw-bolder text-white mb-2 ">Út neve meg ilyenek</div>
-                      <div class="description lead fw-normal text-white-50 mb-4">Út leirás</div>
-                    </div>
-                    <div class="col-md-6 d-flex justify-content-md-end align-items-md-end">
-                      <button class="btn btn-primary">Like</button>
-                    </div>
-                  </div>
-              </div>
-          </div>
+          <?php } ?>
+          
+              
+          
+          
       </div>
       <!-- Buborekok -->
       <div class="bubidiv"><span></span></div>

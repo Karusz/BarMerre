@@ -2,27 +2,33 @@
     require "config.php";
     session_start();
 
-    $lekerd = "SELECT * FROM users WHERE id=$_GET[id]";
+    $id = $_GET["id"];
+    $lekerd = "SELECT * FROM users WHERE id= $id";
     $talalt = $conn->query($lekerd);
     $user = $talalt->fetch_assoc();
 
     if(isset($_POST['save-btn'])){
         if(!empty($_POST["new-username"])){
             $new_name = $_POST['new-username'];
-            $conn->query("UPDATE users SET username = '$new_name' WHERE id=$_GET[id]");
+            $conn->query("UPDATE users SET username = '$new_name' WHERE id=$id");
         }
 
         if(!empty($_POST['new-email'])){
             $new_email = $_POST['new-email'];
-            $conn->query("UPDATE users SET email='$new_email' WHERE id=$_GET[id]");
+            $conn->query("UPDATE users SET email='$new_email' WHERE id=$id");
         }
 
         if(!empty($_POST['new-psw'])){
             $new_psw = password_hash($_POST['new-psw'], PASSWORD_DEFAULT);
-            $conn->query("UPDATE users SET password='$new_psw' WHERE id=$_GET[id]");
+            $conn->query("UPDATE users SET password='$new_psw' WHERE id=$id");
         }
 
         header("Refresh:0");
+    }
+
+    if(isset($_POST['delete-btn'])){
+        $conn->query("DELETE FROM users WHERE id = $id");
+        header("Location: index.php");
     }
 
 
@@ -82,7 +88,8 @@
                                 </div>
                             </div>
                         </div>
-                        <div class="text-center mb-5"><button class="btn settings-btn profile-button" name="save-btn" type="submit">Mentés</button></div>
+                        <div class="text-center mb-3"><button class="btn settings-btn profile-button" name="save-btn" type="submit">Mentés</button></div>
+                        <div class="text-center mb-5"><button class="btn delete-btn profile-button" name="delete-btn" type="submit">Fiók törlése</button></div>
                     </form>
                     </div>
                 </div>

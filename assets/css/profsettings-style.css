@@ -22,3 +22,20 @@
     background: #16293885;
     color:#fff;
 }
+
+.delete-btn {
+    height: 45px;
+    background: rgb(141, 1, 1);
+    border: none;
+    outline: none;
+    border-radius: 6px;
+    cursor: pointer;
+    font-size: 1em;
+    color:#fff;
+    font-weight: 500;
+}
+
+.delete-btn:hover{
+    background: rgb(95, 1, 1);
+    color:#fff;
+}
