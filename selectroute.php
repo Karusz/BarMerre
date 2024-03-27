@@ -85,9 +85,9 @@
                                 ?>
                                 <p class="lead fw-normal text-white-50 mb-4">Likes: <?= mysqli_num_rows($like_talat); ?></p>
                                 <?php
-                                    
-                                    if(mysqli_num_rows($like_talat) == 0){
-                                        $like = $like_talat->fetch_assoc();
+                                    if($route['creator_id'] == $_SESSION['userid']){
+                                        if(mysqli_num_rows($like_talat) == 0){
+                                            $like = $like_talat->fetch_assoc();
                                     
                                 ?>
                                     <form action="selectroute.php?id=<?=$id?>&routeid=<?=$route['id']?>" method="post">
@@ -99,7 +99,7 @@
                                     <form action="selectroute.php?id=<?=$id?>&routeid=<?=$route['id']?>" method="post">
                                         <button class="btn btn-primary" name="unlike-btn">Unlike</button>
                                     </form>
-                                <?php } ?>
+                                <?php }} ?>
                             </div>
                         </div>
                         <div class="col-xl-5 col-xxl-6 d-none d-xl-block text-center"><img class="img-fluid rounded-3 my-5" src="assets/img/logo/testlogo.png" alt="..." /></div>
@@ -126,11 +126,13 @@
             $com_lekerd = "SELECT * FROM comments WHERE route_id = $id ORDER BY id DESC";
             $com_talalt = $conn->query($com_lekerd);
             while($comment = $com_talalt->fetch_assoc()){
-
+                $user_lekerd = "SELECT * FROM users WHERE id = $comment[user_id]";
+                $user_talat = $conn->query($user_lekerd);
+                $user = $user_talat->fetch_assoc();
             
         ?>
         <div>
-            <h5 class="text-white"><?php if($user['id'] == $comment['user_id']){ echo $user['username'];}?></h5>
+            <h5 class="text-white"><?=$user['username']?></h5>
             <p class="text-white"><?= $comment['text']?></p>
             
             <?php
