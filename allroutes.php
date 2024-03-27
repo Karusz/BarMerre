@@ -20,7 +20,7 @@
      <!-- CSS -->
      <link rel="stylesheet" href="assets/bootstrap/css/bootstrap.min.css">
      <link rel="stylesheet" href="assets/css/all-style.css">
-     <link rel="stylesheet" href="assets/css/card.css">
+     <link rel="stylesheet" href="assets/css/allroutes-style.css">
 
     <title>BarMerre</title>
 </head>
@@ -52,6 +52,7 @@
             while ($route = $route_talalt->fetch_assoc()){
             
           ?>
+          <a href="selectroute.php?id=<?=$route['id']?>">
           <div class="col-6 d-block w-100">
               <div class="container bg-dark text-white p-4 rounded">
                   <div class="row gx-5">
@@ -60,16 +61,13 @@
                       <div class="lead fw-normal text-white-50 mb-4">Készítő: <?php if($user['id'] == $route['creator_id']){ echo $user['username'];} ?></div>
                       <div class="lead fw-normal text-white-50 mb-4">Leírás: <?= $route['text']; ?></div>
                     </div>
-                    <!--
                     <div class="col-md-6 d-flex justify-content-md-end align-items-md-end">
-                      <form action="allroutes.php" method="post">
-                        <button class="btn btn-primary" name="like-btn">Like</button>
-                      </form>
+                        <div class="lead fw-normal text-white-50 mb-4">Likes: <?=$route['likes']?></div>
                     </div>
-                    -->
                   </div>
               </div>
           </div>
+          </a>
           <!-- while end -->
           <?php } ?>
           
