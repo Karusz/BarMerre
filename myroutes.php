@@ -6,9 +6,6 @@
     $talalt = $conn->query($lekerd);
     $user = $talalt->fetch_assoc();
 
-    /*if(isset($_POST['like-btn'])){
-      
-    }*/
 ?>
 
 <!DOCTYPE html>
