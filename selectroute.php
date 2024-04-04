@@ -36,6 +36,12 @@
         $conn->query("DELETE FROM likes WHERE user_id = $_SESSION[userid] AND route_id = $route_id");
     }
 
+    if(isset($_POST['delete-btn'])){
+        $route_id = $_GET['routeid'];
+        $conn->query("DELETE FROM routes WHERE creator_id = $_SESSION[userid] AND id = $route_id");
+        header("Location: myroutes.php");
+    }
+
 ?>
 <!DOCTYPE html>
 <html lang="hu">
@@ -99,7 +105,11 @@
                                     <form action="selectroute.php?id=<?=$id?>&routeid=<?=$route['id']?>" method="post">
                                         <button class="btn btn-primary" name="unlike-btn">Unlike</button>
                                     </form>
-                                <?php }} ?>
+                                <?php }}else{ ?>
+                                    <form action="selectroute.php?id=<?=$id?>&routeid=<?=$route['id']?>" method="post">
+                                        <button class="btn btn-danger" name="delete-btn">Törlés</button>
+                                    </form>
+                                <?php } ?>
                             </div>
                         </div>
                         <div class="col-xl-5 col-xxl-6 d-none d-xl-block text-center"><img class="img-fluid rounded-3 my-5" src="assets/img/logo/testlogo.png" alt="..." /></div>
