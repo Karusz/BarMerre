@@ -11,7 +11,11 @@
         if(mysqli_num_rows($talalt) == 0){
             $conn->query("INSERT INTO users VALUES(id, '$uname', '$email', '$hash_psw', 0)");
             
-            
+            $lekerd = "SELECT * FROM users WHERE email='$email'";
+            $talalt = $conn->query($lekerd);
+            $user = $talalt->fetch_assoc();
+            $_SESSION['userid'] = $user['id'];
+            header("Location: profilesettings.php?id=$user[id]");
 
         }else{
             echo "<script>alert('Már regisztráltál ezzel az email címmel!')</script>";
