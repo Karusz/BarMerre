@@ -5,8 +5,9 @@
     $talalt = $conn->query($lekerd);
     $user = $talalt->fetch_assoc();
 
-    /*$from = "Budapest, Magyarország";
-	$to = "Miskolc, Magyarország";*/
+    $from = "";
+	$to = "";
+    $to2 = '';
 
 	if(isset($_POST['caclr'])){
 		$from = $_POST['from'];
@@ -16,7 +17,7 @@
 <!DOCTYPE html>
 <html lang="hu">
     <style>
-        /*form{
+        form{
 			margin: 20px;
 		}
         #map{
@@ -33,7 +34,7 @@
 			background: #dedede;
 			border-radius: 10px;
 			box-shadow: 0px 0px 10px #222;
-		}*/
+		}
     </style>
 <head>
     <meta charset="UTF-8">
@@ -65,14 +66,14 @@
     </header>
     <div class="buborek">
 
-        <!--<form method="post" action="createroute.php">
+        <form method="post" action="createroute.php">
 			<input type="text" name="from" id="from" placeholder="From" value="<?php if(!empty($from)){echo $from;} ?>">
 			<input type="text" name="to" id="to" placeholder="To" value="<?php if(!empty($to)){echo $to;} ?>">
 			<button id="calc" name="caclr">Tervezés</button>
 		</form>
 		<div id="map"></div>
-		<div id="output"></div>-->
-        <img src="assets/img/logo/wip.gif" class="workingimg" alt="BARMERRE">
+		<div id="output"></div>
+        
     
         <!-- Buborekok -->
         <div class="bubidiv"><span></span></div>
@@ -91,7 +92,7 @@
     <script src="assets/js/main.js"></script>
     <script type="module" src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.esm.js"></script>
     <script nomodule src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.js"></script>
-    <!--<script async defer src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBpybVWsR30eThdM_LVqdGelbyDSlGlBf8&libraries=places&callback=initMap"></script>
+    <script async defer src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBpybVWsR30eThdM_LVqdGelbyDSlGlBf8&libraries=places&callback=initMap"></script>
     <script>
         function initMap(){
 	
@@ -155,7 +156,7 @@
     var autocomplete2 = new google.maps.places.Autocomplete(input2, options);
 }
 
-    </script>-->
+    </script>
     <script>
         function Logout() {
             window.location="logout.php";
