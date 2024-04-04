@@ -72,6 +72,7 @@
             <li><a class="dropdown-item" href=""><?= $user['username'] ?></a></li>
             <li><a class="dropdown-item" href="myroutes.php">Saját utak</a></li>
             <li><a class="dropdown-item" href="profilesettings.php?id=<?=$_SESSION['userid']?>">Beállítások</a></li>
+                <li><a class="dropdown-item" href="mailto:barmerre@gmail.com">Kapcsolat</a></li>
             <li><button class="dropdown-item" onclick="Logout()">Kijelentkezés</button></li>
         </ul>
     </nav>
