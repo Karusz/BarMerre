@@ -1,6 +1,7 @@
 const wrapper = document.querySelector('.wrapper');
 const loginLink = document.querySelector('.login-link');
 const registerLink = document.querySelector('.register-link');
+const forgotLink = document.querySelector('.forgot-link');
 
 registerLink.addEventListener('click', ()=> {
     wrapper.classList.add('active');

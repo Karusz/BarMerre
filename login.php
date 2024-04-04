@@ -66,7 +66,7 @@
                     </div>
                     <div class="remember-forgot">
                         <label><input type="checkbox" name="logrem">Emlékezz rám</label>
-                        <a href="#">Elfelejtett jelszó?</a>
+                        <a href="reset.php">Elfelejtett jelszó?</a>
                     </div>
                     <button type="submit" name="login-btn" class="btn">Bejelentkezés</button>
                     <div class="login-register">

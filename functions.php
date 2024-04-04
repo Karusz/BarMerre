@@ -1,7 +1,25 @@
 <?php
     session_start();
+    use PHPMailer\PHPMailer\PHPMailer;
+    use PHPMailer\PHPMailer\Exception;
+
+    require 'phpmailer/src/Exception.php';
+    require 'phpmailer/src/PHPMailer.php';
+    require 'phpmailer/src/SMTP.php';
 
     //$conn = new mysqli("localhost", "root", "", "barmerre");
+
+    function CodeGenerate($length){
+        $chars = '1234567890';
+        $charsLength = strlen($chars);
+        $code = "";
+        for($i=0;$i<$length;$i++){
+            $code .= $chars[random_int(0, $charsLength-1)];
+        }
+        return $code;
+    }
+
+
     function Reg($uname,$email,$password){
         $conn = new mysqli("localhost", "root", "", "barmerre");
         $hash_psw = password_hash($password, PASSWORD_DEFAULT);
@@ -57,4 +75,44 @@
         setcookie('email', $email, $hour);
         setcookie('password', $password, $hour);
     }
+
+    function emailsend($useremail, $linkcode){
+        $mail = new PHPMailer(true);
+
+        $mail->isSMTP();
+        $mail->Host = 'smtp.gmail.com';
+        $mail->SMTPAuth = true;
+        $mail->Username ='barmerre@gmail.com';
+        $mail->Password = 'gfnu orzj hflr jlkg';
+        $mail->SMTPSecure = 'ssl';
+        $mail->Port = 465;
+        $mail->SMTPOptions = array(
+            'ssl' => array(
+                'verify_peer' => false,
+                'verify_peer_name' => false,
+                'allow_self_signed' => true
+            )
+        );
+        $mail->setFrom('barmerre@gmail.com');
+
+        $mail->addAddress($useremail);
+
+        $mail->isHTML(true);
+
+        $mail->text = "Új jelszó kérése";
+        $mail->Body = "<h1>Az alábbi gombra kattintva tudsz új jleszót beállítani.</h1>
+            <a href='localhost/barmerre/reset.php?code=$linkcode&email=$useremail'>Új jelszó </a>";
+
+        $mail->send();
+
+        echo
+        "
+        <script>
+            window.open('login.php');
+        </script>
+        ";
+        
+    }
+    
+
 ?>
