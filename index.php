@@ -24,6 +24,7 @@
         <h2 class="logo">BarMerre</h2>
         <nav class="navigation">
             <a href="index.php" class="nav-a">Kezdőlap</a>
+            <a href="allbars.php" class="nav-a">Elérhető kocsmák</a>
             <button class="btnLogin" onclick="Login()">Bejelentkezés</button>
         </nav>
     </header>
