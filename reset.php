@@ -3,28 +3,23 @@
     require "functions.php";
     if(isset($_POST['forgot-btn'])){
         $email = $_POST['email'];
-        $code = CodeGenerate(5);
         
-        emailsend($email, $code);
-    }
 
-    if(isset($_POST['psw-save-btn'])){
-        $code = $_GET['code'];
-        $email = $_GET['email'];
-        $psw = $_POST['psw'];
-        $repsw = $_POST['repsw'];
-
-        if($psw == $repsw){
-            $hash_psw = password_hash($psw, PASSWORD_DEFAULT);
-            $conn->query("UPDATE users SET password = '$hash_psw' WHERE email = '$email'");
-            header("Location: login.php");
+        $lekerd = "SELECT * FROM users WHERE email = '$email'";
+        $talalt = $conn->query($lekerd);
+        if(mysqli_num_rows($talalt) == 0){
+            echo '<script>alert("Még nem regisztráltál!")</script>';
         }else{
-            echo "<script>alert('Nem egyezik a két jelszó!')</script>";
+            $code = CodeGenerate(5);
+            $text = "Kód a bejeneltkezéshez";
+            $body = "Ezzel a kóddal tudsz egyszer bejelentkezni. Kérjük, hogy bejelentkezés után EGYBŐL változtasd meg a jelszavadat!<br><br><h2>Kód: $code</h2>";
+            
+            emailsend($email,$text,$body);
+            $conn->query("INSERT INTO forgotlogins VALUES(id, '$email', $code, 1)");
         }
-
-
-        
     }
+
+    
 ?>
 
 
@@ -86,7 +81,6 @@
                             <input type="password" name="repsw" required>
                             <label>Jelszó újra</label>
                         </div>
-                        <button type="submit" name="psw-save-btn" class="btn">Jelszó mentése</button>
                     </form>
                     </div>
 

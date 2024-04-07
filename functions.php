@@ -46,26 +46,34 @@
         $lekerd = "SELECT * FROM users WHERE email = '$email'";
         $talalt = $conn->query($lekerd);
 
+        $code_lekerd = "SELECT * FROM forgotlogins WHERE user_email = '$email' AND is_active = 1";
+        $code_talalt = $conn->query($code_lekerd);
+
         if(mysqli_num_rows($talalt) == 1){
             $user = $talalt->fetch_assoc();
             if(password_verify($password, $user['password'])){
                 
                 $_SESSION['userid'] = $user['id'];
+                header("Location: profilesettings.php?id=".$user['id']);
+                    
+                
+            }else if(mysqli_num_rows($code_talalt) == 1){
+                $code_user = $code_talalt->fetch_assoc();
+                if($password == $code_user['code']){
 
-                if(isset($_COOKIE[$user['username']]) && $_COOKIE[$user['username']] != ''){ // Nem eloszor lepett be 
+                    $_SESSION['userid'] = $user['id'];
                     header("Location: profilesettings.php?id=".$user['id']);
-                    
-                }else{ //Eloszor lepett be
-                    header("Location: tutorial.php"); //Nyissa meg a tutorialt
-                    setcookie($user['username'],$user['username']); // suti letrehozasa
-                    
+                    $conn->query("UPDATE forgotlogins SET is_active=0 WHERE code= '$code_user[code]'");
 
                 }
+
             }else{
                 echo '<script>alert("Nem jó az email cím vagy a jelszó!")</script>';
+                header("Refresh:0");
             }
         }else{
             echo '<script>alert("Nem jó az email cím vagy a jelszó!")</script>';
+            header("Refresh:0");
         }
     }
 
@@ -76,7 +84,7 @@
         setcookie('password', $password, $hour);
     }
 
-    function emailsend($useremail, $linkcode){
+    function emailsend($useremail, $text, $body){
         $mail = new PHPMailer(true);
 
         $mail->isSMTP();
@@ -99,9 +107,8 @@
 
         $mail->isHTML(true);
 
-        $mail->text = "Új jelszó kérése";
-        $mail->Body = "<h1>Az alábbi gombra kattintva tudsz új jleszót beállítani.</h1>
-            <a href='localhost/barmerre/reset.php?code=$linkcode&email=$useremail'>Új jelszó </a>";
+        $mail->text = $text;
+        $mail->Body = $body;
 
         $mail->send();
 
