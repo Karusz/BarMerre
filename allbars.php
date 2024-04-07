@@ -108,5 +108,10 @@
           <div class="bubidiv"><span></span></div>
           <div class="bubidiv"><span></span></div>
       </div>
+      <script>
+        function Login() {
+            window.location="login.php";
+        }
+    </script>
 </body>
 </html>
