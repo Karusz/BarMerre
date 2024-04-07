@@ -1,26 +1,6 @@
 <?php
-require
+require "config.php";
 
-// Check connection
-if ($conn->connect_error) {
-    die("Connection failed: " . $conn->connect_error);
-}
-
-// Get the POST data
-$data = json_decode(file_get_contents("php://input"), true);
-
-// Prepare and bind SQL statement
-$stmt = $conn->prepare("INSERT INTO routes (origin, destination, waypoints) VALUES (?, ?, ?)");
-$stmt->bind_param("sss", $origin, $destination, $waypoints);
-
-// Set parameters and execute
-$origin = json_encode($data['origin']);
-$destination = json_encode($data['destination']);
-$waypoints = json_encode($data['waypoints']);
-$stmt->execute();
-
-$stmt->close();
-$conn->close();
 ?>
 <!DOCTYPE html>
 <html lang="en">
