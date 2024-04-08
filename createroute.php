@@ -1,139 +1,164 @@
 <?php
-require "config.php";
-
+  require "config.php";
 ?>
 <!DOCTYPE html>
 <html lang="en">
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Route Planner</title>
+<title>TEST2</title>
 <style>
-  #map {
-    height: 400px;
-    width: 100%;
-  }
-</style>
+		*{
+			margin: 0;
+			padding: 0;
+		}
+		#map{
+			width: 80%;
+			height: 80vh;
+			margin: 50px auto;
+			border-radius: 30px;
+			box-shadow: 0px 0px 10px #222;
+		}
+	</style>
 </head>
 <body>
-<h1>Select Destinations</h1>
-<input type="text" id="addressInput" placeholder="Enter an address">
+    <h1>TEST2</h1>
+    <div>
+        <?php 
+            if(!empty($barid)){
+                $found_coord = $conn->query("SELECT * FROM bars WHERE id = $barid");
+                $bar = $found_coord->fetch_assoc();
+            }
+            
+            ?>
+            <select name="bar" id="barsList">
+                    <option value="0">Valassz</option>
+                <?php
+                    $lekerdezes = "SELECT * FROM bars ORDER BY name";
+                    $found_coords = $conn->query($lekerdezes);
+                    while($coords=$found_coords->fetch_assoc()){
+                ?>
+                    <option value="<?=$coords['lat'].';'.$coords['lng']?>"> <?=$coords['name']?></option>
+                <?php } ?>
+            </select>
+            
+    </div>
 <button id="addAddress">Add Address</button>
+<button id="generateRoute">Generate</button>
+<button id="saveRoute">Save</button>
 <div id="map"></div>
-<button id="calculateRoute">Calculate Route</button>
 
 <script>
-  let map;
-  let markers = [];
+    markersLatLng = [];
+    markers = [];
 
-  function initMap() {
-    const mapOptions = {
-      center: { lat: 47.48016676754132,lng: 19.044462899437274 }, // Default to New York
-      zoom: 8,
-    };
-    map = new google.maps.Map(document.getElementById("map"), mapOptions);
-
-    // Add click event listener to map
-    map.addListener("click", (event) => {
-      addMarker(event.latLng);
+    //Eventek START:
+    document.getElementById("addAddress").addEventListener("click", () => {
+        addAddress();
     });
-  }
 
-  function addMarker(location) {
-    const marker = new google.maps.Marker({
-      position: location,
-      map: map,
+    document.getElementById("generateRoute").addEventListener("click", () => {
+        generateRoute();
     });
-    markers.push(marker);
 
-    // Add click event listener to the marker
-    marker.addListener("click", () => {
-      removeMarker(marker);
+    document.getElementById("saveRoute").addEventListener("click", () => {
+        saveRoute(markersLatLng);
     });
-  }
+    //EVENTEK END
 
-  function removeMarker(marker) {
-    marker.setMap(null); // Remove marker from map
-    const index = markers.indexOf(marker);
-    if (index !== -1) {
-      markers.splice(index, 1); // Remove marker from markers array
+    //Functions START:
+    //Sima map
+    function initMap(){
+        
+        map = new google.maps.Map(document.getElementById('map'), {
+        center: {lat: 47.503, lng: 19.085},
+        zoom: 7,
+        mapId: '2b208c0b172fcd00'
+        });
     }
-  }
 
-  function addAddress() {
-    const geocoder = new google.maps.Geocoder();
-    const address = document.getElementById("addressInput").value;
-    geocoder.geocode({ address: address }, (results, status) => {
-      if (status === "OK" && results[0]) {
-        const location = results[0].geometry.location;
-        addMarker(location);
-      } else {
-        window.alert("Geocode was not successful for the following reason: " + status);
-      }
-    });
-  }
+    //addAddress
+    function addAddress(){
+        const latLngtext = document.getElementById("barsList").value;
+        const latLng = latLngtext.split(";");
+        const location = {lat: latLng[0], lng:latLng[1]};
+        addMarker(location.lat, location.lng);
 
-  function calculateRoute() {
-    const waypoints = markers.map((marker) => ({
-      location: marker.getPosition(),
-      stopover: true,
-    }));
-
-    const directionsService = new google.maps.DirectionsService();
-    const directionsRenderer = new google.maps.DirectionsRenderer();
-    directionsRenderer.setMap(map);
-
-    const request = {
-      origin: markers[0].getPosition(),
-      destination: markers[markers.length - 1].getPosition(),
-      waypoints: waypoints.slice(1, -1),
-      optimizeWaypoints: true,
-      travelMode: google.maps.TravelMode.WALKING,
-    };
-
-    directionsService.route(request, (response, status) => {
-      if (status === "OK") {
-        directionsRenderer.setDirections(response);
-      } else {
-        window.alert("Directions request failed due to " + status);
-      }
-    });
-  }
-
-  document.getElementById("calculateRoute").addEventListener("click", () => {
-    calculateRoute();
-  });
-
-  document.getElementById("addAddress").addEventListener("click", () => {
-    addAddress();
-  });
-  function saveRouteToDatabase(routeData) {
-  const xhr = new XMLHttpRequest();
-  xhr.open("POST", "save_route.php", true);
-  xhr.setRequestHeader("Content-Type", "application/json");
-  xhr.onreadystatechange = function () {
-    if (xhr.readyState === XMLHttpRequest.DONE) {
-      if (xhr.status === 200) {
-        console.log("Route saved successfully!");
-      } else {
-        console.error("Error saving route:", xhr.statusText);
-      }
     }
-  };
-  console.log(JSON.stringify(routeData.latLng));
-}
 
-document.getElementById("calculateRoute").addEventListener("click", () => {
-  const routeData = {
-    origin: markers[0].getPosition(),
-    destination: markers[markers.length - 1].getPosition(),
-    waypoints: markers.slice(1, -1).map(marker => marker.getPosition())
-  };
-  calculateRoute(routeData);
-  saveRouteToDatabase(routeData); // Call the function to save the route
-});
+    //generateRoute
+    function generateRoute(){
+        const waypoints = markers.map((marker) => ({
+            location: marker.getPosition(),
+            stopover: true,
+        }));
 
+        const directionsService = new google.maps.DirectionsService();
+        const directionsRenderer = new google.maps.DirectionsRenderer();
+        directionsRenderer.setMap(map);
+        const request = {
+            origin: markers[0].getPosition(),
+            destination: markers[markers.length - 1].getPosition(),
+            waypoints: waypoints.slice(1, -1),
+            optimizeWaypoints: true,
+            travelMode: google.maps.TravelMode.WALKING,
+        };
+
+        directionsService.route(request, (response, status) => {
+        if (status === "OK") {
+            directionsRenderer.setDirections(response);
+        } else {
+            window.alert("Directions request failed due to " + status);
+        }
+        });
+    }
+
+
+    //saveRoute
+    function saveRoute(data){
+        if(markersLatLng.length <= 0){
+            window.alert("Készíts egy útvonalat!");
+        }else{
+
+            // JavaScript 
+            var allrouteLanLng = data.toString(); 
+            var xhr = new XMLHttpRequest(); 
+            xhr.open('POST', 'save_route.php', true); 
+            xhr.setRequestHeader('Content-Type', 'application/x-www-form-urlencoded'); 
+            xhr.onreadystatechange = function() { 
+            if (xhr.readyState === 4 && xhr.status === 200) { 
+                var phpVariable = xhr.responseText; 
+                console.log(phpVariable); // This will log the response from the PHP file 
+            } 
+            }; 
+            xhr.send('allrouteLanLng=' + allrouteLanLng);
+        }   
+    
+    }
+
+    //addMarker
+    function addMarker(lat,lng) {
+        const marker = new google.maps.Marker({
+            position: new google.maps.LatLng(lat,lng),
+            map: map,
+        });
+        markersLatLng.push(lat+";"+lng);
+        markers.push(marker);
+        // Eltavolitja, amelyikre nyomsz
+        marker.addListener("click", () => {
+        deleteMarker(marker);
+        });
+    }
+
+    //deleteMarker
+    function deleteMarker(marker){
+        // !!!!!!!!!!!!!!!!!MINDIG AZ UTOLSOT TAVOLITJA EL !!!!!!!!!!!!!!!!!!!!
+        marker.setMap(null); // Remove marker from map
+        const index = markers.indexOf(marker);
+        markers.splice(index, 1); // Remove marker from markers array
+    }
 </script>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.10.2/jquery.min.js"></script>
 <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBpybVWsR30eThdM_LVqdGelbyDSlGlBf8&callback=initMap" async defer></script>
 </body>
 </html>
