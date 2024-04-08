@@ -1,13 +1,152 @@
 <?php
-    require "functions.php";
-    if(isset($_POST['btn'])){
-        $useremail = $_POST['email'];
-        emailsend($useremail);
-    }
-
-
+  require "config.php";
 ?>
-<form action="test.php" method="post">
-    <input type="text" name="email">
-    <button name="btn">Kuld</button>
-</form>
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Route Planner</title>
+<style>
+		*{
+			margin: 0;
+			padding: 0;
+		}
+		#map{
+			width: 80%;
+			height: 80vh;
+			margin: 50px auto;
+			border-radius: 30px;
+			box-shadow: 0px 0px 10px #222;
+		}
+	</style>
+</head>
+<body>
+    <h1>Select Destinations</h1>
+    <div>
+        <?php 
+            if(!empty($barid)){
+                $found_coord = $conn->query("SELECT * FROM bars WHERE id = $barid");
+                $bar = $found_coord->fetch_assoc();
+            }
+            
+            ?>
+            <select name="bar" id="barsList">
+                    <option value="0">Valassz</option>
+                <?php
+                    $lekerdezes = "SELECT * FROM bars ORDER BY name";
+                    $found_coords = $conn->query($lekerdezes);
+                    while($coords=$found_coords->fetch_assoc()){
+                ?>
+                    <option value="<?=$coords['address']?>"><?=$coords['name']?></option>
+                <?php } ?>
+            </select>
+            
+    </div>
+<button id="addAddress">Add Address</button>
+<button id="calculateRoute">Calculate Route</button>
+<div id="map"></div>
+
+
+<script>
+  let map;
+  let markers = [];
+
+  function initMap() {
+    const mapOptions = {
+      center: { lat: 47.48016676754132,lng: 19.044462899437274 }, // Default to New York
+      zoom: 8,
+    };
+    map = new google.maps.Map(document.getElementById("map"), mapOptions);
+
+    // Add click event listener to map
+    map.addListener("click", (event) => {
+      addMarker(event.latLng);
+    });
+  }
+
+  function addMarker(location) {
+    const marker = new google.maps.Marker({
+      position: location,
+      map: map,
+    });
+    markers.push(marker);
+
+    // Add click event listener to the marker
+    marker.addListener("click", () => {
+      removeMarker(marker);
+    });
+  }
+
+  function removeMarker(marker) {
+    marker.setMap(null); // Remove marker from map
+    const index = markers.indexOf(marker);
+    if (index !== -1) {
+      markers.splice(index, 1); // Remove marker from markers array
+    }
+  }
+
+  function addAddress() {
+    console.log("Megnyomva");
+    const geocoder = new google.maps.Geocoder();
+    const address = document.getElementById("barsList").value;
+    console.log(address);
+    geocoder.geocode({ address: address }, (results, status) => {
+      if (status === "OK" && results[0]) {
+        const location = results[0].geometry.location;
+        addMarker(location);
+      } else {
+        window.alert("Geocode was not successful for the following reason: " + status);
+      }
+    });
+  }
+
+  function calculateRoute() {
+    const waypoints = markers.map((marker) => ({
+      location: marker.getPosition(),
+      stopover: true,
+    }));
+
+    const directionsService = new google.maps.DirectionsService();
+    const directionsRenderer = new google.maps.DirectionsRenderer();
+    directionsRenderer.setMap(map);
+
+    const request = {
+      origin: markers[0].getPosition(),
+      destination: markers[markers.length - 1].getPosition(),
+      waypoints: waypoints.slice(1, -1),
+      optimizeWaypoints: true,
+      travelMode: google.maps.TravelMode.WALKING,
+    };
+
+    directionsService.route(request, (response, status) => {
+      if (status === "OK") {
+        directionsRenderer.setDirections(response);
+      } else {
+        window.alert("Directions request failed due to " + status);
+      }
+    });
+  }
+
+  document.getElementById("calculateRoute").addEventListener("click", () => {
+    calculateRoute();
+  });
+
+  document.getElementById("addAddress").addEventListener("click", () => {
+    addAddress();
+  });
+
+
+document.getElementById("calculateRoute").addEventListener("click", () => {
+  const routeData = {
+    origin: markers[0].getPosition(),
+    destination: markers[markers.length - 1].getPosition(),
+    waypoints: markers.slice(1, -1).map(marker => marker.getPosition())
+  };
+  calculateRoute(routeData);
+});
+
+</script>
+<script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBpybVWsR30eThdM_LVqdGelbyDSlGlBf8&callback=initMap" async defer></script>
+</body>
+</html>

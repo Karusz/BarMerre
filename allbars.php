@@ -7,28 +7,6 @@
 ?>
 <!DOCTYPE html>
 <html lang="hu">
-    <style>
-        .barsnum{
-            text-align: center;
-        }
-        .pagename{
-            margin-top: 100px;
-            text-align: center;
-        }
-        table{
-            margin-top: 25px;
-            border: 1px solid black;
-        }
-        th{
-            margin: 5px;
-            text-align: center;
-        }
-        td{
-            padding: 2px;
-            text-align: center;
-            border: 1px solid black;
-        }
-    </style>
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -36,14 +14,15 @@
      <!-- ICON LINK -->
      <link href='https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css' rel='stylesheet'>
      <!-- CSS -->
-     <link rel="stylesheet" href="bootstrap/css/bootstrap.min.css">
+     <link rel="stylesheet" href="assets/bootstrap/css/bootstrap.min.css">
      <link rel="stylesheet" href="assets/css/all-style.css">
+     <link rel="stylesheet" href="assets/css/allbars-style.css">
      
 
     <title>BarMerre</title>
 </head>
 <body>
-    <div class="wrapper">
+    <div class="buborek">
         <header>
             <h2 class="logo">BarMerre</h2>
             <nav class="navigation">
@@ -66,7 +45,7 @@
                                 <tr>
                                     <th>ID</th>
                                     <th>NÉV</th>
-                                    <th>HELYSZÍN</th>
+                                    <th>cíM</th>
                                     <th>LAT</th>
                                     <th>LNG</th>
                                     <th>STATE</th>
@@ -95,20 +74,21 @@
                     </div>            
                 </div>
             </div>
-</div>
+        </div>
+        
   
-          <!-- Buborekok -->
-          <div class="bubidiv"><span></span></div>
-          <div class="bubidiv"><span></span></div>
-          <div class="bubidiv"><span></span></div>
-          <div class="bubidiv"><span></span></div>
-          <div class="bubidiv"><span></span></div>
-          <div class="bubidiv"><span></span></div>
-          <div class="bubidiv"><span></span></div>
-          <div class="bubidiv"><span></span></div>
-          <div class="bubidiv"><span></span></div>
-      </div>
-      <script>
+        <!-- Buborekok -->
+        <div class="bubidiv"><span></span></div>
+        <div class="bubidiv"><span></span></div>
+        <div class="bubidiv"><span></span></div>
+        <div class="bubidiv"><span></span></div>
+        <div class="bubidiv"><span></span></div>
+        <div class="bubidiv"><span></span></div>
+        <div class="bubidiv"><span></span></div>
+        <div class="bubidiv"><span></span></div>
+        <div class="bubidiv"><span></span></div>
+    </div>
+    <script>
         function Login() {
             window.location="login.php";
         }

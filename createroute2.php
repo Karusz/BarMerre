@@ -57,11 +57,9 @@
 
 
   function addMarker(location) {
-    const posation = {lat: location.lat, lng: location.lng};
+    const posation = {lat: (location.lat).toString(), lng: (location.lng).toString()};
     const marker = new google.maps.Marker({
       position: posation,
-      lat: posation.lat,
-      lng: posation.lng,
       map: map,
     });
     markers.push(marker);

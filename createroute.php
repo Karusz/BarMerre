@@ -120,7 +120,7 @@ require "config.php";
       }
     }
   };
-  xhr.send(JSON.stringify(routeData));
+  console.log(JSON.stringify(routeData.latLng));
 }
 
 document.getElementById("calculateRoute").addEventListener("click", () => {
