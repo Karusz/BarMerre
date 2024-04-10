@@ -48,9 +48,6 @@
                                     <th>cíM</th>
                                     <th>LAT</th>
                                     <th>LNG</th>
-                                    <th>STATE</th>
-                                    <th>CITY</th>
-                                    <th>ZIP</th>
                                 </tr>
                                 <?php 
                                     $lekerd = "SELECT * FROM bars";
@@ -64,9 +61,6 @@
                                     <td><?=$bar['address']?></td>
                                     <td><?=$bar['lat']?></td>
                                     <td><?=$bar['lng']?></td>
-                                    <td><?=$bar['state']?></td>
-                                    <td><?=$bar['city']?></td>
-                                    <td><?=$bar['zip']?></td>
                                 </tr>
                                 <?php } ?>
                             </table>
