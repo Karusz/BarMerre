@@ -1,8 +1,11 @@
 <?php
     // Include the database connection configuration
     require "config.php";
+    session_start();
+    $allrouteLanLng = $_POST['allrouteLanLng'];
+    $name = $_POST['name'];
+    $text = $_POST['text'];
 
-    $allrouteLanLng = $_POST['allrouteLanLng']; 
     $split_allroute = explode(",",$allrouteLanLng);
 
     $routelatlng;
@@ -12,7 +15,6 @@
     foreach ($split_allroute as $key => $value) {
         $latLng = $value;
         $routelatlng = explode(";",$latLng);
-        print_r($routelatlng);
         for ($i=0; $i < count($routelatlng)-1; $i++) { 
             $lat = $routelatlng[$i];
             $lng = $routelatlng[$i+1];
@@ -25,6 +27,7 @@
 
     }
     $barsids = rtrim($barsids, ',');
-    $conn->query("INSERT INTO routes VALUES(id, 1,'test','$barsids','testtext')");    
+
+    $conn->query("INSERT INTO routes VALUES(id, $_SESSION[userid],'$name','$barsids','$text')");
 
 ?>

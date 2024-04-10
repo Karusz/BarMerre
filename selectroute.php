@@ -84,7 +84,23 @@
                             <div class="my-5 text-center text-xl-start">
                                 <h1 class="display-5 fw-bolder text-white mb-2"><?= $route['name'] ?></h1>
                                 <p class="lead fw-normal text-white-50 mb-4"><?= $route['text'] ?></p>
-                                <p class="lead fw-normal text-white-50 mb-4">Készítő: <?= $creator['username'] ?></p>
+                                <p class="lead fw-normal text-white-50 mb-4">Készítő: <?php if(mysqli_num_rows($creator_talalt) == 0){echo "Törölt felhasználó";}else{echo $creator['username'];}  ?></p>
+                                <p class="lead fw-normal text-white-50 mb-4">Kocsmák:
+                                    <?php
+                                        $barids = $route['bars_ids'];
+                                        $ids = explode(",",$barids);
+
+                                        $kocsmanevek = "";
+                                        for ($i=0; $i < count($ids); $i++) { 
+                                            $lekerd = "SELECT * FROM bars WHERE id = $ids[$i]";
+                                            $talalt = $conn->query($lekerd);
+                                            $bar = $talalt->fetch_assoc();
+                                            $kocsmanevek .= $bar['name']. ", ";
+                                        }
+                                        echo $kocsmanevek;
+                                        
+                                    ?>
+                                </p>
                                 <?php
                                     $like_lekerd = "SELECT * FROM likes WHERE route_id = $route[id] AND user_id = $_SESSION[userid]";
                                     $like_talat = $conn->query($like_lekerd);

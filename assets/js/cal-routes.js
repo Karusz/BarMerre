@@ -1,61 +1,112 @@
+markersLatLng = [];
+markers = [];
+
+//Eventek START:
+document.getElementById("addAddress").addEventListener("click", () => {
+    addAddress();
+});
+
+document.getElementById("generateRoute").addEventListener("click", () => {
+    generateRoute();
+});
+
+document.getElementById("saveRoute").addEventListener("click", () => {
+    var name = document.getElementById("name").value;
+    var text = document.getElementById("text").value;
+    saveRoute(markersLatLng,name,text);
+});
+//EVENTEK END
+//Functions START:
+//Sima map
 function initMap(){
-	
-    var location = {lat: 47.50356186982569, lng: 19.085582763138646};
     
-    var mapOptions = {
-        center: location,
-        zoom: 7
+    map = new google.maps.Map(document.getElementById('map'), {
+    center: {lat: 47.503, lng: 19.085},
+    zoom: 7,
+    mapId: '2b208c0b172fcd00'
+    });
+}
+
+//addAddress
+function addAddress(){
+    const latLngtext = document.getElementById("barsList").value;
+    const latLng = latLngtext.split(";");
+    const location = {lat: latLng[0], lng:latLng[1]};
+    addMarker(location.lat, location.lng);
+
+}
+
+//generateRoute
+function generateRoute(){
+    const waypoints = markers.map((marker) => ({
+        location: marker.getPosition(),
+        stopover: true,
+    }));
+
+    const directionsService = new google.maps.DirectionsService();
+    const directionsRenderer = new google.maps.DirectionsRenderer();
+    directionsRenderer.setMap(map);
+    const request = {
+        origin: markers[0].getPosition(),
+        destination: markers[markers.length - 1].getPosition(),
+        waypoints: waypoints.slice(1, -1),
+        optimizeWaypoints: true,
+        travelMode: google.maps.TravelMode.WALKING,
     };
-    
-    var map = new google.maps.Map(document.getElementById("map"), mapOptions);
-    
-    var directionsService = new google.maps.DirectionsService();
-    
-    var directionsDisplay = new google.maps.DirectionsRenderer();
-    
-    directionsDisplay.setMap(map);
-    
-    function calcRoute(){
-        
-        var request = {
-            origin: document.getElementById("from").value,
-            destination: document.getElementById("to").value,
-            travelMode: google.maps.TravelMode.WALKING,
-            unitSystem: google.maps.UnitSystem.METRIC
-        }
-        
-        directionsService.route(request, (result, status) => {
-        
-            if(status == google.maps.DirectionsStatus.OK){
-                
-                const output = document.querySelector("#output");
-                
-                output.innerHTML = "From: " + document.getElementById("from").value + "<br>To: " + document.getElementById("to").value + "<br>Distance: " + result.routes[0].legs[0].distance.text + "<br>Duration: " + result.routes[0].legs[0].duration.text;
-                
-                directionsDisplay.setDirections(result);
-                
-            }
-            else{
-            
-                directionsDisplay.setDirections({ routes : []});
 
-                map.setCenter(location);
-            
-            }
-        
-        });
-        
+    directionsService.route(request, (response, status) => {
+    if (status === "OK") {
+        directionsRenderer.setDirections(response);
+    } else {
+        window.alert("Directions request failed due to " + status);
     }
-    
-    document.getElementById("calc").addEventListener("click", calcRoute());
-    
-    var options = {
-        types: ["address"],
-    }
+    });
+}
 
-    var input1 = document.getElementById("from");
-    var autocomplete1 = new google.maps.places.Autocomplete(input1, options);
 
-    var input2 = document.getElementById("to");
-    var autocomplete2 = new google.maps.places.Autocomplete(input2, options);
+//saveRoute
+function saveRoute(data,name,text){
+    if(markersLatLng.length <= 0){
+        window.alert("Készíts egy útvonalat!");
+    }else{
+
+        // JavaScript 
+        var allrouteLanLng = data.toString(); 
+        var name = name;
+        var text = text;
+        var xhr = new XMLHttpRequest(); 
+        xhr.open('POST', 'save_route.php', true); 
+        xhr.setRequestHeader('Content-Type', 'application/x-www-form-urlencoded'); 
+        xhr.onreadystatechange = function() { 
+        if (xhr.readyState === 4 && xhr.status === 200) { 
+            var phpVariable = xhr.responseText; 
+            console.log(phpVariable); // This will log the response from the PHP file 
+        } 
+        };
+        xhr.send('allrouteLanLng=' + allrouteLanLng + "&name=" + name + "&text=" + text);
+        
+    }   
+
+}
+
+//addMarker
+function addMarker(lat,lng) {
+    const marker = new google.maps.Marker({
+        position: new google.maps.LatLng(lat,lng),
+        map: map,
+    });
+    markersLatLng.push(lat+";"+lng);
+    markers.push(marker);
+    // Eltavolitja, amelyikre nyomsz
+    marker.addListener("click", () => {
+    deleteMarker(marker);
+    });
+}
+
+//deleteMarker
+function deleteMarker(marker){
+    // !!!!!!!!!!!!!!!!!MINDIG AZ UTOLSOT TAVOLITJA EL !!!!!!!!!!!!!!!!!!!!
+    marker.setMap(null); // Remove marker from map
+    const index = markers.indexOf(marker);
+    markers.splice(index, 1); // Remove marker from markers array
 }
