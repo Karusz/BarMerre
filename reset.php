@@ -12,7 +12,7 @@
         }else{
             $code = CodeGenerate(5);
             $text = "Kód a bejeneltkezéshez";
-            $body = "Ezzel a kóddal tudsz egyszer bejelentkezni. Kérjük, hogy bejelentkezés után EGYBŐL változtasd meg a jelszavadat!<br><br><h2>Kód: $code</h2>";
+            $body = "Ezzel a kóddal tudsz egyszer bejelentkezni. Kérjük, hogy bejelentkezés után EGYBŐL változtasd meg a jelszavadat!<br><br><h2>Egyszer használatos jelszó: $code</h2>";
             
             emailsend($email,$text,$body);
             $conn->query("INSERT INTO forgotlogins VALUES(id, '$email', $code, 1)");
