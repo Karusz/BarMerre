@@ -13,20 +13,8 @@
      <!-- CSS -->
      <link rel="stylesheet" href="assets/bootstrap/css/bootstrap.min.css">
      <link rel="stylesheet" href="assets/css/all-style.css">
-<title>TEST2</title>
-<style>
-		*{
-			margin: 0;
-			padding: 0;
-		}
-		#map{
-			width: 80%;
-			height: 80vh;
-			margin: 50px auto;
-			border-radius: 30px;
-			box-shadow: 0px 0px 10px #222;
-		}
-	</style>
+     <link rel="stylesheet" href="assets/css/createroute-style.css">
+<title>CreateRoute</title>
 </head>
 <body>
 <header>
