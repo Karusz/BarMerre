@@ -56,7 +56,7 @@
                 
           ?>
           <a href="selectroute.php?id=<?=$route['id']?>">
-          <div class="col-6 d-block w-100">
+          <div class="col-6 d-block w-100 m-3">
               <div class="container bg-dark text-white p-4 rounded">
                   <div class="row gx-5">
                     <div class="col-lg-8 col-xl-7 col-xxl-6 my-5 text-center text-xl-start">
