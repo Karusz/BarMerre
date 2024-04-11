@@ -78,20 +78,35 @@
         
   </div>
   
-  <div id="map"></div>
-  <div class="container d-flex align-items-center justify-content-center">
-    <button id="addAddress" class="m-1 p-1">Add Address</button>
-    <button id="generateRoute" class="m-1 p-1">Generate</button>
-    <input type="text" placeholder="Név" id="name" class="m-1 p-1" require>
-    <input type="text" placeholder="Leírás" id="text" class="m-1 p-1">
-    <button id="saveRoute" class="m-1 p-1">Save</button>
-    
-    
+  <div id="map" class="container d-flex align-items-center justify-content-center"></div>
+  <div class="container form-container">
+    <div class="row">
+      <div class="col-md-3">
+        <button id="addAddress" class="btn-block m-1 p-1">Add Address</button>
+      </div>
+      <div class="col-md-3">
+        <button id="generateRoute" class="btn-primary btn-block m-1 p-1">Generate</button>
+      </div>
+      <div class="col-md-3">
+        <input type="text" placeholder="Név" id="name" class="form-control m-1 p-1" required>
+      </div>
+      <div class="col-md-3">
+        <input type="text" placeholder="Leírás" id="text" class="form-control m-1 p-1">
+      </div>
+      <div class="col-md-3">
+        <button id="saveRoute" class="btn-block m-1 p-1">Save</button>
+      </div>
+    </div>
   </div>
 <script src="assets/js/main.js"></script>
 <script src="assets/bootstrap/js/bootstrap.bundle.js"></script>
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.10.2/jquery.min.js"></script>
 <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBpybVWsR30eThdM_LVqdGelbyDSlGlBf8&callback=initMap" async defer></script>
 <script src="assets/js/cal-routes.js"></script>
+<script>
+        function Logout() {
+            window.location="logout.php";
+        }
+    </script>
 </body>
 </html>
