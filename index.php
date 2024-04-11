@@ -94,48 +94,35 @@
                     </div>
                     <div class="row gx-5">
                         <div class="col-lg-4 mb-5">
-                            <div class="card h-100 shadow border-0">
+                            <div class="card h-100 shadow border-0 bg-dark text-white-50">
                                 <img class="card-img-top" src="assets/img/inyenc.png" alt="Ínyenc Zenés Bisztro" />
                                 <div class="card-body p-4">
-                                    <a class="text-decoration-none link-dark stretched-link" href="https://www.facebook.com/zenesbisztro.inyenc/?locale=hu_HU" target="_blank"><h5 class="card-title mb-3">Ínyenc Zenés Bisztro</h5></a>
+                                    <a class="text-decoration-none link-light stretched-link" href="https://www.facebook.com/zenesbisztro.inyenc/?locale=hu_HU" target="_blank"><h5 class="card-title mb-3">Ínyenc Zenés Bisztro</h5></a>
                                     <p class="card-text mb-0">
                                     A Szentendrei Ínyenc Zenés Bisztró egy varázslatos hely, ahol az ízletes kulináris élmények és a kellemes zene összetalálkoznak. A hangulatos környezetben élvezheted a frissen készített gourmet ételeket és italokat. A bisztró rendszeresen vendégül lát helyi zenészeket, akik különleges atmoszférát teremtenek az esti programok során. Ez a hely tökéletes választás egy romantikus vacsorához vagy egy baráti összejövetelhez Szentendrén.</p>
                                 </div>
                             </div>
                         </div>
                         <div class="col-lg-4 mb-5">
-                            <div class="card h-100 shadow border-0">
+                            <div class="card h-100 shadow border-0 bg-dark text-white-50">
                                 <img class="card-img-top" src="assets/img/szimplakert.png" alt="Szimpla Kert" />
                                 <div class="card-body p-4">
-                                    <a class="text-decoration-none link-dark stretched-link" href="https://szimpla.hu/info.html" target="_blank"><h5 class="card-title mb-3">Szimpla Kert</h5></a>
+                                    <a class="text-decoration-none link-light stretched-link" href="https://szimpla.hu/info.html" target="_blank"><h5 class="card-title mb-3">Szimpla Kert</h5></a>
                                     <p class="card-text mb-0">Budapest leghíresebb bárja valójában közelebb volt egy lerobbant épülethez. A 2000-es évek elején néhány fiatal magyar egy elhagyatott épületben nyitott bárt a Zsidó Negyedben - és ez indította el a „romkocsma” trendet. Ma a Szimpla Kert egy lakóházat foglal el, amelyet egészen a tégláig lecsupaszítottak. A helyet helyi művészetekkel, graffiti-vel, lámpafüzérekkel és vegyes vintage bútorokkal díszítették fel. A italokat akár egy régi Trabantban is fogyaszthatod. Az alsó és felső szinten is több bár található, de ha hétvégén érkezel, számíts a tömegre.</p>
                                 </div>
                             </div>
                         </div>
                         <div class="col-lg-4 mb-5">
-                            <div class="card h-100 shadow border-0">
+                            <div class="card h-100 shadow border-0 bg-dark text-white-50">
                                 <img class="card-img-top" src="assets/img/4-6-sorozo.png" alt=">4-es 6-os Söröző" />
                                 <div class="card-body p-4">
-                                    <a class="text-decoration-none link-dark stretched-link" href="https://www.legjobbkocsma.hu" target="_blank"><h5 class="card-title mb-3">4-es 6-os Söröző</h5></a>
+                                    <a class="text-decoration-none link-light stretched-link" href="https://www.legjobbkocsma.hu" target="_blank"><h5 class="card-title mb-3">4-es 6-os Söröző</h5></a>
                                     <p class="card-text mb-0">A Budapesti 4-es 6-os söröző egy igazi kultikus helyszín a városban. A neve a közelben közlekedő 4-es és 6-os villamosvonalakra utal, ami megkönnyíti a megközelítést. Az egyedi atmoszférával és barátságos kiszolgálással rendelkező söröző ideális választás a sörkedvelők számára. A helyszín széles választékot kínál a legkülönfélébb helyi és nemzetközi sörök közül, lehetőséget adva a kóstolásra és felfedezésre egyaránt. A hangulatos enteriőr és a kényelmes ülések tökéletes hátteret biztosítanak egy hosszabb beszélgetéshez vagy egy egyszerűbb találkozóhoz barátokkal. </p>
                                 </div>
                             </div>
                         </div>
                     </div>
-                    <!-- Call to action-->
-                    <aside class="bg-primary bg-gradient rounded-3 p-4 p-sm-5 mt-5">
-                        <div class="d-flex align-items-center justify-content-between flex-column flex-xl-row text-center text-xl-start">
-                            <div class="mb-4 mb-xl-0">
-                                <div class="fs-3 fw-bold text-white">Csatlakozz hozzánk!</div>
-                                <div class="text-white-50">Regisztrálj, hogy tudj létrehozi útvonalakat.</div>
-                            </div>
-                            <div class="ms-xl-4">
-                                <div class="input-group mb-2">
-                                    <button class="btn btn-outline-light" id="button-newsletter" type="button" onclick="Login()">Regisztráció</button>
-                                </div>
-                            </div>
-                        </div>
-                    </aside>
+                    
                 </div>
             </section>
         </main>
@@ -143,13 +130,12 @@
         <footer class="bg-dark py-4 mt-auto">
             <div class="container px-5">
                 <div class="row align-items-center justify-content-between flex-column flex-sm-row">
-                    <div class="col-auto"><div class="small m-0 text-white">Copyright &copy; Your Website 2023</div></div>
+                    <div class="col-auto"><div class="small m-0 text-white">Copyright &copy; BarMerre 2024</div></div>
                     <div class="col-auto">
-                        <a class="link-light small" href="#!">Privacy</a>
+                        
+                        <a class="link-light small" href="#!">valami terms</a>
                         <span class="text-white mx-1">&middot;</span>
-                        <a class="link-light small" href="#!">Terms</a>
-                        <span class="text-white mx-1">&middot;</span>
-                        <a class="link-light small" href="#!">Contact</a>
+                        <a class="link-light small" href="contact.php">Kapcsolat</a>
                     </div>
                 </div>
             </div>
