@@ -57,35 +57,36 @@
         </nav>
         
     </header>
-  <div>
-    <?php 
-      if(!empty($barid)){
-          $found_coord = $conn->query("SELECT * FROM bars WHERE id = $barid");
-          $bar = $found_coord->fetch_assoc();
-      }
-
-    ?>
-    <select name="bar" id="barsList">
-      <option value="0">Valassz</option>
-      <?php
-          $lekerdezes = "SELECT * FROM bars ORDER BY name";
-          $found_coords = $conn->query($lekerdezes);
-          while($coords=$found_coords->fetch_assoc()){
-      ?>
-        <option value="<?=$coords['lat'].';'.$coords['lng']?>"> <?=$coords['name']?></option>
-      <?php } ?>
-    </select>
-        
-  </div>
+  
   
   <div id="map" class="container d-flex align-items-center justify-content-center"></div>
   <div class="container form-container">
     <div class="row">
+    <div class="">
+      <?php 
+        if(!empty($barid)){
+            $found_coord = $conn->query("SELECT * FROM bars WHERE id = $barid");
+            $bar = $found_coord->fetch_assoc();
+        }
+      ?>
+      <select name="bar" id="barsList" class="m-1 p-1 col-md-12 form-select">
+        <option value="0">Válassz egy kocsmát</option>
+        <?php
+            $lekerdezes = "SELECT * FROM bars ORDER BY name";
+            $found_coords = $conn->query($lekerdezes);
+            while($coords=$found_coords->fetch_assoc()){
+        ?>
+          <option value="<?=$coords['lat'].';'.$coords['lng']?>"> <?=$coords['name']?></option>
+        <?php } ?>
+      </select>
+    </div>
+    </div>
+    <div class="row">
       <div class="col-md-3">
-        <button id="addAddress" class="btn-block m-1 p-1">Add Address</button>
+        <button id="addAddress" class="btn-block m-1 p-1 form-control">Hozzáadás</button>
       </div>
       <div class="col-md-3">
-        <button id="generateRoute" class="btn-primary btn-block m-1 p-1">Generate</button>
+        <button id="generateRoute" class="btn-block m-1 p-1 form-control">Tervezés</button>
       </div>
       <div class="col-md-3">
         <input type="text" placeholder="Név" id="name" class="form-control m-1 p-1" required>
@@ -93,10 +94,11 @@
       <div class="col-md-3">
         <input type="text" placeholder="Leírás" id="text" class="form-control m-1 p-1">
       </div>
-      <div class="col-md-3">
-        <button id="saveRoute" class="btn-block m-1 p-1">Save</button>
+      <div class="col-md-12">
+        <button id="saveRoute" class="btn-block m-1 p-1 form-control">Mentés</button>
       </div>
     </div>
+    
   </div>
 <script src="assets/js/main.js"></script>
 <script src="assets/bootstrap/js/bootstrap.bundle.js"></script>
