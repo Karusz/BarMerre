@@ -1,9 +1,14 @@
 <?php
     require "config.php";
     session_start();
-    $lekerd = "SELECT * FROM users WHERE id=$_SESSION[userid]";
-    $talalt = $conn->query($lekerd);
-    $user = $talalt->fetch_assoc();
+    $login = false;
+    if(!empty($_SESSION['userid'])){
+        $lekerd = "SELECT * FROM users WHERE id=$_SESSION[userid]";
+        $talalt = $conn->query($lekerd);
+        $user = $talalt->fetch_assoc();
+        $login = true;
+    }
+    
 
     if(isset($_POST['up-btn'])){
         $k_name = $_POST['k_name'];
@@ -33,46 +38,62 @@
     <link rel="stylesheet" href="assets/css/nav-style.css">
 </head>
 <body class="d-flex flex-column h-100">
-    
-    <header>
-    <h2 class="logo">BarMerre</h2>
-        <nav class="navigation">
+    <?php
+        if($login){
+    ?>
+        <header>
+            <h2 class="logo">BarMerre</h2>
+            <nav class="navigation">
+                <a href="tutorial.php" class="nav-a hideOnMobile">Bemutató</a>
+                <a href="allroutes.php" class="nav-a hideOnMobile">Útvonalak</a>
+                <a href="createroute.php" class="nav-a hideOnMobile">Tervezés</a>
+                <button class="btnLogin dropdown-toggle hideOnMobile" type="button" data-bs-toggle="dropdown" aria-expanded="false">
+                    Profil
+                </button>
+                <ul class="dropdown-menu dropdown-menu-dark hideOnMobile">
+                    <li><a class="dropdown-item" href=""><?= $user['username'] ?></a></li>
+                    <li><a class="dropdown-item" href="myroutes.php">Saját utak</a></li>
+                    <li><a class="dropdown-item" href="profilesettings.php?id=<?=$_SESSION['userid']?>">Beállítások</a></li>
+                    <li><a class="dropdown-item" href="contact.php">Kapcsolat</a></li>
+                    <li><button class="dropdown-item" onclick="Logout()">Kijelentkezés</button></li>
+                </ul>
+                <a class="menu-button" onclick="showSidebar()" href="#"><svg xmlns="http://www.w3.org/2000/svg" height="48" viewBox="0 -960 960 960" width="48"><path class="icon-feher" d="M120-240v-80h720v80H120Zm0-200v-80h720v80H120Zm0-200v-80h720v80H120Z"/></svg></a>
+                
+                
+                <div class="sidebar">
+                <a onclick="hideSidebar()" href="#"><svg xmlns="http://www.w3.org/2000/svg" height="48" viewBox="0 -960 960 960" width="48"><path class="icon-feher" d="m256-200-56-56 224-224-224-224 56-56 224 224 224-224 56 56-224 224 224 224-56 56-224-224-224 224Z"/></svg></a>
+                <a href="tutorial.php" class="nav-a active">Bemutató</a>
+                <a href="allroutes.php" class="nav-a">Útvonalak</a>
+                <a href="createroute.php" class="nav-a">Tervezés</a>
+                <button class="btnLogin dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false">
+                    Profil
+                </button>
+                <ul class="dropdown-menu dropdown-menu-dark">
+                    <li><a class="dropdown-item" href=""><?= $user['username'] ?></a></li>
+                    <li><a class="dropdown-item" href="myroutes.php">Saját utak</a></li>
+                    <li><a class="dropdown-item" href="profilesettings.php?id=<?=$_SESSION['userid']?>">Beállítások</a></li>
+                    <li><a class="dropdown-item" href="contact.php">Kapcsolat</a></li>
+                    <li><button class="dropdown-item" onclick="Logout()">Kijelentkezés</button></li>
+                </ul>
+                </div>
+            </nav>
             
-            <a href="tutorial.php" class="nav-a hideOnMobile">Bemutató</a>
-            <a href="allroutes.php" class="nav-a hideOnMobile">Útvonalak</a>
-            <a href="createroute.php" class="nav-a hideOnMobile">Tervezés</a>
-            <button class="btnLogin dropdown-toggle hideOnMobile" type="button" data-bs-toggle="dropdown" aria-expanded="false">
-                  Profil
-            </button>
-            <ul class="dropdown-menu dropdown-menu-dark hideOnMobile">
-                <li><a class="dropdown-item" href=""><?= $user['username'] ?></a></li>
-                <li><a class="dropdown-item" href="myroutes.php">Saját utak</a></li>
-                <li><a class="dropdown-item" href="profilesettings.php?id=<?=$_SESSION['userid']?>">Beállítások</a></li>
-                <li><a class="dropdown-item" href="contact.php">Kapcsolat</a></li>
-                <li><button class="dropdown-item" onclick="Logout()">Kijelentkezés</button></li>
-            </ul>
-            <a class="menu-button" onclick="showSidebar()" href="#"><svg xmlns="http://www.w3.org/2000/svg" height="48" viewBox="0 -960 960 960" width="48"><path class="icon-feher" d="M120-240v-80h720v80H120Zm0-200v-80h720v80H120Zm0-200v-80h720v80H120Z"/></svg></a>
-            
-            
-            <div class="sidebar">
-            <a onclick="hideSidebar()" href="#"><svg xmlns="http://www.w3.org/2000/svg" height="48" viewBox="0 -960 960 960" width="48"><path class="icon-feher" d="m256-200-56-56 224-224-224-224 56-56 224 224 224-224 56 56-224 224 224 224-56 56-224-224-224 224Z"/></svg></a>
-            <a href="tutorial.php" class="nav-a active">Bemutató</a>
-            <a href="allroutes.php" class="nav-a">Útvonalak</a>
-            <a href="createroute.php" class="nav-a">Tervezés</a>
-            <button class="btnLogin dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false">
-                  Profil
-            </button>
-            <ul class="dropdown-menu dropdown-menu-dark">
-                <li><a class="dropdown-item" href=""><?= $user['username'] ?></a></li>
-                <li><a class="dropdown-item" href="myroutes.php">Saját utak</a></li>
-                <li><a class="dropdown-item" href="profilesettings.php?id=<?=$_SESSION['userid']?>">Beállítások</a></li>
-                <li><a class="dropdown-item" href="mailto:barmerre@gmail.com">Kapcsolat</a></li>
-                <li><button class="dropdown-item" onclick="Logout()">Kijelentkezés</button></li>
-            </ul>
-            </div>
-        </nav>
-        
-    </header>
+        </header>
+    <?php }else{ ?>
+        <header>
+            <h2 class="logo">BarMerre</h2>
+            <nav class="navigation">
+                <a href="index.php" class="nav-a hideOnMobile">Kezdőlap</a>
+                <button class="btnLogin" onclick="Login()">Bejelentkezés</button>
+                <a class="menu-button" onclick="showSidebar()" href="#"><svg xmlns="http://www.w3.org/2000/svg" height="48" viewBox="0 -960 960 960" width="48"><path class="icon-feher" d="M120-240v-80h720v80H120Zm0-200v-80h720v80H120Zm0-200v-80h720v80H120Z"/></svg></a>
+                <div class="sidebar">
+                    <a onclick="hideSidebar()" href="#"><svg xmlns="http://www.w3.org/2000/svg" height="48" viewBox="0 -960 960 960" width="48"><path class="icon-feher" d="m256-200-56-56 224-224-224-224 56-56 224 224 224-224 56 56-224 224 224 224-56 56-224-224-224 224Z"/></svg></a>
+                    <a href="index.php" class="nav-a active">Kezdőlap</a>
+                    <button class="btnLogin" onclick="Login()">Bejelentkezés</button>
+                </div>
+            </nav>
+        </header>
+    <?php } ?>
     <main class="flex-shrink-0">
             
         <!-- Features section-->
@@ -118,6 +139,7 @@
             <button type="submit" class="btn btn-primary px-4 btn-lg" name="up-btn">Küldés</button>
         </form>
     </main>
+    
     <div class="buborek">
         <div class="bubidiv"><span></span></div>
         <div class="bubidiv"><span></span></div>
@@ -136,17 +158,9 @@
     <script type="module" src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.esm.js"></script>
     <script nomodule src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.js"></script>
     <script>
-    function Logout() {
-        window.location="logout.php";
-    }
-    function showSidebar(){
-        const sidebar = document.querySelector('.sidebar');
-        sidebar.style.display='flex';
-    }
-    function hideSidebar(){
-        const sidebar = document.querySelector('.sidebar');
-        sidebar.style.display='none';
-    }
+        function Login() {
+            window.location="login.php";
+        }
     </script>
 </body>
 </html>

@@ -24,7 +24,7 @@
 <body class="d-flex flex-column h-100">
     
     <header>
-    <h2 class="logo">BarMerre</h2>
+        <h2 class="logo">BarMerre</h2>
         <nav class="navigation">
             
             <a href="tutorial.php" class="nav-a hideOnMobile">Bemutató</a>
@@ -37,7 +37,7 @@
                 <li><a class="dropdown-item" href=""><?= $user['username'] ?></a></li>
                 <li><a class="dropdown-item" href="myroutes.php">Saját utak</a></li>
                 <li><a class="dropdown-item" href="profilesettings.php?id=<?=$_SESSION['userid']?>">Beállítások</a></li>
-                <li><a class="dropdown-item" href="mailto:barmerre@gmail.com">Kapcsolat</a></li>
+                <li><a class="dropdown-item" href="contact.php">Kapcsolat</a></li>
                 <li><button class="dropdown-item" onclick="Logout()">Kijelentkezés</button></li>
             </ul>
             <a class="menu-button" onclick="showSidebar()" href="#"><svg xmlns="http://www.w3.org/2000/svg" height="48" viewBox="0 -960 960 960" width="48"><path class="icon-feher" d="M120-240v-80h720v80H120Zm0-200v-80h720v80H120Zm0-200v-80h720v80H120Z"/></svg></a>
@@ -55,7 +55,7 @@
                 <li><a class="dropdown-item" href=""><?= $user['username'] ?></a></li>
                 <li><a class="dropdown-item" href="myroutes.php">Saját utak</a></li>
                 <li><a class="dropdown-item" href="profilesettings.php?id=<?=$_SESSION['userid']?>">Beállítások</a></li>
-                <li><a class="dropdown-item" href="mailto:barmerre@gmail.com">Kapcsolat</a></li>
+                <li><a class="dropdown-item" href="contact.php">Kapcsolat</a></li>
                 <li><button class="dropdown-item" onclick="Logout()">Kijelentkezés</button></li>
             </ul>
             </div>
