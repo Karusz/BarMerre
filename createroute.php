@@ -55,16 +55,17 @@
     </select>
         
   </div>
-  <div>
-    <button id="addAddress">Add Address</button>
-    <button id="generateRoute">Generate</button>
-    <input type="text" placeholder="Név" id="name" require>
-    <input type="text" placeholder="Leírás" id="text" require>
-    <button id="saveRoute">Save</button>
+  
+  <div id="map"></div>
+  <div class="container d-flex align-items-center justify-content-center">
+    <button id="addAddress" class="m-1 p-1">Add Address</button>
+    <button id="generateRoute" class="m-1 p-1">Generate</button>
+    <input type="text" placeholder="Név" id="name" class="m-1 p-1" require>
+    <input type="text" placeholder="Leírás" id="text" class="m-1 p-1">
+    <button id="saveRoute" class="m-1 p-1">Save</button>
     
     
   </div>
-  <div id="map"></div>
 
 <script src="assets/bootstrap/js/bootstrap.bundle.js"></script>
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.10.2/jquery.min.js"></script>
