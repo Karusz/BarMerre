@@ -32,14 +32,48 @@
     <link rel="stylesheet" href="assets/bootstrap/css/bootstrap.min.css">
     <link rel="stylesheet" href="assets/css/all-style.css">
     <link rel="stylesheet" href="assets/css/login.css">
+    <link rel="stylesheet" href="assets/css/nav-style.css">
 </head>
 <body>
     
-    <header>
-        <h2 class="logo">BarMerre</h2>
+<header>
+    <h2 class="logo">BarMerre</h2>
         <nav class="navigation">
-            <a href="index.php" class="nav-a">Kezdőlap</a>
+            
+            <a href="tutorial.php" class="nav-a hideOnMobile">Bemutató</a>
+            <a href="allroutes.php" class="nav-a hideOnMobile">Útvonalak</a>
+            <a href="createroute.php" class="nav-a hideOnMobile">Tervezés</a>
+            <button class="btnLogin dropdown-toggle hideOnMobile" type="button" data-bs-toggle="dropdown" aria-expanded="false">
+                  Profil
+            </button>
+            <ul class="dropdown-menu dropdown-menu-dark hideOnMobile">
+                <li><a class="dropdown-item" href=""><?= $user['username'] ?></a></li>
+                <li><a class="dropdown-item" href="myroutes.php">Saját utak</a></li>
+                <li><a class="dropdown-item" href="profilesettings.php?id=<?=$_SESSION['userid']?>">Beállítások</a></li>
+                <li><a class="dropdown-item" href="mailto:barmerre@gmail.com">Kapcsolat</a></li>
+                <li><button class="dropdown-item" onclick="Logout()">Kijelentkezés</button></li>
+            </ul>
+            <a class="menu-button" onclick="showSidebar()" href="#"><svg xmlns="http://www.w3.org/2000/svg" height="48" viewBox="0 -960 960 960" width="48"><path class="icon-feher" d="M120-240v-80h720v80H120Zm0-200v-80h720v80H120Zm0-200v-80h720v80H120Z"/></svg></a>
+            
+            
+            <div class="sidebar">
+            <a onclick="hideSidebar()" href="#"><svg xmlns="http://www.w3.org/2000/svg" height="48" viewBox="0 -960 960 960" width="48"><path class="icon-feher" d="m256-200-56-56 224-224-224-224 56-56 224 224 224-224 56 56-224 224 224 224-56 56-224-224-224 224Z"/></svg></a>
+            <a href="tutorial.php" class="nav-a active">Bemutató</a>
+            <a href="allroutes.php" class="nav-a">Útvonalak</a>
+            <a href="createroute.php" class="nav-a">Tervezés</a>
+            <button class="btnLogin dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false">
+                  Profil
+            </button>
+            <ul class="dropdown-menu dropdown-menu-dark">
+                <li><a class="dropdown-item" href=""><?= $user['username'] ?></a></li>
+                <li><a class="dropdown-item" href="myroutes.php">Saját utak</a></li>
+                <li><a class="dropdown-item" href="profilesettings.php?id=<?=$_SESSION['userid']?>">Beállítások</a></li>
+                <li><a class="dropdown-item" href="mailto:barmerre@gmail.com">Kapcsolat</a></li>
+                <li><button class="dropdown-item" onclick="Logout()">Kijelentkezés</button></li>
+            </ul>
+            </div>
         </nav>
+        
     </header>
     
 
@@ -105,7 +139,7 @@
     </div>
 
     
-
+    <script src="assets/js/main.js"></script>
     <script type="module" src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.esm.js"></script>
     <script nomodule src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.js"></script>
 </body>
