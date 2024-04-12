@@ -24,7 +24,7 @@
         <h2 class="logo">BarMerre</h2>
         <nav class="navigation">
             <a href="index.php" class="nav-a hideOnMobile">Kezdőlap</a>
-            <button class="btnLogin" onclick="Login()">Bejelentkezés</button>
+            <button class="btnLogin hideOnMobile" onclick="Login()">Bejelentkezés</button>
             <a class="menu-button" onclick="showSidebar()" href="#"><svg xmlns="http://www.w3.org/2000/svg" height="48" viewBox="0 -960 960 960" width="48"><path class="icon-feher" d="M120-240v-80h720v80H120Zm0-200v-80h720v80H120Zm0-200v-80h720v80H120Z"/></svg></a>
             <div class="sidebar">
                 <a onclick="hideSidebar()" href="#"><svg xmlns="http://www.w3.org/2000/svg" height="48" viewBox="0 -960 960 960" width="48"><path class="icon-feher" d="m256-200-56-56 224-224-224-224 56-56 224 224 224-224 56 56-224 224 224 224-56 56-224-224-224 224Z"/></svg></a>
@@ -39,7 +39,7 @@
         <main class="flex-shrink-0">
             
             <!-- Features section-->
-            <section class="py-5" id="features">
+            <section class="py-1" id="features">
 
                 <!-- Header-->
             <div class="bg-dark py-5 mt-5">
@@ -57,7 +57,7 @@
             </div>
                 <div class="container px-5 my-5">
                     <div class="row gx-5">
-                        <div class="col-lg-4 mb-5 mb-lg-0"><h2 class="fw-bolder mb-0">Pár funkció, ami megtalálható</h2></div>
+                        <div class="col-lg-4 mb-5 mb-lg-0"><h2 class="fw-bolder mb-0">Válogass a támogatott kocsmáink közül és hozd létre a kedvenc kocsmatúra útvonaladat!</h2></div>
                         <div class="col-lg-8">
                             <div class="row gx-5 row-cols-1 row-cols-md-2">
                                 <div class="col mb-5 h-100">
