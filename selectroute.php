@@ -42,76 +42,61 @@
         header("Location: myroutes.php");
     }
     if(isset($_POST['googlemaps-btn'])){
-        $routeId = $id; // Példa az útvonal egyedi azonosítójára
+        $routeId = $id; 
 
-// SQL lekérdezés az útvonalhoz tartozó bárok adatainak lekérésére
-$sql = "SELECT b.name AS bar_name, b.address AS bar_address, b.lat AS bar_latitude, b.lng AS bar_longitude
-        FROM routes r
-        JOIN bars b ON FIND_IN_SET(b.id, r.bars_ids) > 0
-        WHERE r.id = $routeId";
+    $sql = "SELECT b.name AS bar_name, b.address AS bar_address, b.lat AS bar_latitude, b.lng AS bar_longitude FROM routes r JOIN bars b ON FIND_IN_SET(b.id, r.bars_ids) > 0 WHERE r.id = $routeId";
 
-$result = $conn->query($sql);
-
-if ($result->num_rows > 0) {
-    // Adatok feldolgozása és link létrehozása
-    $waypoints = [];
-    while ($row = $result->fetch_assoc()) {
-        // Bár adatainak kinyerése
-        $barName = $row['bar_name'];
-        $barAddress = $row['bar_address'];
-        $barLatitude = $row['bar_latitude'];
-        $barLongitude = $row['bar_longitude'];
-
-        // Hozzáadás a waypoints tömbhöz
-        $waypoints[] = "$barLatitude,$barLongitude";
-    }
-
-    // Google Térkép URL létrehozása
-    $destination = end($waypoints); // Az utolsó bár lesz a célpont
-    $waypointsString = implode('|', $waypoints);
-
-    // Aktuális felhasználói hely lekérése (HTML5 Geolocation API)
-    $currentLocation = ""; // Kezdetben üres string
-
-    // JavaScript kódot generálunk, hogy lekérjük a felhasználói helyet
-    echo "<script>
-            if (navigator.geolocation) {
-                navigator.geolocation.getCurrentPosition(function(position) {
-                    const userLat = position.coords.latitude;
-                    const userLng = position.coords.longitude;
-                    const userLocation = userLat + ',' + userLng;
-                    window.location.href = 'https://www.google.com/maps/dir/?api=1&origin=' + userLocation + '&destination=$destination&waypoints=$waypointsString&travelmode=walking';
-                });
-            } else {
-                alert('A helymeghatározás nem támogatott a böngésződben.');
-            }
-          </script>";
-} else {
-    echo "Nincsenek adatok az útvonalhoz.";
-}
-    }
-
-    //TEST---------------------------------
-
-    $routeId = $id; // Példa az útvonal egyedi azonosítója
-    
-    // SQL lekérdezés az útvonalhoz tartozó bárok adatainak lekérésére
-    $sql = "SELECT r.bars_ids, b.name, b.lat, b.lng
-            FROM routes r
-            JOIN bars b ON FIND_IN_SET(b.id, r.bars_ids) > 0
-            WHERE r.id = $routeId";
-    
     $result = $conn->query($sql);
-    
-    // Változó az útvonalhoz tartozó adatok tárolására
-    $routeData = [];
-    
+
     if ($result->num_rows > 0) {
-        // Adatok feldolgozása és tömbbe helyezése
+        $waypoints = [];
         while ($row = $result->fetch_assoc()) {
-            $routeData[] = $row;
+            $barName = $row['bar_name'];
+            $barAddress = $row['bar_address'];
+            $barLatitude = $row['bar_latitude'];
+            $barLongitude = $row['bar_longitude'];
+
+            $waypoints[] = "$barLatitude,$barLongitude";
         }
+
+        $destination = end($waypoints); 
+        $waypointsString = implode('|', $waypoints);
+
+        $currentLocation = "";
+
+        echo "<script>
+                if (navigator.geolocation) {
+                    navigator.geolocation.getCurrentPosition(function(position) {
+                        const userLat = position.coords.latitude;
+                        const userLng = position.coords.longitude;
+                        const userLocation = userLat + ',' + userLng;
+                        window.location.href = 'https://www.google.com/maps/dir/?api=1&origin=' + userLocation + '&destination=$destination&waypoints=$waypointsString&travelmode=walking';
+                    });
+                } else {
+                    alert('A helymeghatározás nem támogatott a böngésződben.');
+                }
+            </script>";
+    } else {
+        echo "Nincsenek adatok az útvonalhoz.";
     }
+        }
+
+        $routeId = $id;
+        
+        $sql = "SELECT r.bars_ids, b.name, b.lat, b.lng
+                FROM routes r
+                JOIN bars b ON FIND_IN_SET(b.id, r.bars_ids) > 0
+                WHERE r.id = $routeId";
+        
+        $result = $conn->query($sql);
+        
+        $routeData = [];
+        
+        if ($result->num_rows > 0) {
+            while ($row = $result->fetch_assoc()) {
+                $routeData[] = $row;
+            }
+        }
 
 ?>
 <!DOCTYPE html>
@@ -123,7 +108,7 @@ if ($result->num_rows > 0) {
     <meta name="author" content="" />
     <title><?= $route['name'] ?></title>
     <!-- Favicon-->
-    <link rel="icon" type="image/x-icon" href="assets/favicon.ico" />
+    <link rel="icon" type="image/x-icon" href="assets/img/favicon.png" />
     <!-- Core theme CSS (includes Bootstrap)-->
     <link rel="stylesheet" href="assets/bootstrap/css/bootstrap.min.css">
     <link rel="stylesheet" href="assets/css/all-style.css">
@@ -134,44 +119,40 @@ if ($result->num_rows > 0) {
 <body class="d-flex flex-column h-100">
     
 <header>
-    <h2 class="logo">BarMerre</h2>
-        <nav class="navigation">
-            
-            <a href="tutorial.php" class="nav-a hideOnMobile">Bemutató</a>
-            <a href="allroutes.php" class="nav-a hideOnMobile">Útvonalak</a>
-            <a href="createroute.php" class="nav-a hideOnMobile">Tervezés</a>
-            <button class="btnLogin dropdown-toggle hideOnMobile" type="button" data-bs-toggle="dropdown" aria-expanded="false">
-                  Profil
-            </button>
-            <ul class="dropdown-menu dropdown-menu-dark hideOnMobile">
-                <li><a class="dropdown-item" href=""><?= $user['username'] ?></a></li>
-                <li><a class="dropdown-item" href="myroutes.php">Saját utak</a></li>
-                <li><a class="dropdown-item" href="profilesettings.php?id=<?=$_SESSION['userid']?>">Beállítások</a></li>
-                <li><a class="dropdown-item" href="contact.php">Kapcsolat</a></li>
-                <li><button class="dropdown-item" onclick="Logout()">Kijelentkezés</button></li>
-            </ul>
-            <a class="menu-button" onclick="showSidebar()" href="#"><svg xmlns="http://www.w3.org/2000/svg" height="48" viewBox="0 -960 960 960" width="48"><path class="icon-feher" d="M120-240v-80h720v80H120Zm0-200v-80h720v80H120Zm0-200v-80h720v80H120Z"/></svg></a>
-            
-            
-            <div class="sidebar">
-            <a onclick="hideSidebar()" href="#"><svg xmlns="http://www.w3.org/2000/svg" height="48" viewBox="0 -960 960 960" width="48"><path class="icon-feher" d="m256-200-56-56 224-224-224-224 56-56 224 224 224-224 56 56-224 224 224 224-56 56-224-224-224 224Z"/></svg></a>
-            <a href="tutorial.php" class="nav-a active">Bemutató</a>
-            <a href="allroutes.php" class="nav-a">Útvonalak</a>
-            <a href="createroute.php" class="nav-a">Tervezés</a>
-            <button class="btnLogin dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false">
-                  Profil
-            </button>
-            <ul class="dropdown-menu dropdown-menu-dark">
-                <li><a class="dropdown-item" href=""><?= $user['username'] ?></a></li>
-                <li><a class="dropdown-item" href="myroutes.php">Saját utak</a></li>
-                <li><a class="dropdown-item" href="profilesettings.php?id=<?=$_SESSION['userid']?>">Beállítások</a></li>
-                <li><a class="dropdown-item" href="contact.php">Kapcsolat</a></li>
-                <li><button class="dropdown-item" onclick="Logout()">Kijelentkezés</button></li>
-            </ul>
-            </div>
-        </nav>
-        
-    </header>
+      <a href="index.php" class="logo mx-2 px-2"><h2>BarMerre</h2></a>
+      <nav class="navigation">
+          <a href="allroutes.php" class="nav-a hideOnMobile">Útvonalak</a>
+          <a href="createroute.php" class="nav-a hideOnMobile">Tervezés</a>
+          <a class="nav-a hideOnMobile" href="contact.php">Kapcsolat</a>
+          <button class="btnLogin dropdown-toggle hideOnMobile" type="button" data-bs-toggle="dropdown" aria-expanded="false">
+              <?=$user['username']?>
+          </button>
+          <ul class="dropdown-menu dropdown-menu-dark hideOnMobile">
+              <li><a class="dropdown-item" href="myroutes.php">Saját utak</a></li>
+              <li><a class="dropdown-item" href="profilesettings.php?id=<?=$_SESSION['userid']?>">Beállítások</a></li>
+              <li><button class="dropdown-item" onclick="Logout()">Kijelentkezés</button></li>
+          </ul>
+          <a class="menu-button" onclick="showSidebar()" href="#"><svg xmlns="http://www.w3.org/2000/svg" height="48" viewBox="0 -960 960 960" width="48"><path class="icon-feher" d="M120-240v-80h720v80H120Zm0-200v-80h720v80H120Zm0-200v-80h720v80H120Z"/></svg></a>
+          
+          
+          <div class="sidebar">
+          <a onclick="hideSidebar()" href="#"><svg xmlns="http://www.w3.org/2000/svg" height="48" viewBox="0 -960 960 960" width="48"><path class="icon-feher" d="m256-200-56-56 224-224-224-224 56-56 224 224 224-224 56 56-224 224 224 224-56 56-224-224-224 224Z"/></svg></a>
+          <a href="contact.php.php" class="nav-a active">Kapcsolat</a>
+          <a href="allroutes.php" class="nav-a">Útvonalak</a>
+          <a href="createroute.php" class="nav-a">Tervezés</a>
+          <button class="btnLogin dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false">
+              Profil
+          </button>
+          <ul class="dropdown-menu dropdown-menu-dark">
+              <li><a class="dropdown-item" href=""><?= $user['username'] ?></a></li>
+              <li><a class="dropdown-item" href="myroutes.php">Saját utak</a></li>
+              <li><a class="dropdown-item" href="profilesettings.php?id=<?=$_SESSION['userid']?>">Beállítások</a></li>
+              <li><button class="dropdown-item" onclick="Logout()">Kijelentkezés</button></li>
+          </ul>
+          </div>
+      </nav>
+      
+  </header>
   <div class="bg-dark container py-5">
                 <div class="container px-5">
                     <div class="row gx-5 align-items-center justify-content-center">
@@ -222,6 +203,7 @@ if ($result->num_rows > 0) {
                                 <?php }}else{ ?>
                                     <form action="selectroute.php?id=<?=$id?>&routeid=<?=$route['id']?>" method="post">
                                         <button class="btn btn-danger" name="delete-btn">Törlés</button>
+                                        <button class="btn btn-primary" name="googlemaps-btn">Google maps generálása</button>
                                     </form>
                                 <?php } ?>
                             </div>
@@ -288,58 +270,52 @@ if ($result->num_rows > 0) {
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.10.2/jquery.min.js"></script>
     <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBpybVWsR30eThdM_LVqdGelbyDSlGlBf8&callback=initMap" async defer></script>
     <script>
-    // JavaScript kód a térkép inicializálásához és útvonal kirajzolásához
-    function initMap() {
-        // Térkép létrehozása
-        var map = new google.maps.Map(document.getElementById('map'), {
-            zoom: 12, // Alapértelmezett nagyítási szint
-            center: { lat: 47.497912, lng: 19.040235 } // Példa középpont (Budapest)
-        });
-
-        // Útvonal létrehozása és megjelenítése
-        var directionsService = new google.maps.DirectionsService();
-        var directionsRenderer = new google.maps.DirectionsRenderer({
-            map: map,
-            suppressMarkers: true // Jelölők elrejtése az útvonalon
-        });
-
-        // Útvonal pontjainak definiálása
-        var waypoints = [];
-        <?php foreach ($routeData as $bar) : ?>
-            waypoints.push({
-                location: new google.maps.LatLng(<?php echo $bar['lat']; ?>, <?php echo $bar['lng']; ?>),
-                stopover: true
+        
+        function initMap() {
+            
+            var map = new google.maps.Map(document.getElementById('map'), {
+                zoom: 12, 
+                center: { lat: 47.497912, lng: 19.040235 },
+                mapId: '2b208c0b172fcd00'
             });
 
-            // Marker létrehozása az útvonal pontján
-            var marker = new google.maps.Marker({
-                position: new google.maps.LatLng(<?php echo $bar['lat']; ?>, <?php echo $bar['lng']; ?>),
+            
+            var directionsService = new google.maps.DirectionsService();
+            var directionsRenderer = new google.maps.DirectionsRenderer({
                 map: map,
-                title: '<?php echo $bar['name']; ?>' // Marker felirata
+                suppressMarkers: true 
             });
-        <?php endforeach; ?>
 
-        // Útvonal kiszámítása
-        var request = {
-            origin: waypoints[0].location,
-            destination: waypoints[waypoints.length - 1].location,
-            waypoints: waypoints.slice(1, waypoints.length - 1),
-            optimizeWaypoints: true, // Optimális útvonal meghatározása
-            travelMode: 'WALKING' // Gyalogos mód beállítása
-        };
+            
+            var waypoints = [];
+            <?php foreach ($routeData as $bar) : ?>
+                waypoints.push({
+                    location: new google.maps.LatLng(<?php echo $bar['lat']; ?>, <?php echo $bar['lng']; ?>),
+                    stopover: true
+                });
 
-        directionsService.route(request, function(result, status) {
-            if (status == 'OK') {
-                directionsRenderer.setDirections(result);
-            } else {
-                window.alert('Nem sikerült útvonalat találni a megadott pontok között: ' + status);
-            }
-        });
-    }
-</script>
-    <script>
-        function Logout() {
-            window.location="logout.php";
+                var marker = new google.maps.Marker({
+                    position: new google.maps.LatLng(<?php echo $bar['lat']; ?>, <?php echo $bar['lng']; ?>),
+                    map: map,
+                    title: '<?php echo $bar['name']; ?>'
+                });
+            <?php endforeach; ?>
+
+            var request = {
+                origin: waypoints[0].location,
+                destination: waypoints[waypoints.length - 1].location,
+                waypoints: waypoints.slice(1, waypoints.length - 1),
+                optimizeWaypoints: true,
+                travelMode: 'WALKING'
+            };
+
+            directionsService.route(request, function(result, status) {
+                if (status == 'OK') {
+                    directionsRenderer.setDirections(result);
+                } else {
+                    window.alert('Nem sikerült útvonalat találni a megadott pontok között: ' + status);
+                }
+            });
         }
     </script>
 </body>

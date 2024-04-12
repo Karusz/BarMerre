@@ -32,14 +32,17 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>BarMerre</title>
+    <link rel="icon" type="image/x-icon" href="assets/img/favicon.png" />
+
     <link rel="stylesheet" href="assets/bootstrap/css/bootstrap.min.css">
     <link rel="stylesheet" href="assets/css/all-style.css">
+    <link rel="stylesheet" href="assets/css/nav-style.css">
     <link rel="stylesheet" href="assets/css/login.css">
 </head>
 <body>
     
     <header>
-        <h2 class="logo">BarMerre</h2>
+        <a href="index.php" class="logo mx-2 px-2"><h2>BarMerre</h2></a>
         <nav class="navigation">
             <a href="index.php" class="nav-a">Kezdőlap</a>
         </nav>
@@ -86,7 +89,7 @@
                     </div>
                     <div class="input-box">
                         <span class="icon"><ion-icon name="person"></ion-icon></span>
-                        <input type="Text" name="regname" required>
+                        <input type="Text" name="regname" required maxlength="10">
                         <label>Felhasználónév</label>
                     </div>
                     <div class="input-box">

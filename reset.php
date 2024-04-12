@@ -29,6 +29,8 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>BarMerre</title>
+    <link rel="icon" type="image/x-icon" href="assets/img/favicon.png" />
+
     <link rel="stylesheet" href="assets/bootstrap/css/bootstrap.min.css">
     <link rel="stylesheet" href="assets/css/all-style.css">
     <link rel="stylesheet" href="assets/css/login.css">
@@ -37,7 +39,7 @@
 <body>
     
 <header>
-    <h2 class="logo">BarMerre</h2>
+    <a href="index.php" class="logo mx-2 px-2"><h2>BarMerre</h2></a>
     <nav class="navigation">
         <a href="index.php" class="nav-a hideOnMobile">Kezdőlap</a>
         <a class="menu-button" onclick="showSidebar()" href="#"><svg xmlns="http://www.w3.org/2000/svg" height="48" viewBox="0 -960 960 960" width="48"><path class="icon-feher" d="M120-240v-80h720v80H120Zm0-200v-80h720v80H120Zm0-200v-80h720v80H120Z"/></svg></a>

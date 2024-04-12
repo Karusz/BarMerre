@@ -12,7 +12,8 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    
+    <link rel="icon" type="image/x-icon" href="assets/img/favicon.png" />
+
      <!-- CSS -->
      <link rel="stylesheet" href="assets/bootstrap/css/bootstrap.min.css">
      <link rel="stylesheet" href="assets/css/all-style.css">
@@ -22,18 +23,16 @@
     <title>BarMerre</title>
 </head>
 <body>
-<header>
-    <h2 class="logo">BarMerre</h2>
+    <header>
+        <a href="index.php" class="logo mx-2 px-2"><h2>BarMerre</h2></a>
         <nav class="navigation">
-            
-            <a href="tutorial.php" class="nav-a hideOnMobile">Bemutató</a>
             <a href="allroutes.php" class="nav-a hideOnMobile">Útvonalak</a>
             <a href="createroute.php" class="nav-a hideOnMobile">Tervezés</a>
+            <a class="nav-a hideOnMobile" href="contact.php">Kapcsolat</a>
             <button class="btnLogin dropdown-toggle hideOnMobile" type="button" data-bs-toggle="dropdown" aria-expanded="false">
-                  Profil
+                <?=$user['username']?>
             </button>
             <ul class="dropdown-menu dropdown-menu-dark hideOnMobile">
-                <li><a class="dropdown-item" href=""><?= $user['username'] ?></a></li>
                 <li><a class="dropdown-item" href="myroutes.php">Saját utak</a></li>
                 <li><a class="dropdown-item" href="profilesettings.php?id=<?=$_SESSION['userid']?>">Beállítások</a></li>
                 <li><a class="dropdown-item" href="contact.php">Kapcsolat</a></li>
@@ -44,22 +43,20 @@
             
             <div class="sidebar">
             <a onclick="hideSidebar()" href="#"><svg xmlns="http://www.w3.org/2000/svg" height="48" viewBox="0 -960 960 960" width="48"><path class="icon-feher" d="m256-200-56-56 224-224-224-224 56-56 224 224 224-224 56 56-224 224 224 224-56 56-224-224-224 224Z"/></svg></a>
-            <a href="tutorial.php" class="nav-a active">Bemutató</a>
+            <a href="contact.php.php" class="nav-a active">Kapcsolat</a>
             <a href="allroutes.php" class="nav-a">Útvonalak</a>
             <a href="createroute.php" class="nav-a">Tervezés</a>
             <button class="btnLogin dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false">
-                  Profil
+                Profil
             </button>
             <ul class="dropdown-menu dropdown-menu-dark">
                 <li><a class="dropdown-item" href=""><?= $user['username'] ?></a></li>
                 <li><a class="dropdown-item" href="myroutes.php">Saját utak</a></li>
                 <li><a class="dropdown-item" href="profilesettings.php?id=<?=$_SESSION['userid']?>">Beállítások</a></li>
-                <li><a class="dropdown-item" href="contact.php">Kapcsolat</a></li>
                 <li><button class="dropdown-item" onclick="Logout()">Kijelentkezés</button></li>
             </ul>
             </div>
         </nav>
-        
     </header>
   <div class="buborek">
 
@@ -116,11 +113,6 @@
     <script src="assets/js/main.js"></script>
     <script type="module" src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.esm.js"></script>
     <script nomodule src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.js"></script>
-    <script>
-        function Logout() {
-            window.location="logout.php";
-        }
-    </script>
     
 </body>
 </html>
