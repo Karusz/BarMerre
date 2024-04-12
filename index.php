@@ -87,7 +87,7 @@
             </section>
             <!-- Blog preview section-->
             <section class="py-5">
-                <div class="container px-5 my-5">
+                <div class="container px-2 my-2">
                     <div class="row gx-5 justify-content-center">
                         <div class="col-lg-8 col-xl-6">
                             <div class="text-center">
@@ -137,7 +137,7 @@
                     <div class="col-auto"><div class="small m-0 text-white">Copyright &copy; BarMerre 2024</div></div>
                     <div class="col-auto">
                         
-                        <a class="link-light small" href="#!">valami terms</a>
+                        <a class="link-light small" href="#!">Feltételek</a>
                         <span class="text-white mx-1">&middot;</span>
                         <a class="link-light small" href="contact.php">Kapcsolat</a>
                     </div>
