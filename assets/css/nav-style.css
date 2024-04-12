@@ -38,7 +38,6 @@
         width:100%;
     }
 }
-<<<<<<< HEAD
 
 .logo{
     text-decoration: none;
@@ -46,8 +45,4 @@
 
 .logo:hover{
     color: rgba(255, 255, 255, 0.575);
-=======
-.navigation .nav-a::after {
-    display:none;
->>>>>>> fc0266e8c112651995279f7d9e70ffd1001cb16c
 }
