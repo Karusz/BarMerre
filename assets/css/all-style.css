@@ -44,12 +44,6 @@ header {
     height: 90px;
 }
 
-.logo {
-    font-size: 2em;
-    color: #fff;
-    user-select: none;  
-}
-
 .navigation .nav-a{
     position: relative;
     font-size: 1.1em;

@@ -154,64 +154,64 @@
       
   </header>
   <div class="bg-dark container py-5">
-                <div class="container px-5">
-                    <div class="row gx-5 align-items-center justify-content-center">
-                        <div class="col-lg-8 col-xl-7 col-xxl-6">
-                            <div class="my-5 text-center text-xl-start">
-                                <h1 class="display-5 fw-bolder text-white mb-2"><?= $route['name'] ?></h1>
-                                <p class="lead fw-normal text-white-50 mb-4"><?= $route['text'] ?></p>
-                                <p class="lead fw-normal text-white-50 mb-4">Készítő: <?php if(mysqli_num_rows($creator_talalt) == 0){echo "Törölt felhasználó";}else{echo $creator['username'];}  ?></p>
-                                <p class="lead fw-normal text-white-50 mb-4">Kocsmák:
-                                    <?php
-                                        $barids = $route['bars_ids'];
-                                        $ids = explode(",",$barids);
+        <div class="container px-5">
+            <div class="row gx-5 align-items-center justify-content-center">
+                <div class="col-lg-8 col-xl-7 col-xxl-6">
+                    <div class="my-5 text-center text-xl-start">
+                        <h1 class="display-5 fw-bolder text-white mb-2"><?= $route['name'] ?></h1>
+                        <p class="lead fw-normal text-white-50 mb-4"><?= $route['text'] ?></p>
+                        <p class="lead fw-normal text-white-50 mb-4">Készítő: <?php if(mysqli_num_rows($creator_talalt) == 0){echo "Törölt felhasználó";}else{echo $creator['username'];}  ?></p>
+                        <p class="lead fw-normal text-white-50 mb-4">Kocsmák:
+                            <?php
+                                $barids = $route['bars_ids'];
+                                $ids = explode(",",$barids);
 
-                                        $kocsmanevek = "";
-                                        for ($i=0; $i < count($ids); $i++) { 
-                                            $lekerd = "SELECT * FROM bars WHERE id = $ids[$i]";
-                                            $talalt = $conn->query($lekerd);
-                                            $bar = $talalt->fetch_assoc();
-                                            $kocsmanevek .= $bar['name']. ", ";
-                                        }
-                                        echo $kocsmanevek;
-                                        
-                                    ?>
-                                </p>
-                                <?php
-                                    $like_lekerd = "SELECT * FROM likes WHERE route_id = $route[id] AND user_id = $_SESSION[userid]";
-                                    $like_talat = $conn->query($like_lekerd);
-                                    
-                                ?>
-                                <p class="lead fw-normal text-white-50 mb-4">Likes: <?= mysqli_num_rows($like_talat); ?></p>
-                                <?php
-                                    if($route['creator_id'] != $_SESSION['userid']){
-                                        if(mysqli_num_rows($like_talat) == 0){
-                                            $like = $like_talat->fetch_assoc();
-                                    
-                                ?>
-                                    <form action="selectroute.php?id=<?=$id?>&routeid=<?=$route['id']?>" method="post">
-                                        <button class="btn btn-primary" name="like-btn">Like</button>
-                                        <button class="btn btn-primary" name="googlemaps-btn">Google maps generálása</button>
-                                    </form>
-                                <?php
-                                    }else{
-                                ?>
-                                    <form action="selectroute.php?id=<?=$id?>&routeid=<?=$route['id']?>" method="post">
-                                        <button class="btn btn-primary" name="unlike-btn">Unlike</button>
-                                        <button class="btn btn-primary" name="googlemaps-btn">Google maps generálása</button>
-                                    </form>
-                                <?php }}else{ ?>
-                                    <form action="selectroute.php?id=<?=$id?>&routeid=<?=$route['id']?>" method="post">
-                                        <button class="btn btn-danger" name="delete-btn">Törlés</button>
-                                        <button class="btn btn-primary" name="googlemaps-btn">Google maps generálása</button>
-                                    </form>
-                                <?php } ?>
-                            </div>
-                        </div>
-                        <div class="col-xl-5 col-xxl-6 d-none d-xl-block" id="map"><h2>ASD</h2></div>
+                                $kocsmanevek = "";
+                                for ($i=0; $i < count($ids); $i++) { 
+                                    $lekerd = "SELECT * FROM bars WHERE id = $ids[$i]";
+                                    $talalt = $conn->query($lekerd);
+                                    $bar = $talalt->fetch_assoc();
+                                    $kocsmanevek .= $bar['name']. ", ";
+                                }
+                                echo $kocsmanevek;
+                                
+                            ?>
+                        </p>
+                        <?php
+                            $like_lekerd = "SELECT * FROM likes WHERE route_id = $route[id] AND user_id = $_SESSION[userid]";
+                            $like_talat = $conn->query($like_lekerd);
+                            
+                        ?>
+                        <p class="lead fw-normal text-white-50 mb-4">Likes: <?= mysqli_num_rows($like_talat); ?></p>
+                        <?php
+                            if($route['creator_id'] != $_SESSION['userid']){
+                                if(mysqli_num_rows($like_talat) == 0){
+                                    $like = $like_talat->fetch_assoc();
+                            
+                        ?>
+                            <form action="selectroute.php?id=<?=$id?>&routeid=<?=$route['id']?>" method="post">
+                                <button class="btn btn-primary p-1 m-1" name="like-btn">Like</button>
+                                <button class="btn btn-primary p-1 m-1" name="googlemaps-btn">Google maps generálása</button>
+                            </form>
+                        <?php
+                            }else{
+                        ?>
+                            <form action="selectroute.php?id=<?=$id?>&routeid=<?=$route['id']?>" method="post">
+                                <button class="btn btn-primary p-1 m-1" name="unlike-btn">Unlike</button>
+                                <button class="btn btn-primary p-1 m-1" name="googlemaps-btn">Google maps generálása</button>
+                            </form>
+                        <?php }}else{ ?>
+                            <form action="selectroute.php?id=<?=$id?>&routeid=<?=$route['id']?>" method="post">
+                                <button class="btn btn-danger p-1 m-1" name="delete-btn">Törlés</button>
+                                <button class="btn btn-primary p-1 m-1" name="googlemaps-btn">Google maps generálása</button>
+                            </form>
+                        <?php } ?>
                     </div>
                 </div>
+                <div class="col-md-5 col-xl-5 col-xxl-6" id="map"></div>
             </div>
+        </div>
+    </div>
     
     <div class="container-fluid bg-dark mt-5">
         <div class="m-2">

@@ -84,7 +84,7 @@ function saveRoute(data,name,text){
         } 
         };
         xhr.send('allrouteLanLng=' + allrouteLanLng + "&name=" + name + "&text=" + text);
-        
+        window.location = 'https://team07.project.scholaeu.hu/allroutes.php';
     }   
 
 }

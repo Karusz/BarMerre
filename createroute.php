@@ -4,6 +4,7 @@
   $lekerd = "SELECT * FROM users WHERE id=$_SESSION[userid]";
   $talalt = $conn->query($lekerd);
   $user = $talalt->fetch_assoc();
+
 ?>
 <!DOCTYPE html>
 <html lang="en">

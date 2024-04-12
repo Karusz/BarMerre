@@ -3,3 +3,8 @@
     height: 50vh;
     border-radius: 30px;
 }
+@media(max-width:1400px){
+    #map{
+        width: 100%;
+    }
+}

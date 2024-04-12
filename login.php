@@ -44,7 +44,12 @@
     <header>
         <a href="index.php" class="logo mx-2 px-2"><h2>BarMerre</h2></a>
         <nav class="navigation">
-            <a href="index.php" class="nav-a">Kezdőlap</a>
+            <a href="index.php" class="nav-a hideOnMobile">Kezdőlap</a>
+            <a class="menu-button px-5" onclick="showSidebar()" href="#"><svg xmlns="http://www.w3.org/2000/svg" height="48" viewBox="0 -960 960 960" width="48"><path class="icon-feher" d="M120-240v-80h720v80H120Zm0-200v-80h720v80H120Zm0-200v-80h720v80H120Z"/></svg></a>
+            <div class="sidebar">
+                <a onclick="hideSidebar()" href="#"><svg xmlns="http://www.w3.org/2000/svg" height="48" viewBox="0 -960 960 960" width="48"><path class="icon-feher" d="m256-200-56-56 224-224-224-224 56-56 224 224 224-224 56 56-224 224 224 224-56 56-224-224-224 224Z"/></svg></a>
+                <a href="index.php" class="sidebar-nav-a">Kezdőlap</a>
+            </div>
         </nav>
     </header>
     
