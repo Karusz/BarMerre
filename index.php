@@ -21,14 +21,14 @@
 </head>
 <body class="d-flex flex-column h-100">
     <header>
-        <a href="index.php" class="logo"><h2>BarMerre</h2></a>
+        <a href="index.php" class="logo mx-2 px-2"><h2>BarMerre</h2></a>
         <nav class="navigation">
             <a href="index.php" class="nav-a hideOnMobile">Kezdőlap</a>
             <button class="btnLogin hideOnMobile" onclick="Login()">Bejelentkezés</button>
-            <a class="menu-button" onclick="showSidebar()" href="#"><svg xmlns="http://www.w3.org/2000/svg" height="48" viewBox="0 -960 960 960" width="48"><path class="icon-feher" d="M120-240v-80h720v80H120Zm0-200v-80h720v80H120Zm0-200v-80h720v80H120Z"/></svg></a>
+            <a class="menu-button px-5" onclick="showSidebar()" href="#"><svg xmlns="http://www.w3.org/2000/svg" height="48" viewBox="0 -960 960 960" width="48"><path class="icon-feher" d="M120-240v-80h720v80H120Zm0-200v-80h720v80H120Zm0-200v-80h720v80H120Z"/></svg></a>
             <div class="sidebar">
                 <a onclick="hideSidebar()" href="#"><svg xmlns="http://www.w3.org/2000/svg" height="48" viewBox="0 -960 960 960" width="48"><path class="icon-feher" d="m256-200-56-56 224-224-224-224 56-56 224 224 224-224 56 56-224 224 224 224-56 56-224-224-224 224Z"/></svg></a>
-                <a href="index.php" class="nav-a active">Kezdőlap</a>
+                <a href="index.php" class="sidebar-nav-a">Kezdőlap</a>
                 <button class="btnLogin" onclick="Login()">Bejelentkezés</button>
             </div>
         </nav>
@@ -77,8 +77,8 @@
                                 </div>
                                 <div class="col h-100">
                                     <div class="feature bg-primary bg-gradient text-white rounded-3 mb-3"><i class="bi bi-toggles2"></i></div>
-                                    <h2 class="h5">Negyedik funkció</h2>
-                                    <p class="mb-0">A Lorem Ipsum egy egyszerû szövegrészlete, szövegutánzata a betûszedõ és nyomdaiparnak. A Lorem Ipsum az 1500-as évek óta standard szövegrészletként szolgált az iparban;</p>
+                                    <h2 class="h5">Kommentelj az útvonalakhoz</h2>
+                                    <p class="mb-0">Írd le a gondolataidat a különböző útvonalaknál.</p>
                                 </div>
                             </div>
                         </div>
