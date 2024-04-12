@@ -21,6 +21,9 @@
 }
 .menu-button{
     display:none;
+    position: fixed;
+    top:20px;
+    right:0;
 }
 .icon-feher{
     fill: white;
@@ -45,4 +48,14 @@
 
 .logo:hover{
     color: rgba(255, 255, 255, 0.575);
+}
+.sidebar-nav-a{
+    position: relative;
+    font-size: 1.1em;
+    color: #fff;
+    text-decoration: none;
+    font-weight: 500;
+    margin-left: 40px;
+    margin-bottom: 10px;
+
 }

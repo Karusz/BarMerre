@@ -42,6 +42,56 @@
         header("Location: myroutes.php");
     }
 
+    if(isset($_POST['googlemaps-btn'])){
+        $routeId = $id; // Példa az útvonal egyedi azonosítójára
+
+// SQL lekérdezés az útvonalhoz tartozó bárok adatainak lekérésére
+$sql = "SELECT b.name AS bar_name, b.address AS bar_address, b.lat AS bar_latitude, b.lng AS bar_longitude
+        FROM routes r
+        JOIN bars b ON FIND_IN_SET(b.id, r.bars_ids) > 0
+        WHERE r.id = $routeId";
+
+$result = $conn->query($sql);
+
+if ($result->num_rows > 0) {
+    // Adatok feldolgozása és link létrehozása
+    $waypoints = [];
+    while ($row = $result->fetch_assoc()) {
+        // Bár adatainak kinyerése
+        $barName = $row['bar_name'];
+        $barAddress = $row['bar_address'];
+        $barLatitude = $row['bar_latitude'];
+        $barLongitude = $row['bar_longitude'];
+
+        // Hozzáadás a waypoints tömbhöz
+        $waypoints[] = "$barLatitude,$barLongitude";
+    }
+
+    // Google Térkép URL létrehozása
+    $destination = end($waypoints); // Az utolsó bár lesz a célpont
+    $waypointsString = implode('|', $waypoints);
+
+    // Aktuális felhasználói hely lekérése (HTML5 Geolocation API)
+    $currentLocation = ""; // Kezdetben üres string
+
+    // JavaScript kódot generálunk, hogy lekérjük a felhasználói helyet
+    echo "<script>
+            if (navigator.geolocation) {
+                navigator.geolocation.getCurrentPosition(function(position) {
+                    const userLat = position.coords.latitude;
+                    const userLng = position.coords.longitude;
+                    const userLocation = userLat + ',' + userLng;
+                    window.location.href = 'https://www.google.com/maps/dir/?api=1&origin=' + userLocation + '&destination=$destination&waypoints=$waypointsString&travelmode=walking';
+                });
+            } else {
+                alert('A helymeghatározás nem támogatott a böngésződben.');
+            }
+          </script>";
+} else {
+    echo "Nincsenek adatok az útvonalhoz.";
+}
+    }
+
 ?>
 <!DOCTYPE html>
 <html lang="hu">
@@ -137,12 +187,14 @@
                                 ?>
                                     <form action="selectroute.php?id=<?=$id?>&routeid=<?=$route['id']?>" method="post">
                                         <button class="btn btn-primary" name="like-btn">Like</button>
+                                        <button class="btn btn-primary" name="googlemaps-btn">Google maps generálása</button>
                                     </form>
                                 <?php
                                     }else{
                                 ?>
                                     <form action="selectroute.php?id=<?=$id?>&routeid=<?=$route['id']?>" method="post">
                                         <button class="btn btn-primary" name="unlike-btn">Unlike</button>
+                                        <button class="btn btn-primary" name="googlemaps-btn">Google maps generálása</button>
                                     </form>
                                 <?php }}else{ ?>
                                     <form action="selectroute.php?id=<?=$id?>&routeid=<?=$route['id']?>" method="post">
