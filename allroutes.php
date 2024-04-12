@@ -5,10 +5,6 @@
     $lekerd = "SELECT * FROM users WHERE id=$_SESSION[userid]";
     $talalt = $conn->query($lekerd);
     $user = $talalt->fetch_assoc();
-
-    /*if(isset($_POST['like-btn'])){
-      
-    }*/
 ?>
 
 <!DOCTYPE html>
@@ -73,7 +69,6 @@
             $route_lekerd = "SELECT * FROM routes";
             $route_talalt = $conn->query($route_lekerd);
             while ($route = $route_talalt->fetch_assoc()){
-                if($route['creator_id'] != $_SESSION['userid']){
 
                 
           ?>
@@ -98,7 +93,7 @@
           </div>
           </a>
           <!-- while end -->
-          <?php }} ?>
+          <?php } ?>
           
               
           

@@ -54,7 +54,7 @@
             if(password_verify($password, $user['password'])){
                 
                 $_SESSION['userid'] = $user['id'];
-                header("Location: profilesettings.php?id=".$user['id']);
+                header("Location: allroutes.php");
                     
                 
             }else if(mysqli_num_rows($code_talalt) == 1){
