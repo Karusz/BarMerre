@@ -1,7 +1,6 @@
 <?php
     require "config.php";
     session_start();
-
 ?>
 <!DOCTYPE html>
 <html lang="hu">
@@ -80,6 +79,29 @@
             
         </header>
     <?php } ?>
+    <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#exampleModal">
+    Launch demo modal
+    </button>
+
+    <!-- Modal -->
+    <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+        <div class="modal-header">
+            <h5 class="modal-title" id="exampleModalLabel">Modal title</h5>
+        </div>
+        <div class="modal-body">
+            ...
+        </div>
+        <div class="modal-footer">
+            <form action="index.php" method="post">
+                <button type="button" class="btn btn-primary" name="yes-btn" data-bs-dismiss="modal">Igen</button>
+                <a href="https://www.minimax.hu/"><button type="button" class="btn btn-secondary" name="no-btn">Nem</button></a>
+            </form>
+        </div>
+        </div>
+    </div>
+    </div>
     <div class="buborek">
 
 
@@ -205,7 +227,8 @@
     
     
     <script src="assets/js/main.js"></script>
-    <script src="assets/bootstrap/js/bootstrap.bundle.js"></script>
+    <script src="assets/bootstrap/js/bootstrap.min.js"></script>
+    <script src="assets/bootstrap/js/bootstrap.bundle.min.js"></script>
     <script type="module" src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.esm.js"></script>
     <script nomodule src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.js"></script>
 </body>

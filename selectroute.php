@@ -141,7 +141,7 @@
           <a href="allroutes.php" class="nav-a">Útvonalak</a>
           <a href="createroute.php" class="nav-a">Tervezés</a>
           <button class="btnLogin dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false">
-              Profil
+          <?=$user['username']?>
           </button>
           <ul class="dropdown-menu dropdown-menu-dark">
               <li><a class="dropdown-item" href=""><?= $user['username'] ?></a></li>
