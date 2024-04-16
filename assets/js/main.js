@@ -14,3 +14,8 @@ function Logout() {
 function Login() {
     window.location="login.php";
 }
+
+$(document).ready(function(){
+    $("#staticBackdrop").modal('show');
+});
+

@@ -11,4 +11,3 @@ loginLink.addEventListener('click', ()=> {
     wrapper.classList.remove('active');
 });
 
-

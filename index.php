@@ -19,12 +19,32 @@
     <link rel="stylesheet" href="assets/css/nav-style.css">
 </head>
 <body class="d-flex flex-column h-100">
+    
     <?php
     
         if(empty($_SESSION['userid'])){
 
     ?>
-        <header>
+        <header class="nav">
+            <!-- MODAL START -->
+            <div class="modal fade" id="staticBackdrop" data-bs-backdrop="static"  tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
+                <div class="modal-dialog modal-dialog-centered ">
+                    <div class="modal-content bg-dark text-white">
+                        <div class="modal-header">
+                            <h5 class="modal-title" id="staticBackdropLabel">Ez egy felnőtt oldal.</h5>
+                        </div>
+                        <div class="modal-body">
+                            <p>Mivel az alkohol fogyasztás 18. éven aluliaknak nem ajánlott, ezért a megtekintéséhez be kell töltened a 18. életévedet.</p>
+                            <p>Betöltötted már a 18. életévedet?</p>
+                        </div>
+                        <div class="modal-footer justify-content-center">
+                            <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Igen</button>
+                            <a href="https://www.minimax.hu"><button type="button" class="btn btn-primary">Nem</button></a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <!--  MODAL END-->
             <a href="index.php" class="logo mx-2 px-2"><h2>BarMerre</h2></a>
             <nav class="navigation">
                 <a href="index.php" class="nav-a hideOnMobile">Kezdőlap</a>
@@ -43,7 +63,26 @@
             $talalt = $conn->query($lekerd);
             $user = $talalt->fetch_assoc();
     ?>
-        <header>
+        <header  class="nav">
+            <!-- MODAL START -->
+            <div class="modal fade" id="staticBackdrop" data-bs-backdrop="static"  tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
+                <div class="modal-dialog modal-dialog-centered ">
+                    <div class="modal-content bg-dark text-white">
+                        <div class="modal-header">
+                            <h5 class="modal-title" id="staticBackdropLabel">Ez egy felnőtt oldal.</h5>
+                        </div>
+                        <div class="modal-body">
+                            <p>Mivel az alkohol fogyasztás 18. éven aluliaknak nem ajánlott, ezért a megtekintéséhez be kell töltened a 18. életévedet.</p>
+                            <p>Betöltötted már a 18. életévedet?</p>
+                        </div>
+                        <div class="modal-footer justify-content-center">
+                            <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Igen</button>
+                            <a href="https://www.minimax.hu"><button type="button" class="btn btn-primary">Nem</button></a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <!--  MODAL END-->
       <a href="index.php" class="logo"><h2>BarMerre</h2></a>
       <nav class="navigation">
           <a href="allroutes.php" class="nav-a hideOnMobile">Útvonalak</a>
@@ -202,10 +241,12 @@
         <div class="bubidiv"><span></span></div>
     </div>
     
-    
-    <script src="assets/js/main.js"></script>
+    <script src="assets/bootstrap/js/bootstrap.min.js"></script>
     <script src="assets/bootstrap/js/bootstrap.bundle.js"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.10.2/jquery.min.js"></script>
     <script type="module" src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.esm.js"></script>
     <script nomodule src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.js"></script>
+    <script src="assets/js/main.js"></script>
+
 </body>
 </html>
