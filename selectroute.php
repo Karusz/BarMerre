@@ -59,7 +59,8 @@
             $waypoints[] = "$barLatitude,$barLongitude";
         }
 
-        $destination = end($waypoints); 
+        $destination = end($waypoints);
+        array_pop($waypoints);
         $waypointsString = implode('|', $waypoints);
 
         $currentLocation = "";
@@ -119,7 +120,7 @@
 <body class="d-flex flex-column h-100">
     
 <header>
-      <a href="index.php" class="logo mx-2 px-2"><h2>BarMerre</h2></a>
+      <a href="index.php" class="logo"><h2>BarMerre</h2></a>
       <nav class="navigation">
           <a href="allroutes.php" class="nav-a hideOnMobile">Útvonalak</a>
           <a href="createroute.php" class="nav-a hideOnMobile">Tervezés</a>
@@ -137,11 +138,11 @@
           
           <div class="sidebar">
           <a onclick="hideSidebar()" href="#"><svg xmlns="http://www.w3.org/2000/svg" height="48" viewBox="0 -960 960 960" width="48"><path class="icon-feher" d="m256-200-56-56 224-224-224-224 56-56 224 224 224-224 56 56-224 224 224 224-56 56-224-224-224 224Z"/></svg></a>
-          <a href="contact.php.php" class="nav-a active">Kapcsolat</a>
+          <a href="contact.php" class="nav-a active">Kapcsolat</a>
           <a href="allroutes.php" class="nav-a">Útvonalak</a>
           <a href="createroute.php" class="nav-a">Tervezés</a>
           <button class="btnLogin dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false">
-          <?=$user['username']?>
+              Profil
           </button>
           <ul class="dropdown-menu dropdown-menu-dark">
               <li><a class="dropdown-item" href=""><?= $user['username'] ?></a></li>
@@ -251,7 +252,6 @@
         <?php } ?>
         
     </div>
-    <div id="map"></div>
     <div class="buborek">
         <div class="bubidiv"><span></span></div>
         <div class="bubidiv"><span></span></div>

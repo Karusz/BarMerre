@@ -1,6 +1,7 @@
 <?php
     require "config.php";
     session_start();
+
 ?>
 <!DOCTYPE html>
 <html lang="hu">
@@ -43,65 +44,41 @@
             $user = $talalt->fetch_assoc();
     ?>
         <header>
-            <a href="index.php" class="logo mx-2 px-2"><h2>BarMerre</h2></a>
-            <nav class="navigation">
-                <a href="allroutes.php" class="nav-a hideOnMobile">Útvonalak</a>
-                <a href="createroute.php" class="nav-a hideOnMobile">Tervezés</a>
-                <a class="nav-a hideOnMobile" href="contact.php">Kapcsolat</a>
-                <button class="btnLogin dropdown-toggle hideOnMobile" type="button" data-bs-toggle="dropdown" aria-expanded="false">
-                    <?=$user['username']?>
-                </button>
-                <ul class="dropdown-menu dropdown-menu-dark hideOnMobile">
-                    <li><a class="dropdown-item" href="myroutes.php">Saját utak</a></li>
-                    <li><a class="dropdown-item" href="profilesettings.php?id=<?=$_SESSION['userid']?>">Beállítások</a></li>
-                    <li><a class="dropdown-item" href="contact.php">Kapcsolat</a></li>
-                    <li><button class="dropdown-item" onclick="Logout()">Kijelentkezés</button></li>
-                </ul>
-                <a class="menu-button" onclick="showSidebar()" href="#"><svg xmlns="http://www.w3.org/2000/svg" height="48" viewBox="0 -960 960 960" width="48"><path class="icon-feher" d="M120-240v-80h720v80H120Zm0-200v-80h720v80H120Zm0-200v-80h720v80H120Z"/></svg></a>
-                
-                
-                <div class="sidebar">
-                <a onclick="hideSidebar()" href="#"><svg xmlns="http://www.w3.org/2000/svg" height="48" viewBox="0 -960 960 960" width="48"><path class="icon-feher" d="m256-200-56-56 224-224-224-224 56-56 224 224 224-224 56 56-224 224 224 224-56 56-224-224-224 224Z"/></svg></a>
-                <a href="contact.php.php" class="nav-a active">Kapcsolat</a>
-                <a href="allroutes.php" class="nav-a">Útvonalak</a>
-                <a href="createroute.php" class="nav-a">Tervezés</a>
-                <button class="btnLogin dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false">
-                    Profil
-                </button>
-                <ul class="dropdown-menu dropdown-menu-dark">
-                    <li><a class="dropdown-item" href=""><?= $user['username'] ?></a></li>
-                    <li><a class="dropdown-item" href="myroutes.php">Saját utak</a></li>
-                    <li><a class="dropdown-item" href="profilesettings.php?id=<?=$_SESSION['userid']?>">Beállítások</a></li>
-                    <li><button class="dropdown-item" onclick="Logout()">Kijelentkezés</button></li>
-                </ul>
-                </div>
-            </nav>
-            
-        </header>
+      <a href="index.php" class="logo"><h2>BarMerre</h2></a>
+      <nav class="navigation">
+          <a href="allroutes.php" class="nav-a hideOnMobile">Útvonalak</a>
+          <a href="createroute.php" class="nav-a hideOnMobile">Tervezés</a>
+          <a class="nav-a hideOnMobile" href="contact.php">Kapcsolat</a>
+          <button class="btnLogin dropdown-toggle hideOnMobile" type="button" data-bs-toggle="dropdown" aria-expanded="false">
+              <?=$user['username']?>
+          </button>
+          <ul class="dropdown-menu dropdown-menu-dark hideOnMobile">
+              <li><a class="dropdown-item" href="myroutes.php">Saját utak</a></li>
+              <li><a class="dropdown-item" href="profilesettings.php?id=<?=$_SESSION['userid']?>">Beállítások</a></li>
+              <li><button class="dropdown-item" onclick="Logout()">Kijelentkezés</button></li>
+          </ul>
+          <a class="menu-button" onclick="showSidebar()" href="#"><svg xmlns="http://www.w3.org/2000/svg" height="48" viewBox="0 -960 960 960" width="48"><path class="icon-feher" d="M120-240v-80h720v80H120Zm0-200v-80h720v80H120Zm0-200v-80h720v80H120Z"/></svg></a>
+          
+          
+          <div class="sidebar">
+          <a onclick="hideSidebar()" href="#"><svg xmlns="http://www.w3.org/2000/svg" height="48" viewBox="0 -960 960 960" width="48"><path class="icon-feher" d="m256-200-56-56 224-224-224-224 56-56 224 224 224-224 56 56-224 224 224 224-56 56-224-224-224 224Z"/></svg></a>
+          <a href="contact.php" class="nav-a active">Kapcsolat</a>
+          <a href="allroutes.php" class="nav-a">Útvonalak</a>
+          <a href="createroute.php" class="nav-a">Tervezés</a>
+          <button class="btnLogin dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false">
+              Profil
+          </button>
+          <ul class="dropdown-menu dropdown-menu-dark">
+              <li><a class="dropdown-item" href=""><?= $user['username'] ?></a></li>
+              <li><a class="dropdown-item" href="myroutes.php">Saját utak</a></li>
+              <li><a class="dropdown-item" href="profilesettings.php?id=<?=$_SESSION['userid']?>">Beállítások</a></li>
+              <li><button class="dropdown-item" onclick="Logout()">Kijelentkezés</button></li>
+          </ul>
+          </div>
+      </nav>
+      
+  </header>
     <?php } ?>
-    <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#exampleModal">
-    Launch demo modal
-    </button>
-
-    <!-- Modal -->
-    <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
-    <div class="modal-dialog">
-        <div class="modal-content">
-        <div class="modal-header">
-            <h5 class="modal-title" id="exampleModalLabel">Modal title</h5>
-        </div>
-        <div class="modal-body">
-            ...
-        </div>
-        <div class="modal-footer">
-            <form action="index.php" method="post">
-                <button type="button" class="btn btn-primary" name="yes-btn" data-bs-dismiss="modal">Igen</button>
-                <a href="https://www.minimax.hu/"><button type="button" class="btn btn-secondary" name="no-btn">Nem</button></a>
-            </form>
-        </div>
-        </div>
-    </div>
-    </div>
     <div class="buborek">
 
 
@@ -227,8 +204,7 @@
     
     
     <script src="assets/js/main.js"></script>
-    <script src="assets/bootstrap/js/bootstrap.min.js"></script>
-    <script src="assets/bootstrap/js/bootstrap.bundle.min.js"></script>
+    <script src="assets/bootstrap/js/bootstrap.bundle.js"></script>
     <script type="module" src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.esm.js"></script>
     <script nomodule src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.js"></script>
 </body>
