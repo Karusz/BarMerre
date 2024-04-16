@@ -81,17 +81,17 @@
     </div>
     </div>
     <div class="row">
-      <div class="col-md-3">
+      <div class="col-md-6">
         <button id="addAddress" class="btn-block m-1 p-1 form-control">Hozzáadás</button>
       </div>
-      <div class="col-md-3">
+      <div class="col-md-6">
         <button id="generateRoute" class="btn-block m-1 p-1 form-control">Tervezés</button>
       </div>
-      <div class="col-md-3">
+      <div class="col-md-12">
         <input type="text" placeholder="Név" id="name" class="form-control m-1 p-1" required>
       </div>
-      <div class="col-md-3">
-        <input type="text" placeholder="Leírás" id="text" class="form-control m-1 p-1">
+      <div class="col-md-12">
+        <textarea name="" id="text" cols="30" rows="3" placeholder="Leírás" class="form-control m-1 p-1" require></textarea>
       </div>
       <div class="col-md-12">
         <button id="saveRoute" class="btn-block m-1 p-1 form-control">Mentés</button>
