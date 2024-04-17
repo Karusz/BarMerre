@@ -52,7 +52,45 @@
             </div>
         </nav>
     </header>
-    
+    <!-- Modal -->
+    <div class="modal fade m-5" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+        <div class="modal-dialog modal-dialog-centered modal-dialog-scrollable">
+            <div class="modal-content bg-dark text-white">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="exampleModalLabel">Modal title</h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body">
+                    <h4>Adatvédelmi Nyilatkozat</h4>
+                        
+                    <p>1. Személyes Adatok Gyűjtése és Kezelése</p>
+                    <ul>
+                        <li>A weboldal regisztrációhoz kötött szolgáltatást nyújt, mely során az alábbi személyes adatokat gyűjtjük: e-mail cím és az Ön 18. életévét betöltötte-e.</li>
+                        <li>Az Ön által megadott személyes adatokat bizalmasan kezeljük, és semmilyen körülmények között nem adjuk ki harmadik félnek.</li>
+                    </ul>
+
+                    <p>2. Adatkezelési Cél</p>
+                    <ul>
+                        <li>Az Ön által megadott adatokat kizárólag a weboldal szolgáltatásainak nyújtásához és kommunikációhoz használjuk.</li>
+                        <li>Az e-mail címet a weboldal által küldött értesítések, információk és promóciós anyagok továbbítására használjuk.</li>
+                    </ul>
+                    <p>3. Adatbiztonság</p>
+                    <ul>
+                        <li>Az adatvédelmi szabályzataink és technikai intézkedéseink biztosítják az adatok biztonságos kezelését és védelmét.</li>
+                        <li>Minden szükséges intézkedést megtesszük az adatok jogosulatlan hozzáférés, módosítás vagy illetéktelen megosztás megelőzése érdekében.</li>
+                    </ul>
+                    <p>4. Harmadik Fél Szolgáltatásai</p>
+                    <ul>
+                        <li>A weboldal nem felelős harmadik fél által üzemeltetett vagy ellenőrzött weboldalak adatvédelmi gyakorlatáért.</li>
+                        <li>Kérjük, ellenőrizze ezeknek a weboldalaknak az adatvédelmi irányelveit, mielőtt személyes adatokat megosztana velük.</li>
+                    </ul>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                </div>
+            </div>
+        </div>
+    </div>
 
     <div class="buborek">
         <div class="wrapper">
@@ -111,7 +149,7 @@
                         <label><input type="checkbox" required>Betöltöttem a 18. életévemet</label>
                     </div>
                     <div class="remember-forgot">
-                        <label><input type="checkbox" required>Elfogadom az <a href="#" target="_blank">adatvédelmi szabályzatot</a></label>
+                        <label><input type="checkbox" required>Elfogadom az <a href="#" data-bs-toggle="modal" data-bs-target="#exampleModal">adatvédelmi szabályzatot</a></label>
                     </div>
                     <button type="submit" name="reg-btn" class="btn">Regisztrálok</button>
                     <div class="login-register">
@@ -119,7 +157,6 @@
                     </div>
                 </form>
             </div>
-
         </div>
 
        
@@ -138,9 +175,10 @@
     </div>
 
     
-
-    <script src="assets/js/login.js"></script>
+    <script src="assets/bootstrap/js/bootstrap.min.js"></script>
+    <script src="assets/bootstrap/js/bootstrap.bundle.js"></script>
     <script type="module" src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.esm.js"></script>
     <script nomodule src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.js"></script>
+    <script src="assets/js/login.js"></script>
 </body>
 </html>

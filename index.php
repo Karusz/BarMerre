@@ -222,13 +222,75 @@
                     <div class="col-auto"><div class="small m-0 text-white">Copyright &copy; BarMerre 2024</div></div>
                     <div class="col-auto">
                         
-                        <a class="link-light small" href="#!">Feltételek</a>
+                        <a class="link-light small" id="felteltElement" href="#" data-bs-toggle="modal" data-bs-target="#feltelt">Felhasználási Feltételek</a>
+                        <span class="text-white mx-1">&middot;</span>
+                        <a class="link-light small" id="felteltElement" href="#" data-bs-toggle="modal" data-bs-target="#adatv">Adatvédelmi Nyilatkozat</a>
                         <span class="text-white mx-1">&middot;</span>
                         <a class="link-light small" href="contact.php">Kapcsolat</a>
                     </div>
                 </div>
             </div>
         </footer>
+        <!-- Adatvédelmi Nyilatkozat -->
+        <div class="modal fade m-5" id="adatv" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
+            <div class="modal-dialog modal-dialog-centered modal-dialog-scrollable">
+                <div class="modal-content bg-dark text-white">
+                    <div class="modal-header">
+                        <h1 class="modal-title fs-5" id="staticBackdropLabel">Adatvédelmi Nyilatkozat</h1>
+                        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                    </div>
+                    <div class="modal-body">
+                        <h4>Adatvédelmi Nyilatkozat</h4>
+                        
+                        <p>1. Személyes Adatok Gyűjtése és Kezelése</p>
+                        <ul>
+                            <li>A weboldal regisztrációhoz kötött szolgáltatást nyújt, mely során az alábbi személyes adatokat gyűjtjük: e-mail cím és az Ön 18. életévét betöltötte-e.</li>
+                            <li>Az Ön által megadott személyes adatokat bizalmasan kezeljük, és semmilyen körülmények között nem adjuk ki harmadik félnek.</li>
+                        </ul>
+
+                        <p>2. Adatkezelési Cél</p>
+                        <ul>
+                            <li>Az Ön által megadott adatokat kizárólag a weboldal szolgáltatásainak nyújtásához és kommunikációhoz használjuk.</li>
+                            <li>Az e-mail címet a weboldal által küldött értesítések, információk és promóciós anyagok továbbítására használjuk.</li>
+                        </ul>
+                        <p>3. Adatbiztonság</p>
+                        <ul>
+                            <li>Az adatvédelmi szabályzataink és technikai intézkedéseink biztosítják az adatok biztonságos kezelését és védelmét.</li>
+                            <li>Minden szükséges intézkedést megtesszük az adatok jogosulatlan hozzáférés, módosítás vagy illetéktelen megosztás megelőzése érdekében.</li>
+                        </ul>
+                        <p>4. Harmadik Fél Szolgáltatásai</p>
+                        <ul>
+                            <li>A weboldal nem felelős harmadik fél által üzemeltetett vagy ellenőrzött weboldalak adatvédelmi gyakorlatáért.</li>
+                            <li>Kérjük, ellenőrizze ezeknek a weboldalaknak az adatvédelmi irányelveit, mielőtt személyes adatokat megosztana velük.</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!-- Felhasználási Feltételek -->
+        <div class="modal fade" id="feltelt" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
+            <div class="modal-dialog modal-dialog-centered">
+                <div class="modal-content bg-dark text-white">
+                    <div class="modal-header">
+                        <h1 class="modal-title fs-5" id="staticBackdropLabel">Felhasználási Feltételek</h1>
+                        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                    </div>
+                    <div class="modal-body">
+                        <h4>Regisztráció és Adatkezelés</h4>
+
+                        <p>1. A weboldal regisztrációhoz kötött szolgáltatást nyújt. A regisztráció során az alábbi adatokat kell megadnia: e-mail cím, és az Ön 18. életévét betöltötte-e.</p>
+
+                        <p>2. Az Ön által megadott személyes adatokat bizalmasan kezeljük, és semmilyen körülmények között nem adjuk ki harmadik félnek.</p>
+
+                        <p>3. Az e-mail címet kizárólag a weboldal szolgáltatásainak nyújtásához és kommunikációhoz használjuk.</p>
+
+                        <p>4. Az adatvédelmi irányelveink és adatkezelési szabályaink részletesen megtalálhatók az Adatvédelmi Nyilatkozatunkban.</p>
+
+                        <p>5. Kérjük, hogy a regisztráció során valós és pontos adatokat adjon meg, és gondoskodjon azok naprakészen tartásáról.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
         <!-- Buborekok -->
         <div class="bubidiv"><span></span></div>
         <div class="bubidiv"><span></span></div>
