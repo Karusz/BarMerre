@@ -107,7 +107,7 @@
 
         $mail->isHTML(true);
 
-        $mail->text = $text;
+        $mail->Subject = $text;
         $mail->Body = $body;
 
         $mail->send();

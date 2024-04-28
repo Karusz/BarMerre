@@ -11,7 +11,7 @@
             echo '<script>alert("Még nem regisztráltál!")</script>';
         }else{
             $code = CodeGenerate(5);
-            $text = "Kód a bejeneltkezéshez";
+            $text = "Egyszeri bejelentkezési kód";
             $body = "Ezzel a kóddal tudsz egyszer bejelentkezni. Kérjük, hogy bejelentkezés után EGYBŐL változtasd meg a jelszavadat!<br><br><h2>Egyszer használatos jelszó: $code</h2>";
             
             emailsend($email,$text,$body);
